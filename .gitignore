@@ -1,5 +1,5 @@
 # Старая версия программы
-.old/
+old/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
