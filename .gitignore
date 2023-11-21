@@ -1,3 +1,6 @@
+# Старая версия программы
+.old/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
