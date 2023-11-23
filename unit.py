@@ -11,13 +11,15 @@ class Unit:
         pass
 
     def _action(self, action_type, target):
-        pass
+        print(f"{self.name} атакует {target.name}")
 
     def _end_turn(self):
         pass
 
-    def __init__(self, attack, defence, min_damage, max_damage, health,
-                 initiative, speed):
+    def __init__(self, name, color, attack, defence,
+                 min_damage, max_damage, health, initiative, speed):
+        self.name = name
+        self.color = color
         self.actions = []
         self.reactions = []
         self.effects = []
@@ -25,9 +27,9 @@ class Unit:
         self.immunities = []
         self.atk = attack
         self.defence = defence
-        self.min_damage_limit = min_damage
+        self._min_damage_limit = min_damage
         self.min_damage = min_damage
-        self.max_damage_limit = max_damage
+        self._max_damage_limit = max_damage
         self.max_damage = max_damage
         self.health = health
         self.initiative = initiative
