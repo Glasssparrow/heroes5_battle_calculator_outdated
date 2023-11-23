@@ -1,6 +1,7 @@
 # Старая версия программы
 old/
 current_test.py
+old_test.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
