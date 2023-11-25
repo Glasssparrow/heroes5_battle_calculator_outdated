@@ -11,7 +11,9 @@ class Unit:
         pass
 
     def _action(self, action_type, target):
-        print(f"{self.name} атакует {target.name}")
+        for action in self.actions:
+            if action.keyword == action_type:
+                print(f"{self.name} атакует {target.name}")
 
     def _end_turn(self):
         pass
@@ -34,9 +36,14 @@ class Unit:
         self.health = health
         self.initiative = initiative
         self.speed = speed
+        self._max_quantity = 0
         self.quantity = 0
         self.hp = 0
 
     def get_quantity(self, quantity):
+        self._max_quantity = quantity
         self.quantity = quantity
         self.hp = quantity * self.health
+
+    def add_action(self, action):
+        self.actions.append(action)

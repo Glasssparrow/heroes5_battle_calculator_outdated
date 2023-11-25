@@ -1,5 +1,6 @@
-from unit import Unit
+from unit.unit import Unit
 from keywords import *
+from unit.actions.melee import *
 
 
 peasant = Unit(
@@ -14,5 +15,7 @@ knight = Unit(
 )
 peasant.get_quantity(30)
 knight.get_quantity(1)
+
+peasant.add_action(Melee())
 
 peasant.take_action(MELEE_ATTACK, knight)
