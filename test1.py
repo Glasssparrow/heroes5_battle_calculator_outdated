@@ -16,6 +16,6 @@ knight = Unit(
 peasant.get_quantity(30)
 knight.get_quantity(1)
 
-peasant.add_action(Melee())
+peasant.add_action(Melee(peasant))
 
 peasant.take_action(MELEE_ATTACK, knight)
