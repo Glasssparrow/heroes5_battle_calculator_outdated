@@ -46,4 +46,4 @@ class Unit:
         self.hp = quantity * self.health
 
     def add_action(self, action):
-        self.actions.append(action)
+        self.actions.append(action(self))
