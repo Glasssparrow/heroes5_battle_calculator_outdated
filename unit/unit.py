@@ -13,7 +13,7 @@ class Unit:
     def _action(self, action_type, target):
         for action in self.actions:
             if action.keyword == action_type:
-                print(f"{self.name} атакует {target.name}")
+                action.act(target)
 
     def _end_turn(self):
         pass
