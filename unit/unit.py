@@ -18,6 +18,9 @@ class Unit:
     def _end_turn(self):
         pass
 
+    def _counter_provoked(self):
+        pass
+
     def __init__(self, name, color, attack, defence,
                  min_damage, max_damage, health, initiative, speed):
         self.name = name
