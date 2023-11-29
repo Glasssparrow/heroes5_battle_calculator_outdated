@@ -18,7 +18,7 @@ class Unit:
     def _end_turn(self):
         pass
 
-    def _counter_provoked(self):
+    def _melee_counter_provoked(self):
         pass
 
     def __init__(self, name, color, attack, defence,
