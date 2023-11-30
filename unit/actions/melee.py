@@ -1,6 +1,6 @@
 from keywords import *
 from random import randint
-from common import calculate_damage
+from .common import calculate_damage
 
 
 class Melee:
