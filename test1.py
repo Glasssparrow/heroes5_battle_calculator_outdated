@@ -13,9 +13,10 @@ knight = Unit(
     attack=23, defence=21, min_damage=20, max_damage=30,
     health=90, initiative=11, speed=7
 )
-peasant.get_quantity(30)
+peasant.get_quantity(1)
 knight.get_quantity(1)
 
 peasant.add_action(Melee)
+knight.add_action(Melee)
 
-peasant.take_action(MELEE_ATTACK, knight)
+knight.take_action(MELEE_ATTACK, peasant)

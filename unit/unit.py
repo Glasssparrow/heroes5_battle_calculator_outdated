@@ -1,3 +1,4 @@
+from math import ceil
 
 
 class Unit:
@@ -20,6 +21,15 @@ class Unit:
 
     def _melee_counter_provoked(self):
         pass
+
+    def take_damage(self, damage):
+        self.hp = self.hp - damage
+        if self.hp == 0:
+            self.hp = 0
+        quantity_before = self.quantity
+        self.quantity = ceil(self.hp / self.health)
+        kills = quantity_before - self.quantity
+        return kills
 
     def __init__(self, name, color, attack, defence,
                  min_damage, max_damage, health, initiative, speed):
