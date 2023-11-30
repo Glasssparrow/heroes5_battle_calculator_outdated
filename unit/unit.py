@@ -30,7 +30,7 @@ class Unit:
         self.effects = []
         self.skills = []
         self.immunities = []
-        self.atk = attack
+        self.attack = attack
         self.defence = defence
         self._min_damage_limit = min_damage
         self.min_damage = min_damage
