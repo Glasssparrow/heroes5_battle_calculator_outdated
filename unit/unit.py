@@ -15,12 +15,15 @@ class Unit:
         for action in self.actions:
             if action.keyword == action_type:
                 action.act(target)
+                break
 
     def _end_turn(self):
         pass
 
-    def provoke_counter(self, action_type, target):
-        print("Контратака")
+    def provoke_counter(self, reaction_type, target):
+        for reaction in self.reactions:
+            if reaction.keyword == reaction_type:
+                reaction.act(target)
 
     def take_damage(self, damage):
         self.hp = self.hp - damage
@@ -60,3 +63,6 @@ class Unit:
 
     def add_action(self, action):
         self.actions.append(action(self))
+
+    def add_reaction(self, reaction):
+        self.reactions.append(reaction(self))
