@@ -3,12 +3,6 @@ from math import ceil
 
 class Unit:
 
-    def _is_alive(self):
-        if self.hp > 0:
-            return True
-        else:
-            return False
-
     def take_action(self, action_type, target):
         self._start_turn()
         self._action(action_type, target)
@@ -18,9 +12,6 @@ class Unit:
         pass
 
     def _action(self, action_type, target):
-        if not self._is_alive():
-            print(f"{self.name} не может действовать т.к. мертв.")
-            return
         for action in self.actions:
             if action.keyword == action_type:
                 action.act(target)
@@ -30,9 +21,6 @@ class Unit:
         pass
 
     def provoke_counter(self, reaction_type, target):
-        if not self._is_alive():
-            print(f"{self.name} не может реагировать т.к. мертв.")
-            return
         for reaction in self.reactions:
             if reaction.keyword == reaction_type:
                 reaction.act(target)
