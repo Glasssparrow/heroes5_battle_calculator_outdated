@@ -32,7 +32,7 @@ class Melee:
 
     def can_unit_act(self, target):
         if not self.owner.hp > 0:
-            print(f"{self.owner.name} не может действовать т.к. мертв")
+            print(f"{self.owner.name} не может действовать т.к. мертв.")
             return False
         if target.hp == 0:
             print(f"{self.owner.name} не может действовать т.к. "
