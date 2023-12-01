@@ -19,8 +19,8 @@ class Unit:
     def _end_turn(self):
         pass
 
-    def _melee_counter_provoked(self):
-        pass
+    def provoke_counter(self, action_type, target):
+        print("Контратака")
 
     def take_damage(self, damage):
         self.hp = self.hp - damage

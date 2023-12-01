@@ -23,3 +23,4 @@ class Melee:
               f"Наносит {damage} урона. "
               f"Погибло {kills} {target.name}. "
               f"Осталось {target.quantity}")
+        target.provoke_counter(MELEE_COUNTER, self.owner)
