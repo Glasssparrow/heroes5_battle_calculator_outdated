@@ -21,7 +21,9 @@ class MeleeCounter:
             defence=target.defence,
             max_damage=target.hp
         )
+        self.before_reaction(target)
         kills = target.take_damage(damage)
+        self.after_reaction(target)
         print(f"{self.owner.name} контратакует {target.name}. "
               f"Наносит {damage} урона. "
               f"Погибло {kills} {target.name}. "
@@ -32,3 +34,9 @@ class MeleeCounter:
             print(f"{self.owner.name} не может реагировать т.к. мертв")
             return False
         return True
+
+    def before_reaction(self, target):
+        pass
+
+    def after_reaction(self, target):
+        pass

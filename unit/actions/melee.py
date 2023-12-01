@@ -21,7 +21,9 @@ class Melee:
             defence=target.defence,
             max_damage=target.hp
         )
+        self.before_action(target)
         kills = target.take_damage(damage)
+        self.after_action(target)
         print(f"{self.owner.name} атакует {target.name}. "
               f"Наносит {damage} урона. "
               f"Погибло {kills} {target.name}. "
@@ -33,3 +35,9 @@ class Melee:
             print(f"{self.owner.name} не может действовать т.к. мертв")
             return False
         return True
+
+    def before_action(self, target):
+        pass
+
+    def after_action(self, target):
+        pass
