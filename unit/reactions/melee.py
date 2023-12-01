@@ -11,7 +11,7 @@ class MeleeCounter:
         self.keyword = MELEE_COUNTER
 
     def act(self, target):
-        if not self.can_unit_react():
+        if not self.can_unit_react(target):
             return
         min_damage = self.owner.min_damage * self.owner.quantity
         max_damage = self.owner.max_damage * self.owner.quantity
@@ -29,10 +29,13 @@ class MeleeCounter:
               f"Погибло {kills} {target.name}. "
               f"Осталось {target.quantity}")
 
-    def can_unit_react(self):
+    def can_unit_react(self, target):
         if not self.owner.hp > 0:
             print(f"{self.owner.name} не может реагировать т.к. мертв")
             return False
+        if target.hp == 0:
+            print(f"{self.owner.name} не может действовать т.к. "
+                  f"цель мертва.")
         return True
 
     def before_reaction(self, target):

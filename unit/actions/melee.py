@@ -11,7 +11,7 @@ class Melee:
         self.keyword = MELEE_ATTACK
 
     def act(self, target):
-        if not self.can_unit_act():
+        if not self.can_unit_act(target):
             return
         min_damage = self.owner.min_damage * self.owner.quantity
         max_damage = self.owner.max_damage * self.owner.quantity
@@ -30,9 +30,13 @@ class Melee:
               f"Осталось {target.quantity}")
         target.provoke_counter(MELEE_COUNTER, self.owner)
 
-    def can_unit_act(self):
+    def can_unit_act(self, target):
         if not self.owner.hp > 0:
             print(f"{self.owner.name} не может действовать т.к. мертв")
+            return False
+        if target.hp == 0:
+            print(f"{self.owner.name} не может действовать т.к. "
+                  f"цель мертва.")
             return False
         return True
 
