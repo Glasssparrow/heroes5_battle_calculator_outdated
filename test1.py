@@ -1,5 +1,4 @@
 from unit.unit import Unit
-from keywords import *
 from unit.actions.melee import *
 from unit.reactions.melee import *
 
@@ -24,3 +23,4 @@ peasant.add_reaction(MeleeCounter)
 knight.add_reaction(MeleeCounter)
 
 knight.take_action(MELEE_ATTACK, peasant)
+peasant.take_action(MELEE_ATTACK, knight)
