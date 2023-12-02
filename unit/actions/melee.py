@@ -1,13 +1,14 @@
 from keywords import *
 from random import randint
 from unit.common import calculate_damage
+from .common import Action
 
 
-class Melee:
+class Melee(Action):
 
     def __init__(self, owner):
+        super().__init__(owner)
         self.name = "Атака в ближнем бою"
-        self.owner = owner
         self.keyword = MELEE_ATTACK
 
     def act(self, target):

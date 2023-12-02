@@ -1,11 +1,13 @@
 from keywords import *
 from random import randint
 from unit.common import calculate_damage
+from .common import Reaction
 
 
-class MeleeCounter:
+class MeleeCounter(Reaction):
 
     def __init__(self, owner):
+        super().__init__(owner)
         self.name = "Контратака в ближнем бою"
         self.owner = owner
         self.keyword = MELEE_COUNTER
