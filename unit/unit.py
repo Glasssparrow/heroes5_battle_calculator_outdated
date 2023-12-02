@@ -1,6 +1,9 @@
 from math import ceil
 
 
+# Класс Unit не отвечает за шкалу инициативы и передвижение.
+# Экземпляры класса лишь хранят положение на поле и шкале инициативы.
+# Наложение аур связано с передвижением, поэтому также обрабатывается вне.
 class Unit:
 
     def take_action(self, action_type, target):
@@ -44,8 +47,9 @@ class Unit:
         self.color = color
         self.actions = []
         self.reactions = []
-        self.effects = []
         self.skills = []
+        self.auras = []
+        self.effects = []
         self.immunities = []
         self.attack = attack
         self.defence = defence
@@ -70,3 +74,6 @@ class Unit:
 
     def add_reaction(self, reaction):
         self.reactions.append(reaction(self))
+
+    def add_aura(self, aura):
+        self.auras.append(aura)
