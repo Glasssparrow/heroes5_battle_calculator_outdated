@@ -45,4 +45,4 @@ class Melee(Action):
         self.owner.use_skills(ACTIVATE_BEFORE_STRIKE, target)
 
     def after_action(self, target):
-        pass
+        self.owner.use_skills(ACTIVATE_AFTER_STRIKE, target)
