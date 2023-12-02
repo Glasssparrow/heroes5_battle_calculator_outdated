@@ -24,7 +24,7 @@ class Melee(Action):
         )
         self.before_action(target)
         kills = target.take_damage(damage)
-        self.after_action(target)
+        self.after_action(target, damage, kills)
         print(f"{self.owner.name} атакует {target.name}. "
               f"Наносит {damage} урона. "
               f"Погибло {kills} {target.name}. "
@@ -44,5 +44,5 @@ class Melee(Action):
     def before_action(self, target):
         self.owner.use_skills(ACTIVATE_BEFORE_STRIKE, target)
 
-    def after_action(self, target):
+    def after_action(self, target, damage, kills):
         self.owner.use_skills(ACTIVATE_AFTER_STRIKE, target)

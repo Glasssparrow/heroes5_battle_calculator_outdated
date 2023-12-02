@@ -11,5 +11,5 @@ class ApplyTestEffect(Skill):
         self.effect = Debuff()
         self.keyword = ACTIVATE_BEFORE_STRIKE
 
-    def use(self, target):
+    def use(self, target, damage, kills):
         target.apply_effect(self)

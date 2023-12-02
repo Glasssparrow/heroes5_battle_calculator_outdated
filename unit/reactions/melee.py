@@ -25,7 +25,7 @@ class MeleeCounter(Reaction):
         )
         self.before_reaction(target)
         kills = target.take_damage(damage)
-        self.after_reaction(target)
+        self.after_reaction(target, damage, kills)
         print(f"{self.owner.name} контратакует {target.name}. "
               f"Наносит {damage} урона. "
               f"Погибло {kills} {target.name}. "
@@ -43,5 +43,5 @@ class MeleeCounter(Reaction):
     def before_reaction(self, target):
         self.owner.use_skills(ACTIVATE_BEFORE_STRIKE, target)
 
-    def after_reaction(self, target):
+    def after_reaction(self, target, damage, kills):
         self.owner.use_skills(ACTIVATE_AFTER_STRIKE, target)

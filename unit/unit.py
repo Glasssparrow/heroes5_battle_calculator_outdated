@@ -30,10 +30,10 @@ class Unit:
             if reaction.keyword == reaction_type:
                 reaction.act(target)
 
-    def use_skills(self, skill_type, target):
+    def use_skills(self, skill_type, target, damage=0, kills=0):
         for skill in self.skills:
             if skill.keyword == skill_type:
-                skill.use(target)
+                skill.use(target, damage, kills)
 
     def apply_effect(self, effect):
         print(f"На {self.name} наложен эффект {effect.name}")
