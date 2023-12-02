@@ -41,7 +41,7 @@ class MeleeCounter(Reaction):
         return True
 
     def before_reaction(self, target):
-        pass
+        self.owner.use_skills(ACTIVATE_BEFORE_STRIKE, target)
 
     def after_reaction(self, target):
         pass

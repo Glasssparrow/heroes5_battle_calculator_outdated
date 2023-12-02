@@ -29,7 +29,7 @@ class Melee(Action):
               f"Наносит {damage} урона. "
               f"Погибло {kills} {target.name}. "
               f"Осталось {target.quantity}")
-        target.provoke_counter(MELEE_COUNTER, self.owner)
+        target.react(MELEE_COUNTER, self.owner)
 
     def can_unit_act(self, target):
         if not self.owner.hp > 0:
@@ -42,7 +42,7 @@ class Melee(Action):
         return True
 
     def before_action(self, target):
-        pass
+        self.owner.use_skills(ACTIVATE_BEFORE_STRIKE, target)
 
     def after_action(self, target):
         pass

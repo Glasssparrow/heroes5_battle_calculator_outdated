@@ -25,10 +25,15 @@ class Unit:
     def end_turn(self):
         pass
 
-    def provoke_counter(self, reaction_type, target):
+    def react(self, reaction_type, target):
         for reaction in self.reactions:
             if reaction.keyword == reaction_type:
                 reaction.act(target)
+
+    def use_skills(self, skill_type, target):
+        for skill in self.skills:
+            if skill.keyword == skill_type:
+                skill.use(target)
 
     def apply_effect(self, effect):
         print(f"На {self.name} наложен эффект {effect.name}")
@@ -76,6 +81,10 @@ class Unit:
 
     def add_reaction(self, reaction):
         self.reactions.append(reaction(self))
+
+    def add_skill(self, skill):
+        print(f"{self.name} получает {skill(self).name}")
+        self.skills.append(skill(self))
 
     def add_aura(self, aura):
         self.auras.append(aura)
