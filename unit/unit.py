@@ -4,11 +4,11 @@ from math import ceil
 class Unit:
 
     def take_action(self, action_type, target):
-        self._start_turn()
+        self.start_turn()
         self._action(action_type, target)
-        self._end_turn()
+        self.end_turn()
 
-    def _start_turn(self):
+    def start_turn(self):
         pass
 
     def _action(self, action_type, target):
@@ -17,13 +17,17 @@ class Unit:
                 action.act(target)
                 return
 
-    def _end_turn(self):
+    def end_turn(self):
         pass
 
     def provoke_counter(self, reaction_type, target):
         for reaction in self.reactions:
             if reaction.keyword == reaction_type:
                 reaction.act(target)
+
+    def apply_effect(self, effect):
+        print(f"На {self.name} наложен эффект {effect.name}")
+        self.effects.append(effect)
 
     def take_damage(self, damage):
         self.hp = self.hp - damage
