@@ -12,8 +12,8 @@ class MeleeCounter(Reaction):
         self.owner = owner
         self.keyword = MELEE_COUNTER
 
-    def act(self, target):
-        if not self.can_unit_react(target):
+    def react(self, target, battle_map):
+        if not self.can_unit_react(target, battle_map):
             return
         min_damage = self.owner.min_damage * self.owner.quantity
         max_damage = self.owner.max_damage * self.owner.quantity
@@ -23,15 +23,15 @@ class MeleeCounter(Reaction):
             defence=target.defence,
             max_damage=target.hp
         )
-        self.before_reaction(target)
+        self.before_reaction(target, battle_map)
         kills = target.take_damage(damage)
-        self.after_reaction(target, damage, kills)
+        self.after_reaction(target, damage, kills, battle_map)
         print(f"{self.owner.name} контратакует {target.name}. "
               f"Наносит {damage} урона. "
               f"Погибло {kills} {target.name}. "
               f"Осталось {target.quantity}")
 
-    def can_unit_react(self, target):
+    def can_unit_react(self, target, battle_map):
         if not self.owner.hp > 0:
             print(f"{self.owner.name} не может реагировать т.к. мертв")
             return False
@@ -40,8 +40,10 @@ class MeleeCounter(Reaction):
                   f"цель мертва.")
         return True
 
-    def before_reaction(self, target):
-        self.owner.use_skills(ACTIVATE_BEFORE_STRIKE, target)
+    def before_reaction(self, target, battle_map):
+        self.owner.use_skills(ACTIVATE_BEFORE_STRIKE, target, battle_map)
 
-    def after_reaction(self, target, damage, kills):
-        self.owner.use_skills(ACTIVATE_AFTER_STRIKE, target, damage, kills)
+    def after_reaction(self, target, damage, kills, battle_map):
+        self.owner.use_skills(
+            ACTIVATE_AFTER_STRIKE, target, damage, kills, battle_map
+        )

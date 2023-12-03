@@ -11,8 +11,8 @@ class Melee(Action):
         self.name = "Атака в ближнем бою"
         self.keyword = MELEE_ATTACK
 
-    def act(self, target):
-        if not self.can_unit_act(target):
+    def act(self, target, battle_map):
+        if not self.can_unit_act(target, battle_map):
             return
         min_damage = int(self.owner.min_damage * self.owner.quantity)
         max_damage = int(self.owner.max_damage * self.owner.quantity)
@@ -22,16 +22,16 @@ class Melee(Action):
             defence=target.defence,
             max_damage=target.hp
         )
-        self.before_action(target)
+        self.before_action(target, battle_map)
         kills = target.take_damage(damage)
-        self.after_action(target, damage, kills)
+        self.after_action(target, damage, kills, battle_map)
         print(f"{self.owner.name} атакует {target.name}. "
               f"Наносит {damage} урона. "
               f"Погибло {kills} {target.name}. "
               f"Осталось {target.quantity}")
-        target.react(MELEE_COUNTER, self.owner)
+        target.react(MELEE_COUNTER, self.owner, battle_map)
 
-    def can_unit_act(self, target):
+    def can_unit_act(self, target, battle_map):
         if not self.owner.hp > 0:
             print(f"{self.owner.name} не может действовать т.к. мертв.")
             return False
@@ -41,8 +41,10 @@ class Melee(Action):
             return False
         return True
 
-    def before_action(self, target):
-        self.owner.use_skills(ACTIVATE_BEFORE_STRIKE, target)
+    def before_action(self, target, battle_map):
+        self.owner.use_skills(ACTIVATE_BEFORE_STRIKE, target, battle_map)
 
-    def after_action(self, target, damage, kills):
-        self.owner.use_skills(ACTIVATE_AFTER_STRIKE, target, damage, kills)
+    def after_action(self, target, damage, kills, battle_map):
+        self.owner.use_skills(
+            ACTIVATE_AFTER_STRIKE, target, damage, kills, battle_map
+        )

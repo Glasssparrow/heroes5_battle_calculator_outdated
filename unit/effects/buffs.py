@@ -5,4 +5,5 @@ class TestPlusStat(Effect):
 
     def __init__(self):
         super().__init__()
-        self.min_damage = 5
+        self.defence = 5
+        self.name = "Buff"

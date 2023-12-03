@@ -19,29 +19,31 @@ class Unit:
     luck = Luck()
     morale = Morale()
 
-    def take_action(self, action_type, target):
+    def take_action(self, action_type, target, battle_map):
         self.start_turn()
-        self._action(action_type, target)
+        self._action(action_type, target, battle_map)
         self.end_turn()
 
     def start_turn(self):
         pass
 
-    def _action(self, action_type, target):
+    def _action(self, action_type, target, battle_map):
         for action in self.actions:
             if action.keyword == action_type:
-                action.act(target)
+                action.act(target, battle_map)
                 return
 
     def end_turn(self):
         pass
 
-    def react(self, reaction_type, target):
+    def react(self, reaction_type, target, battle_map):
         for reaction in self.reactions:
             if reaction.keyword == reaction_type:
-                reaction.act(target)
+                reaction.react(target, battle_map)
 
-    def use_skills(self, skill_type, target, damage=0, kills=0):
+    def use_skills(
+            self, skill_type, target, battle_map, damage=0, kills=0
+    ):
         for skill in self.skills:
             if skill.keyword == skill_type:
                 skill.use(target, damage, kills)
