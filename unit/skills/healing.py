@@ -16,4 +16,3 @@ class Vampire(Skill):
         print(f"{self.owner.name} исцеляется на {amount_of_healing} "
               f"ударив {target.name}. "
               f"Возродилось {int(revived)} существ.")
-
