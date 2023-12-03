@@ -1,5 +1,5 @@
 from math import ceil
-from stats import *
+from .stats import *
 
 
 # Класс отвечающий за взаимодействие между юнитами.
