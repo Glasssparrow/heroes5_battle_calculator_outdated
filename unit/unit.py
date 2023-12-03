@@ -9,6 +9,9 @@ from .stats import *
 # класса.
 class Unit:
 
+    attack = Stat()
+    defence = Stat()
+
     def take_action(self, action_type, target):
         self.start_turn()
         self._action(action_type, target)
