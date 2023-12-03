@@ -41,12 +41,24 @@ class Unit:
 
     def take_damage(self, damage):
         self.hp = self.hp - damage
-        if self.hp == 0:
+        if self.hp < 0:
             self.hp = 0
         quantity_before = self.quantity
         self.quantity = ceil(self.hp / self.health)
         kills = quantity_before - self.quantity
         return kills
+
+    def take_healing(self, healing):
+        self.hp = self.hp + healing
+        if self.hp > self._max_quantity * self.health:
+            self.hp = self._max_quantity * self.health
+        quantity_before = self.quantity
+        self.quantity = self.hp / self.health
+        revived = self.quantity - quantity_before
+        return revived
+
+    def regenerate(self):
+        self.hp = self.quantity * self.health
 
     def __init__(self, name, color, attack, defence,
                  min_damage, max_damage, health, initiative, speed):
