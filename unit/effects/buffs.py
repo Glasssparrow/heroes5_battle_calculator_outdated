@@ -1,7 +1,7 @@
 from .common import Effect
 
 
-class Plus5Attack(Effect):
+class TestPlusStat(Effect):
 
     def __init__(self):
         super().__init__()
