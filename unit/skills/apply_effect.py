@@ -1,5 +1,5 @@
 from .common import Skill
-from unit.effects.debuffs import Debuff
+from unit.effects.debuffs import *
 from keywords import *
 
 

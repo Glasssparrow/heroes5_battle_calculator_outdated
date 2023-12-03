@@ -1,3 +1,3 @@
 from .debuffs import *
 
-__all__ = []
+__all__ = ["Debuff"]
