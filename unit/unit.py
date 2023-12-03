@@ -1,4 +1,5 @@
 from math import ceil
+from stats import *
 
 
 # Класс отвечающий за взаимодействие между юнитами.
@@ -82,6 +83,8 @@ class Unit:
         self._max_quantity = 0
         self.quantity = 0
         self.hp = 0
+        self.luck = 0
+        self.morale = 0
 
     def get_quantity(self, quantity):
         self._max_quantity = quantity
