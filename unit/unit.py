@@ -11,6 +11,12 @@ class Unit:
 
     attack = Stat()
     defence = Stat()
+    min_damage = MinDamage()
+    max_damage = MaxDamage()
+    initiative = Initiative()
+    speed = Speed()
+    luck = Luck()
+    morale = Morale()
 
     def take_action(self, action_type, target):
         self.start_turn()

@@ -5,4 +5,4 @@ class TestPlusStat(Effect):
 
     def __init__(self):
         super().__init__()
-        self.attack = 5
+        self.min_damage = 5
