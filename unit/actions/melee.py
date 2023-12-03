@@ -14,8 +14,8 @@ class Melee(Action):
     def act(self, target):
         if not self.can_unit_act(target):
             return
-        min_damage = self.owner.min_damage * self.owner.quantity
-        max_damage = self.owner.max_damage * self.owner.quantity
+        min_damage = int(self.owner.min_damage * self.owner.quantity)
+        max_damage = int(self.owner.max_damage * self.owner.quantity)
         damage = calculate_damage(
             damage=randint(min_damage, max_damage),
             attack=self.owner.attack,
@@ -45,4 +45,4 @@ class Melee(Action):
         self.owner.use_skills(ACTIVATE_BEFORE_STRIKE, target)
 
     def after_action(self, target, damage, kills):
-        self.owner.use_skills(ACTIVATE_AFTER_STRIKE, target)
+        self.owner.use_skills(ACTIVATE_AFTER_STRIKE, target, damage, kills)

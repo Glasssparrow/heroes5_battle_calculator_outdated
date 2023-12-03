@@ -44,4 +44,4 @@ class MeleeCounter(Reaction):
         self.owner.use_skills(ACTIVATE_BEFORE_STRIKE, target)
 
     def after_reaction(self, target, damage, kills):
-        self.owner.use_skills(ACTIVATE_AFTER_STRIKE, target)
+        self.owner.use_skills(ACTIVATE_AFTER_STRIKE, target, damage, kills)
