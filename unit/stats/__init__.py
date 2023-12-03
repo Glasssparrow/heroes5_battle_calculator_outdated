@@ -5,5 +5,5 @@ from .morale_and_luck import *
 
 __all__ = [
     "Stat", "MinDamage", "MaxDamage", "Initiative", "Speed",
-    "Luck", "Morale"
+    "Luck", "Morale", "Health"
 ]

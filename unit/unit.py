@@ -13,6 +13,7 @@ class Unit:
     defence = Stat()
     min_damage = MinDamage()
     max_damage = MaxDamage()
+    health = Health()
     initiative = Initiative()
     speed = Speed()
     luck = Luck()
@@ -86,7 +87,7 @@ class Unit:
         self.min_damage = min_damage
         self._max_damage_limit = max_damage
         self.max_damage = max_damage
-        self.health = health
+        self._health = health
         self.initiative = initiative
         self.speed = speed
         self._max_quantity = 0
