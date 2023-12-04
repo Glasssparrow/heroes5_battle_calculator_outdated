@@ -1,11 +1,32 @@
 from .common import Stat
+from math import floor
 
 
 class Luck(Stat):
 
-    pass
+    def __get__(self, instance, owner):
+        result = instance.__dict__[self.name]
+        for buff in instance.__dict__["effects"]:
+            result += buff.__dict__[self.stat]
+        result = floor(result)
+        if result < -5:
+            return -5
+        elif result > 5:
+            return 5
+        else:
+            return result
 
 
 class Morale(Stat):
 
-    pass
+    def __get__(self, instance, owner):
+        result = instance.__dict__[self.name]
+        for buff in instance.__dict__["effects"]:
+            result += buff.__dict__[self.stat]
+        result = floor(result)
+        if result < -5:
+            return -5
+        elif result > 5:
+            return 5
+        else:
+            return result
