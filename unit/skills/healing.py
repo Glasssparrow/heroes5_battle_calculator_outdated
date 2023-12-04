@@ -10,7 +10,7 @@ class Vampire(Skill):
         self.name = "Вампиризм"
         self.keyword = ACTIVATE_AFTER_STRIKE
 
-    def use(self, target, damage, kills):
+    def use(self, target, damage, kills, battle_map):
         amount_of_healing = floor(damage/2)
         revived = self.owner.take_healing(amount_of_healing)
         print(f"{self.owner.name} исцеляется на {amount_of_healing} "

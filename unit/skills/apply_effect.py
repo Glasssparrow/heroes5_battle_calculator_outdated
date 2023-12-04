@@ -12,5 +12,5 @@ class ApplyTestEffect(Skill):
         self.keyword = ACTIVATE_BEFORE_STRIKE
 
     @staticmethod
-    def use(target, damage, kills):
+    def use(target, damage, kills, battle_map):
         target.apply_effect(Debuff())
