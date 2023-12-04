@@ -1,5 +1,6 @@
 from math import ceil
 from .stats import *
+from .skills.turnend import *
 
 
 # Класс отвечающий за взаимодействие между юнитами.
@@ -46,7 +47,7 @@ class Unit:
     ):
         for skill in self.skills:
             if skill.keyword == skill_type:
-                skill.use(target, damage, kills)
+                skill.use(target, damage, kills, battle_map)
 
     def apply_effect(self, effect):
         print(f"На {self.name} наложен эффект {effect.name}")
