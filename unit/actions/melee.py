@@ -35,10 +35,12 @@ class Melee(Action):
         if not self.owner.hp > 0:
             print(f"{self.owner.name} не может действовать т.к. мертв.")
             return False
-        if target.hp == 0:
+        if not target.hp > 0:
             print(f"{self.owner.name} не может действовать т.к. "
                   f"цель мертва.")
             return False
+        for effect in self.owner.effects:
+            pass
         return True
 
     def before_action(self, target, battle_map):
