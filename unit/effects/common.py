@@ -13,6 +13,8 @@ class Effect:
         self.luck = 0
         self.morale = 0
         self.time = 0
+        self.initiative_mark = None
+        self.dispell_conditions = []
 
     def reapply(self, new_instance):
         self.time = new_instance.time
