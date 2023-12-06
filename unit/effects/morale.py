@@ -1,11 +1,18 @@
 from .common import Effect
+from keywords import *
 
 
 class LowMorale(Effect):
 
-    pass
+    def __init__(self):
+        super().__init__()
+        self.initiative_mark = INITIATIVE_MORALE
+        self.dispell_conditions = [DISPELL_CASE_INITIATIVE]
 
 
 class HighMorale(Effect):
 
-    pass
+    def __init__(self):
+        super().__init__()
+        self.initiative_mark = INITIATIVE_MORALE
+        self.dispell_conditions = [DISPELL_CASE_INITIATIVE]
