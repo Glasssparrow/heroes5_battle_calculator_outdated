@@ -40,7 +40,8 @@ class Melee(Action):
                   f"цель мертва.")
             return False
         for effect in self.owner.effects:
-            pass
+            if BLOCK_ACTION in effect.special_effects:
+                return False
         return True
 
     def before_action(self, target, battle_map):
