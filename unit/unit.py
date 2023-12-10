@@ -26,7 +26,10 @@ class Unit:
         self.end_turn()
 
     def start_turn(self):
-        pass
+        for skill in self.turnend_skills:
+            if skill.keyword == ACTIVATE_AT_TURN_START:
+                skill.use()
+                return
 
     def _action(self, action_type, target, battle_map):
         for action in self.actions:
@@ -35,7 +38,10 @@ class Unit:
                 return
 
     def end_turn(self):
-        pass
+        for skill in self.turnend_skills:
+            if skill.keyword == ACTIVATE_AT_TURN_END:
+                skill.use()
+                return
 
     def react(self, reaction_type, target, battle_map):
         for reaction in self.reactions:
