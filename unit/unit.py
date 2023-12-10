@@ -80,7 +80,7 @@ class Unit:
         self.color = color
         self.actions = []
         self.reactions = []
-        self.skills = []
+        self.skills = [HighMorale(self), LowMorale(self)]
         self.auras = []
         self.effects = []
         self.immunities = []
