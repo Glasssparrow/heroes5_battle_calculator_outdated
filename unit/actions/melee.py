@@ -41,6 +41,7 @@ class Melee(Action):
             return False
         for effect in self.owner.effects:
             if BLOCK_ACTION in effect.special_effects:
+                print(f"{self.owner.name} ожидает в нерешительности.")
                 return False
         return True
 

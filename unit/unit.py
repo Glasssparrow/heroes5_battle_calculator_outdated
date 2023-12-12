@@ -87,7 +87,8 @@ class Unit:
         self.actions = []
         self.reactions = []
         self.skills = []
-        self.turnend_skills = [HighMorale(self), LowMorale(self)]
+        self.turnend_skills = [HighMorale(owner=self),
+                               LowMorale(owner=self)]
         self.auras = []
         self.effects = []
         self.immunities = []

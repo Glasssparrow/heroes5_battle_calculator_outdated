@@ -2,18 +2,20 @@ from .common import Effect
 from keywords import *
 
 
-class LowMorale(Effect):
+class LowMoraleEffect(Effect):
 
     def __init__(self):
         super().__init__()
+        self.name = "Нерешительность"
         self.initiative_mark = INITIATIVE_MORALE
         self.special_effects.append(BLOCK_ACTION)
         self.dispell_conditions = [DISPELL_CASE_INITIATIVE]
 
 
-class HighMorale(Effect):
+class HighMoraleEffect(Effect):
 
     def __init__(self):
         super().__init__()
+        self.name = "Воодушевление"
         self.initiative_mark = INITIATIVE_MORALE
         self.dispell_conditions = [DISPELL_CASE_INITIATIVE]
