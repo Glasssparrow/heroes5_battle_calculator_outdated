@@ -14,8 +14,13 @@ class Melee(Action):
     def act(self, target, battle_map):
         if not self.can_unit_act(target, battle_map):
             return
-        min_damage = int(self.owner.min_damage * self.owner.quantity)
-        max_damage = int(self.owner.max_damage * self.owner.quantity)
+        luck_modifier = self.luck_modifier()
+        min_damage = int(
+            self.owner.min_damage * self.owner.quantity * luck_modifier
+        )
+        max_damage = int(
+            self.owner.max_damage * self.owner.quantity * luck_modifier
+        )
         damage = calculate_damage(
             damage=randint(min_damage, max_damage),
             attack=self.owner.attack,

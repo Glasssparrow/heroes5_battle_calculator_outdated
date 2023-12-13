@@ -1,4 +1,5 @@
-from .common import Skill, check_random
+from .common import Skill
+from ..common import check_random
 from ..effects import *
 from keywords import *
 
