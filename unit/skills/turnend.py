@@ -1,4 +1,4 @@
-from .common import Skill
+from .common import Skill, check_random
 from ..effects import *
 from keywords import *
 
@@ -11,7 +11,9 @@ class HighMorale(Skill):
         self.keyword = ACTIVATE_AT_TURN_END
 
     def use(self):
-        self.owner.apply_effect(HighMoraleEffect())
+        morale = self.owner.morale
+        if morale > 0 and check_random(morale * 0.1):
+            self.owner.apply_effect(HighMoraleEffect())
 
 
 class LowMorale(Skill):
@@ -22,4 +24,6 @@ class LowMorale(Skill):
         self.keyword = ACTIVATE_AT_TURN_START
 
     def use(self):
-        self.owner.apply_effect(LowMoraleEffect())
+        morale = self.owner.morale
+        if morale < 0 and check_random(morale * -0.1):
+            self.owner.apply_effect(LowMoraleEffect())
