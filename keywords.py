@@ -13,3 +13,5 @@ DISPELL_CASE_INITIATIVE = "dispel_in_initiative_package"
 BLOCK_ACTION = "block_action"
 BLOCK_COUNTER = "block_counterattack"
 BLOCK_1_COUNTER = "block_1_counterattack"
+
+BATTLE_FRENZY_MODIFIER = "battle_frenzy_modifier"
