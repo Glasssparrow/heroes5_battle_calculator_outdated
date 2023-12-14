@@ -55,9 +55,15 @@ class Unit:
             if skill.keyword == skill_type:
                 skill.use(target, damage, kills, battle_map)
 
-    def apply_effect(self, effect):
-        print(f"На {self.name} наложен эффект {effect.name}")
-        self.effects.append(effect)
+    def apply_effect(self, new_effect):
+        for effect in self.effects:
+            if new_effect.name == effect.name:
+                effect.reapply(new_effect)
+                print(f"На {self.name} переналожен эффект "
+                      f"{effect.name}")
+                return
+        print(f"На {self.name} наложен эффект {new_effect.name}")
+        self.effects.append(new_effect)
 
     def take_damage(self, damage):
         self.hp = self.hp - damage
