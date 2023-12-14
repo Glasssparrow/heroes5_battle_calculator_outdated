@@ -16,6 +16,7 @@ class Effect:
         self.initiative_mark = None
         self.special_effects = []
         self.modifiers = {}
+        self.have_timer = False
         self.dispell_conditions = []
 
     def reapply(self, new_instance):

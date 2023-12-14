@@ -26,6 +26,7 @@ class Unit:
         self.end_turn()
 
     def start_turn(self):
+        self.dispell_by_case(DISPELL_AT_TURN_START)
         for skill in self.turnend_skills:
             if skill.keyword == ACTIVATE_AT_TURN_START:
                 skill.use()
@@ -38,6 +39,7 @@ class Unit:
                 return
 
     def end_turn(self):
+        self.dispell_by_case(DISPELL_AT_TURN_END)
         for skill in self.turnend_skills:
             if skill.keyword == ACTIVATE_AT_TURN_END:
                 skill.use()
@@ -130,3 +132,12 @@ class Unit:
 
     def add_aura(self, aura):
         self.auras.append(aura)
+
+    def dispell_by_case(self, dispell_trigger):
+        for_delete = []
+        for number, effect in enumerate(self.effects):
+            if dispell_trigger in effect.dispell_conditions:
+                for_delete.append(number)
+        for x in reversed(for_delete):
+            print(f"{self.name}. Эффект {self.effects[x].name} снят")
+            self.effects.pop(x)
