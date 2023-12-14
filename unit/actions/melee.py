@@ -10,16 +10,17 @@ class Melee(Action):
         super().__init__(owner)
         self.name = "Атака в ближнем бою"
         self.keyword = MELEE_ATTACK
+        self.damage_multiplier = 1
 
     def act(self, target, battle_map):
         if not self.can_unit_act(target, battle_map):
             return
-        luck_modifier = self.luck_modifier()
+        damage_modifier = self.damage_multiplier * self.luck_modifier()
         min_damage = int(
-            self.owner.min_damage * self.owner.quantity * luck_modifier
+            self.owner.min_damage * self.owner.quantity * damage_modifier
         )
         max_damage = int(
-            self.owner.max_damage * self.owner.quantity * luck_modifier
+            self.owner.max_damage * self.owner.quantity * damage_modifier
         )
         damage = calculate_damage(
             damage=randint(min_damage, max_damage),
