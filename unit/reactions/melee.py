@@ -38,6 +38,13 @@ class MeleeCounter(Reaction):
         if target.hp == 0:
             print(f"{self.owner.name} не может действовать т.к. "
                   f"цель мертва.")
+            return False
+        for effect in self.owner.effects:
+            if BLOCK_COUNTER in effect.special_effects:
+                print(f"{self.owner.name} не может контратаковать "
+                      f"т.к. эффект {effect.name} блокирует эту "
+                      f"возможность.")
+                return False
         return True
 
     def before_reaction(self, target, battle_map):
