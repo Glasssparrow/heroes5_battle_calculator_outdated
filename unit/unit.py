@@ -127,7 +127,6 @@ class Unit:
         self.reactions.append(reaction(self))
 
     def add_skill(self, skill):
-        print(f"{self.name} получает {skill(self).name}")
         self.skills.append(skill(self))
 
     def add_aura(self, aura):
