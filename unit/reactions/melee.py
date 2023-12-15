@@ -2,6 +2,7 @@ from keywords import *
 from random import randint
 from ..common import calculate_damage
 from .common import Reaction
+from ..effects.counterattack import *
 
 
 class MeleeCounter(Reaction):
@@ -28,6 +29,7 @@ class MeleeCounter(Reaction):
         self.before_reaction(target, battle_map)
         kills = target.take_damage(damage)
         self.after_reaction(target, damage, kills, battle_map)
+        self.owner.effects.append(BlockCounter())
         print(f"{self.owner.name} контратакует {target.name}. "
               f"Наносит {damage} урона. "
               f"Погибло {kills} {target.name}. "
