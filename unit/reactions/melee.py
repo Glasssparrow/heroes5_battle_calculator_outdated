@@ -1,4 +1,3 @@
-from keywords import *
 from random import randint
 from ..common import calculate_damage
 from .common import Reaction
@@ -70,5 +69,3 @@ class MeleeCounter(Reaction):
             return True
         else:
             return False
-
-
