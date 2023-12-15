@@ -15,6 +15,8 @@ class MeleeCounter(Reaction):
     def react(self, target, battle_map):
         if not self.can_unit_react(target, battle_map):
             return
+        if self.failed_counter():
+            return
         min_damage = self.owner.min_damage * self.owner.quantity
         max_damage = self.owner.max_damage * self.owner.quantity
         damage = calculate_damage(
@@ -54,3 +56,17 @@ class MeleeCounter(Reaction):
         self.owner.use_skills(
             ACTIVATE_AFTER_STRIKE, target, damage, kills, battle_map
         )
+
+    def failed_counter(self):
+        failed = False
+        for number, effect in enumerate(self.owner.effects):
+            if TEMPORARY_BLOCK_COUNTER in effect.special_effects:
+                failed = True
+                break
+        if failed:
+            self.owner.dispell_by_case(DISPELL_TEMPORARY_BLOCK_COUNTER)
+            return True
+        else:
+            return False
+
+
