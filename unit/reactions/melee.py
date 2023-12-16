@@ -17,6 +17,9 @@ class MeleeCounter(Reaction):
             return
         if self.failed_counter():
             return
+        self.strike(target, battle_map)
+
+    def strike(self, target, battle_map):
         min_damage = self.owner.min_damage * self.owner.quantity
         max_damage = self.owner.max_damage * self.owner.quantity
         damage = calculate_damage(
