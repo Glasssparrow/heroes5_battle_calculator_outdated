@@ -37,3 +37,10 @@ class PeasantBash(Skill):
             return 0.75
         else:
             return chance
+
+
+class FootmanBash(PeasantBash):
+
+    @staticmethod
+    def _chance_formula(base_chance):
+        return 1-(1-base_chance)**1.5
