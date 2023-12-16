@@ -30,11 +30,11 @@ class Melee(Action):
         )
         self.before_action(target, battle_map)
         kills = target.take_damage(damage)
-        self.after_action(target, damage, kills, battle_map)
         print(f"{self.owner.name} атакует {target.name}. "
               f"Наносит {damage} урона. "
               f"Погибло {kills} {target.name}. "
               f"Осталось {target.quantity}")
+        self.after_action(target, damage, kills, battle_map)
         target.react(MELEE_COUNTER, self.owner, battle_map)
 
     def can_unit_act(self, target, battle_map):
