@@ -59,7 +59,7 @@ class MeleeCounter(Reaction):
         self.owner.use_skills(
             ACTIVATE_AFTER_STRIKE, target, damage, kills, battle_map
         )
-        self.owner.effects.append(BlockCounter())
+        self.owner.apply_effect(BlockCounter())
 
     def failed_counter(self):
         failed = False
@@ -72,3 +72,20 @@ class MeleeCounter(Reaction):
             return True
         else:
             return False
+
+
+class InfiniteMeleeCounter(MeleeCounter):
+
+    def after_reaction(self, target, damage, kills, battle_map):
+        self.owner.use_skills(
+            ACTIVATE_AFTER_STRIKE, target, damage, kills, battle_map
+        )
+
+
+class BattleFrenzyCounter(MeleeCounter):
+
+    def after_reaction(self, target, damage, kills, battle_map):
+        self.owner.use_skills(
+            ACTIVATE_AFTER_STRIKE, target, damage, kills, battle_map
+        )
+        self.owner.apply_effect(BattleFrenzy())
