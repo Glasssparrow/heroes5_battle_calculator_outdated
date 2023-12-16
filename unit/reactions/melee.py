@@ -31,7 +31,6 @@ class MeleeCounter(Reaction):
         self.before_reaction(target, battle_map)
         kills = target.take_damage(damage)
         self.after_reaction(target, damage, kills, battle_map)
-        self.owner.effects.append(BlockCounter())
         print(f"{self.owner.name} контратакует {target.name}. "
               f"Наносит {damage} урона. "
               f"Погибло {kills} {target.name}. "
@@ -60,6 +59,7 @@ class MeleeCounter(Reaction):
         self.owner.use_skills(
             ACTIVATE_AFTER_STRIKE, target, damage, kills, battle_map
         )
+        self.owner.effects.append(BlockCounter())
 
     def failed_counter(self):
         failed = False
