@@ -15,7 +15,7 @@ class Melee(Action):
     def act(self, target, battle_map):
         if not self.can_unit_act(target, battle_map):
             return
-        kills = self.strike(target, battle_map)
+        self.strike(target, battle_map)
 
     def strike(self, target, battle_map):
         if not self.is_melee_attack_possible(target, battle_map):
@@ -68,3 +68,22 @@ class Melee(Action):
         self.owner.use_skills(
             ACTIVATE_AFTER_STRIKE, target, damage, kills, battle_map
         )
+
+
+class DoubleAttackIfKill(Melee):
+
+    def act(self, target, battle_map):
+        if not self.can_unit_act(target, battle_map):
+            return
+        kills = self.strike(target, battle_map)
+        if kills > 0:
+            self.strike(target, battle_map)
+
+
+class DoubleAttack(Melee):
+
+    def act(self, target, battle_map):
+        if not self.can_unit_act(target, battle_map):
+            return
+        self.strike(target, battle_map)
+        self.strike(target, battle_map)
