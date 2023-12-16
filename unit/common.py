@@ -24,7 +24,7 @@ def check_random(chance):
         raise Exception(
             "Не в промежутке 0 < chance < 1"
         )
-    if chance < random():
+    if chance > random():
         return True
     else:
         return False

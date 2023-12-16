@@ -16,5 +16,6 @@ DISPELL_TEMPORARY_BLOCK_COUNTER = "dispelled_at_failed_counter"
 BLOCK_ACTION = "block_action"
 BLOCK_COUNTER = "block_counterattack"
 TEMPORARY_BLOCK_COUNTER = "block_1_counterattack"
+BASH = "bash"
 
 BATTLE_FRENZY_MODIFIER = "battle_frenzy_modifier"

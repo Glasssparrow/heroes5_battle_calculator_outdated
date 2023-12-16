@@ -8,7 +8,7 @@ class Vampire(Skill):
     def __init__(self, owner):
         super().__init__(owner)
         self.name = "Вампиризм"
-        self.keyword = ACTIVATE_AFTER_STRIKE
+        self.activation_cases.append(ACTIVATE_AFTER_STRIKE)
 
     def use(self, target, damage, kills, battle_map):
         amount_of_healing = floor(damage/2)

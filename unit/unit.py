@@ -28,7 +28,7 @@ class Unit:
     def start_turn(self):
         self.dispell_by_case(DISPELL_AT_TURN_START)
         for skill in self.turnend_skills:
-            if skill.keyword == ACTIVATE_AT_TURN_START:
+            if ACTIVATE_AT_TURN_START in skill.activation_cases:
                 skill.use()
                 return
 
@@ -41,7 +41,7 @@ class Unit:
     def end_turn(self):
         self.dispell_by_case(DISPELL_AT_TURN_END)
         for skill in self.turnend_skills:
-            if skill.keyword == ACTIVATE_AT_TURN_END:
+            if ACTIVATE_AT_TURN_END in skill.activation_cases:
                 skill.use()
                 return
 
@@ -54,7 +54,7 @@ class Unit:
             self, skill_type, target, battle_map, damage=0, kills=0
     ):
         for skill in self.skills:
-            if skill.keyword == skill_type:
+            if skill_type in skill.activation_cases:
                 skill.use(target, damage, kills, battle_map)
 
     def apply_effect(self, new_effect):

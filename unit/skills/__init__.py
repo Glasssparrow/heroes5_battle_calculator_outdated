@@ -3,5 +3,5 @@ from .healing import *
 from .turnend import *
 
 __all__ = [
-    "ApplyTestEffect", "Vampire", "HighMorale", "LowMorale"
+    "PeasantBash", "Vampire", "HighMorale", "LowMorale"
 ]

@@ -9,7 +9,7 @@ class HighMorale(Skill):
     def __init__(self, owner):
         super().__init__(owner)
         self.name = "+Мораль"
-        self.keyword = ACTIVATE_AT_TURN_END
+        self.activation_cases.append(ACTIVATE_AT_TURN_END)
 
     def use(self):
         morale = self.owner.morale
@@ -22,7 +22,7 @@ class LowMorale(Skill):
     def __init__(self, owner):
         super().__init__(owner)
         self.name = "-Мораль"
-        self.keyword = ACTIVATE_AT_TURN_START
+        self.activation_cases.append(ACTIVATE_AT_TURN_START)
 
     def use(self):
         morale = self.owner.morale
