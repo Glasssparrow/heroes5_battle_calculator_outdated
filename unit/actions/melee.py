@@ -58,7 +58,7 @@ class Melee(Action):
         return True
 
     @staticmethod
-    def is_melee_attack_possible(self, target, battle_map):
+    def is_melee_attack_possible(target, battle_map):
         return True
 
     def before_action(self, target, battle_map):
