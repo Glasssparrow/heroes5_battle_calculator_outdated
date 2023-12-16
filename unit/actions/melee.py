@@ -15,6 +15,11 @@ class Melee(Action):
     def act(self, target, battle_map):
         if not self.can_unit_act(target, battle_map):
             return
+        kills = self.strike(target, battle_map)
+
+    def strike(self, target, battle_map):
+        if not self.is_melee_attack_possible(target, battle_map):
+            return 0
         damage_modifier = self.damage_multiplier * self.luck_modifier()
         min_damage = int(
             self.owner.min_damage * self.owner.quantity * damage_modifier
@@ -36,6 +41,7 @@ class Melee(Action):
               f"Осталось {target.quantity}")
         self.after_action(target, damage, kills, battle_map)
         target.react(MELEE_COUNTER, self.owner, battle_map)
+        return kills
 
     def can_unit_act(self, target, battle_map):
         if not self.owner.hp > 0:
@@ -49,6 +55,10 @@ class Melee(Action):
             if BLOCK_ACTION in effect.special_effects:
                 print(f"{self.owner.name} ожидает в нерешительности.")
                 return False
+        return True
+
+    @staticmethod
+    def is_melee_attack_possible(self, target, battle_map):
         return True
 
     def before_action(self, target, battle_map):
