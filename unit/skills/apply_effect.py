@@ -1,6 +1,6 @@
 from .common import Skill
 from ..common import check_random
-from unit.effects.debuffs import *
+from unit.effects import *
 from keywords import *
 
 
@@ -9,13 +9,13 @@ class PeasantBash(Skill):
     def __init__(self, owner):
         super().__init__(owner)
         self.name = "Наложение дебафа"
-        self.effect = Block1Counterattack()
         self.activation_cases.append(ACTIVATE_BEFORE_STRIKE)
 
     def use(self, target, damage, kills, battle_map):
         if check_random(self.get_chance(target)):
-            print(f"наложен {self.effect.name}")
-            target.apply_effect(self.effect)
+            print(f"наложен {Block1Counterattack().name}")
+            target.apply_effect(Block1Counterattack())
+            target.apply_effect(Bash())
 
     def _calculate_base_chance(self, target):
         if self.owner.hp < target.hp:
