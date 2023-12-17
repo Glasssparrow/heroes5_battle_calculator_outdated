@@ -2,6 +2,7 @@ from random import randint
 from ..common import calculate_damage
 from .common import Reaction
 from ..effects.counterattack import *
+from keywords import *
 
 
 class MeleeCounter(Reaction):
@@ -20,11 +21,11 @@ class MeleeCounter(Reaction):
         self.strike(target, battle_map)
 
     def strike(self, target, battle_map):
-        min_damage = (
+        min_damage = int(
             self.owner.min_damage * self.owner.quantity *
             self.calculate_damage_modifier()
         )
-        max_damage = (
+        max_damage = int(
             self.owner.max_damage * self.owner.quantity *
             self.calculate_damage_modifier()
         )
@@ -99,3 +100,14 @@ class BattleFrenzyCounter(MeleeCounter):
             ACTIVATE_AFTER_STRIKE, target, damage, kills, battle_map
         )
         self.owner.apply_effect(BattleFrenzy())
+
+    def calculate_damage_modifier(self):
+        damage_modifier = 1
+        for effect in self.owner.effects:
+            for k, v in effect.modifiers.items():
+                if (
+                        k == BATTLE_FRENZY_MODIFIER and
+                        v > damage_modifier
+                ):
+                    damage_modifier = v
+        return damage_modifier
