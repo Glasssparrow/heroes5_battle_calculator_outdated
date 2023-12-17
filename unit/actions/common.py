@@ -22,3 +22,6 @@ class Action:
                 return 2
             else:
                 return 1
+
+    def calculate_damage_modifier(self):
+        return self.luck_modifier()

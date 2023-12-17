@@ -10,7 +10,6 @@ class Melee(Action):
         super().__init__(owner)
         self.name = "Атака в ближнем бою"
         self.keyword = MELEE_ATTACK
-        self.damage_multiplier = 1
 
     def act(self, target, battle_map):
         if not self.can_unit_act(target, battle_map):
@@ -20,7 +19,7 @@ class Melee(Action):
     def strike(self, target, battle_map):
         if not self.is_melee_attack_possible(target, battle_map):
             return 0
-        damage_modifier = self.damage_multiplier * self.luck_modifier()
+        damage_modifier = self.calculate_damage_modifier()
         min_damage = int(
             self.owner.min_damage * self.owner.quantity * damage_modifier
         )
@@ -68,6 +67,14 @@ class Melee(Action):
         self.owner.use_skills(
             ACTIVATE_AFTER_STRIKE, target, damage, kills, battle_map
         )
+
+
+class ChivalryCharge(Melee):
+
+    def calculate_damage_modifier(self):
+        damage_modifier = 1 + 0.05 * self.owner.tiles_moved
+        damage_modifier = damage_modifier * self.luck_modifier()
+        return damage_modifier
 
 
 class DoubleAttackIfKill(Melee):

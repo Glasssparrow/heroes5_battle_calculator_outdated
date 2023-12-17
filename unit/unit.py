@@ -115,6 +115,8 @@ class Unit:
         self.luck = 0
         self.morale = 0
 
+        self.tiles_moved = 0
+
     def get_quantity(self, quantity):
         self._max_quantity = quantity
         self.quantity = quantity
