@@ -20,8 +20,14 @@ class MeleeCounter(Reaction):
         self.strike(target, battle_map)
 
     def strike(self, target, battle_map):
-        min_damage = self.owner.min_damage * self.owner.quantity
-        max_damage = self.owner.max_damage * self.owner.quantity
+        min_damage = (
+            self.owner.min_damage * self.owner.quantity *
+            self.calculate_damage_modifier()
+        )
+        max_damage = (
+            self.owner.max_damage * self.owner.quantity *
+            self.calculate_damage_modifier()
+        )
         damage = calculate_damage(
             damage=randint(min_damage, max_damage),
             attack=self.owner.attack,
@@ -35,6 +41,10 @@ class MeleeCounter(Reaction):
               f"Наносит {damage} урона. "
               f"Погибло {kills} {target.name}. "
               f"Осталось {target.quantity}")
+
+    @staticmethod
+    def calculate_damage_modifier():
+        return 1
 
     def can_unit_react(self, target, battle_map):
         if not self.owner.hp > 0:
