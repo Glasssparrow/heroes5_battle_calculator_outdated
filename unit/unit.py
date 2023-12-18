@@ -85,9 +85,6 @@ class Unit:
         revived = self.quantity - quantity_before
         return revived
 
-    def regenerate(self):
-        self.hp = self.quantity * self.health
-
     def __init__(self, name, color, attack, defence,
                  min_damage, max_damage, health, initiative, speed):
         self.name = name
