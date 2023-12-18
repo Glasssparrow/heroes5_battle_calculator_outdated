@@ -21,13 +21,14 @@ class MeleeCounter(Reaction):
         self.strike(target, battle_map)
 
     def strike(self, target, battle_map):
+        damage_modifier = self.calculate_damage_modifier()
         min_damage = int(
             self.owner.min_damage * self.owner.quantity *
-            self.calculate_damage_modifier()
+            damage_modifier
         )
         max_damage = int(
             self.owner.max_damage * self.owner.quantity *
-            self.calculate_damage_modifier()
+            damage_modifier
         )
         damage = calculate_damage(
             damage=randint(min_damage, max_damage),
@@ -42,10 +43,6 @@ class MeleeCounter(Reaction):
               f"Наносит {damage} урона. "
               f"Погибло {kills} {target.name}. "
               f"Осталось {target.quantity}")
-
-    @staticmethod
-    def calculate_damage_modifier():
-        return 1
 
     def can_unit_react(self, target, battle_map):
         if not self.owner.hp > 0:
@@ -110,4 +107,12 @@ class BattleFrenzyCounter(MeleeCounter):
                         v > damage_modifier
                 ):
                     damage_modifier = v
+        damage_modifier = damage_modifier * self.luck_modifier()
+        return damage_modifier
+
+
+class WeakMeleeCounter(MeleeCounter):
+
+    def calculate_damage_modifier(self):
+        damage_modifier = 0.5 * self.luck_modifier()
         return damage_modifier
