@@ -141,7 +141,12 @@ class Unit:
         for_delete = []
         for number, effect in enumerate(self.effects):
             if dispell_trigger in effect.dispell_conditions:
-                for_delete.append(number)
+                if effect.dispell_exception_once:
+                    print(f"Использован 1 жетон иммунитета к снятию "
+                          f"{effect.name}")
+                    effect.dispell_exception_once = False
+                else:
+                    for_delete.append(number)
         for x in reversed(for_delete):
             print(f"{self.name}. Эффект {self.effects[x].name} снят")
             self.effects.pop(x)

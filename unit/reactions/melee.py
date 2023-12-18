@@ -19,6 +19,7 @@ class MeleeCounter(Reaction):
         if self.failed_counter():
             return
         self.strike(target, battle_map)
+        target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
 
     def strike(self, target, battle_map):
         damage_modifier = self.calculate_damage_modifier()

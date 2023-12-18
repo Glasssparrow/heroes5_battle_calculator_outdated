@@ -18,6 +18,7 @@ class Effect:
         self.modifiers = {}
         self.have_timer = False
         self.dispell_conditions = []
+        self.dispell_exception_once = False
 
     def reapply(self, new_instance):
         self.time = new_instance.time
