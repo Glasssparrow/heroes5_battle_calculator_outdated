@@ -44,6 +44,7 @@ class Unit:
             if ACTIVATE_AT_TURN_END in skill.activation_cases:
                 skill.use()
                 return
+        self.tiles_moved = 0  # После срабатывания всех эффектов
 
     def react(self, reaction_type, target, battle_map):
         for reaction in self.reactions:
