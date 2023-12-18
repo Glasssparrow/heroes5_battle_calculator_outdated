@@ -17,4 +17,5 @@ class Blind(Effect):
         super().__init__()
         self.name = "ослепление"
         self.special_effects.append(BLOCK_ACTION)
+        self.special_effects.append(BLOCK_COUNTER)
         self.dispell_conditions.append(DISPELL_AFTER_TAKING_DAMAGE)

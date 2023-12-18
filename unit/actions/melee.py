@@ -16,6 +16,7 @@ class Melee(Action):
             return
         self.strike(target, battle_map)
         target.react(MELEE_COUNTER, self.owner, battle_map)
+        target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
 
     def strike(self, target, battle_map):
         if not self.is_melee_attack_possible(target, battle_map):
@@ -84,9 +85,11 @@ class DoubleAttackIfKill(Melee):
             return
         kills = self.strike(target, battle_map)
         target.react(MELEE_COUNTER, self.owner, battle_map)
+        target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
         if kills > 0:
             self.strike(target, battle_map)
             target.react(MELEE_COUNTER, self.owner, battle_map)
+            target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
 
 
 class DoubleAttack(Melee):
@@ -96,8 +99,10 @@ class DoubleAttack(Melee):
             return
         self.strike(target, battle_map)
         target.react(MELEE_COUNTER, self.owner, battle_map)
+        target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
         self.strike(target, battle_map)
         target.react(MELEE_COUNTER, self.owner, battle_map)
+        target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
 
 
 class MeleeNoCounter(Melee):
@@ -106,6 +111,7 @@ class MeleeNoCounter(Melee):
         if not self.can_unit_act(target, battle_map):
             return
         self.strike(target, battle_map)
+        target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
 
 
 class WeakMelee(Melee):
