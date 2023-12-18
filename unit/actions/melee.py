@@ -15,6 +15,7 @@ class Melee(Action):
         if not self.can_unit_act(target, battle_map):
             return
         self.strike(target, battle_map)
+        target.react(MELEE_COUNTER, self.owner, battle_map)
 
     def strike(self, target, battle_map):
         if not self.is_melee_attack_possible(target, battle_map):
@@ -39,7 +40,6 @@ class Melee(Action):
               f"Погибло {kills} {target.name}. "
               f"Осталось {target.quantity}")
         self.after_action(target, damage, kills, battle_map)
-        target.react(MELEE_COUNTER, self.owner, battle_map)
         return kills
 
     def can_unit_act(self, target, battle_map):
@@ -83,8 +83,10 @@ class DoubleAttackIfKill(Melee):
         if not self.can_unit_act(target, battle_map):
             return
         kills = self.strike(target, battle_map)
+        target.react(MELEE_COUNTER, self.owner, battle_map)
         if kills > 0:
             self.strike(target, battle_map)
+            target.react(MELEE_COUNTER, self.owner, battle_map)
 
 
 class DoubleAttack(Melee):
@@ -93,4 +95,14 @@ class DoubleAttack(Melee):
         if not self.can_unit_act(target, battle_map):
             return
         self.strike(target, battle_map)
+        target.react(MELEE_COUNTER, self.owner, battle_map)
+        self.strike(target, battle_map)
+        target.react(MELEE_COUNTER, self.owner, battle_map)
+
+
+class MeleeNoCounter(Melee):
+
+    def act(self, target, battle_map):
+        if not self.can_unit_act(target, battle_map):
+            return
         self.strike(target, battle_map)
