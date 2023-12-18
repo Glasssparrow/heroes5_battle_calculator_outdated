@@ -106,3 +106,11 @@ class MeleeNoCounter(Melee):
         if not self.can_unit_act(target, battle_map):
             return
         self.strike(target, battle_map)
+
+
+class WeakMelee(Melee):
+
+    def calculate_damage_modifier(self):
+        damage_modifier = 0.5
+        damage_modifier = damage_modifier * self.luck_modifier()
+        return damage_modifier
