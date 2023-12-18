@@ -147,3 +147,9 @@ class Unit:
         for x in reversed(for_delete):
             print(f"{self.name}. Эффект {self.effects[x].name} снят")
             self.effects.pop(x)
+
+    def check_immunity(self, immunity_keyword):
+        for immunity in self.immunities:
+            if immunity == immunity_keyword:
+                return True
+        return False
