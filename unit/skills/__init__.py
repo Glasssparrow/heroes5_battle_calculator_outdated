@@ -4,5 +4,5 @@ from .turnend import *
 
 __all__ = [
     "PeasantBash", "Vampire", "HighMorale", "LowMorale",
-    "Dexterity"
+    "Dexterity", "BlindingStrike"
 ]

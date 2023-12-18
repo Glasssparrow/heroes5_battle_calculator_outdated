@@ -38,3 +38,18 @@ class FootmanBash(PeasantBash):
     @staticmethod
     def _chance_formula(base_chance):
         return 1-(1-base_chance)**1.5
+
+
+class BlindingStrike(PeasantBash):
+
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Ослепляющий удар"
+
+    def use(self, target, damage, kills, battle_map):
+        if check_random(self.get_chance(target)):
+            target.apply_effect(BlindFromStrike())
+
+    @staticmethod
+    def _chance_formula(base_chance):
+        return 1-(1-base_chance)**1
