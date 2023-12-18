@@ -28,3 +28,16 @@ class LowMorale(Skill):
         morale = self.owner.morale
         if morale < 0 and check_random(morale * -0.1):
             self.owner.apply_effect(LowMoraleEffect())
+
+
+class Dexterity(Skill):
+
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Ловкость"
+        self.activation_cases.append(ACTIVATE_AT_TURN_END)
+
+    def use(self):
+        effect = DexterityBuff()
+        effect.defence = self.owner.tiles_moved * 2
+        self.owner.apply_effect(effect)

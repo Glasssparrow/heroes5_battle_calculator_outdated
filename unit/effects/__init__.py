@@ -5,6 +5,6 @@ from .morale import *
 from .initiative import *
 
 __all__ = [
-    "Block1Counterattack", "TestPlusStat", "LowMoraleEffect",
+    "Block1Counterattack", "DexterityBuff", "LowMoraleEffect",
     "HighMoraleEffect", "BattleFrenzy", "Bash"
 ]

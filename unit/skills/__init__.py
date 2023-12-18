@@ -3,5 +3,6 @@ from .healing import *
 from .turnend import *
 
 __all__ = [
-    "PeasantBash", "Vampire", "HighMorale", "LowMorale"
+    "PeasantBash", "Vampire", "HighMorale", "LowMorale",
+    "Dexterity"
 ]

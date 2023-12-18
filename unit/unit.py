@@ -43,7 +43,6 @@ class Unit:
         for skill in self.turnend_skills:
             if ACTIVATE_AT_TURN_END in skill.activation_cases:
                 skill.use()
-                return
         self.tiles_moved = 0  # После срабатывания всех эффектов
 
     def react(self, reaction_type, target, battle_map):
@@ -131,6 +130,9 @@ class Unit:
 
     def add_skill(self, skill):
         self.skills.append(skill(self))
+
+    def add_turnend_skill(self, skill):
+        self.turnend_skills.append(skill(self))
 
     def add_aura(self, aura):
         self.auras.append(aura)
