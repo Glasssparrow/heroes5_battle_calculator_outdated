@@ -30,5 +30,10 @@ BLOCK_COUNTER = "block_counterattack"
 TEMPORARY_BLOCK_COUNTER = "block_1_counterattack"
 BASH = "bash"
 
+# Иммунитеты
+BASH_IMMUNE = "bash_immune"
+VAMPIRISM_IMMUNE = "immune_to_vampirism"
+BLIND_IMMUNE = "blind_immune"
+
 # Для словаря modifiers в классе Effect
 BATTLE_FRENZY_MODIFIER = "battle_frenzy_modifier"
