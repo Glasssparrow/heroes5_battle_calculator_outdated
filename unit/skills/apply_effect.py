@@ -12,10 +12,15 @@ class PeasantBash(Skill):
         self.activation_cases.append(ACTIVATE_BEFORE_STRIKE)
 
     def use(self, target, damage, kills, battle_map):
-        if check_random(self.get_chance(target)):
+        if (
+            check_random(self.get_chance(target)) and
+            not target.check_immunity(VAMPIRISM_IMMUNE)
+        ):
             print(f"наложен {Block1Counterattack().name}")
             target.apply_effect(Block1Counterattack())
             target.apply_effect(Bash())
+        else:
+            print(f"У {target.name} иммунитет оглушению")
 
     @staticmethod
     def _chance_formula(base_chance):
