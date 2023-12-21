@@ -12,7 +12,10 @@ class Vampire(Skill):
 
     def use(self, target, damage, kills, battle_map):
         amount_of_healing = floor(damage/2)
-        revived = self.owner.take_healing(amount_of_healing)
-        print(f"{self.owner.name} исцеляется на {amount_of_healing} "
-              f"ударив {target.name}. "
-              f"Возродилось {int(revived)} существ.")
+        if target.check_immunity(VAMPIRISM_IMMUNE):
+            print(f"Вампиризм не сработал на {target.name}")
+        else:
+            revived = self.owner.take_healing(amount_of_healing)
+            print(f"{self.owner.name} исцеляется на {amount_of_healing} "
+                  f"ударив {target.name}. "
+                  f"Возродилось {int(revived)} существ.")
