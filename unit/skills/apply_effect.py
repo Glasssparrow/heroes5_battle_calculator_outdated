@@ -52,8 +52,16 @@ class BlindingStrike(PeasantBash):
         self.name = "Ослепляющий удар"
 
     def use(self, target, damage, kills, battle_map):
-        if check_random(self.get_chance(target)):
+        if (
+            check_random(self.get_chance(target)) and
+            not target.check_immunity(BLIND_IMMUNE)
+        ):
             target.apply_effect(BlindFromStrike())
+        else:
+            if target.check_immunity(BLIND_IMMUNE):
+                print(f"{target.name} иммунитет ослеплению")
+            else:
+                print(f"Ослепляющий удар не сработал")
 
     @staticmethod
     def _chance_formula(base_chance):

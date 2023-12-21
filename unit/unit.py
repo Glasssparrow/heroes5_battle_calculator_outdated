@@ -149,6 +149,8 @@ class Unit:
             self.effects.pop(x)
 
     def check_immunity(self, immunity_keyword):
+        if not self.immunities:
+            return False
         for immunity in self.immunities:
             if immunity == immunity_keyword:
                 return True
