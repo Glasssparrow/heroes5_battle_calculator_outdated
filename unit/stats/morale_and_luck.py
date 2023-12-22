@@ -1,5 +1,6 @@
 from .common import Stat
 from math import floor
+from keywords import *
 
 
 class Luck(Stat):
@@ -23,6 +24,8 @@ class Morale(Stat):
         result = instance.__dict__[self.name]
         for buff in instance.__dict__["effects"]:
             result += buff.__dict__[self.stat]
+            if ZERO_MORALE in buff.special_effects:
+                return 0
         result = floor(result)
         if result < -5:
             return -5

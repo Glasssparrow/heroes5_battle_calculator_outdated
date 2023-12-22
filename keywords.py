@@ -29,6 +29,7 @@ BLOCK_ACTION = "block_action"
 BLOCK_COUNTER = "block_counterattack"
 TEMPORARY_BLOCK_COUNTER = "block_1_counterattack"
 BASH = "bash"
+ZERO_MORALE = "undead"
 
 # Иммунитеты
 BASH_IMMUNE = "bash_immune"

@@ -19,3 +19,11 @@ class HighMoraleEffect(Effect):
         self.name = "Воодушевление"
         self.initiative_mark = INITIATIVE_MORALE
         self.dispell_conditions = [DISPELL_CASE_INITIATIVE]
+
+
+class AlwaysZeroMorale(Effect):
+
+    def __init__(self):
+        super().__init__()
+        self.name = "undead"
+        self.special_effects = [ZERO_MORALE]
