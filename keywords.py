@@ -1,5 +1,8 @@
 
 
+# Особенности юнитов
+GHOST = "ghost"
+
 # Типы действий
 MELEE_ATTACK = "melee_attack"
 
