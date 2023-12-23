@@ -26,3 +26,17 @@ class BlindFromStrike(Blind):
     def __init__(self):
         super().__init__()
         self.dispell_exception_once = True
+        self.name = "ослепление (от удара)"
+
+
+class Plague(Effect):
+
+    def __init__(self):
+        super().__init__()
+        self.name = "чумной удар"
+        self.attack = -2
+        self.defence = -2
+
+    def reapply(self, new_instance):
+        self.attack += -2
+        self.defence += -2
