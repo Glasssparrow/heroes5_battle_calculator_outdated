@@ -97,6 +97,7 @@ class Unit:
         self.auras = []
         self.effects = []
         self.immunities = []
+        self.special_attributes = []
         self.attack = attack
         self.defence = defence
         self._min_damage_limit = min_damage
