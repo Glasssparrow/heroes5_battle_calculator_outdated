@@ -66,3 +66,8 @@ class BlindingStrike(PeasantBash):
     @staticmethod
     def _chance_formula(base_chance):
         return 1-(1-base_chance)**1
+
+
+class PlagueStrike(Skill):
+
+    pass

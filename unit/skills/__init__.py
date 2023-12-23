@@ -5,5 +5,6 @@ from .deal_damage import *
 
 __all__ = [
     "PeasantBash", "Vampire", "HighMorale", "LowMorale",
-    "Dexterity", "BlindingStrike", "Kill1Extra", "Deal2DamageToEach"
+    "Dexterity", "BlindingStrike", "Kill1Extra", "Deal2DamageToEach",
+    "PlagueStrike"
 ]
