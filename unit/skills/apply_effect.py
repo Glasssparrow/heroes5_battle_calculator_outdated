@@ -101,4 +101,4 @@ class ApplyWeakening(Skill):
 
     @staticmethod
     def use(target, damage, kills, battle_map):
-        target.apply_effect(Weakening())
+        target.apply_effect(WeakeningNoSkill())

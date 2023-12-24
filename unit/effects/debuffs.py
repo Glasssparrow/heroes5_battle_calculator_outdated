@@ -52,10 +52,37 @@ class Sorrow(Effect):
         self.time = 3
 
 
-class Weakening(Effect):
+class WeakeningNoSkill(Effect):
 
     def __init__(self):
         super().__init__()
-        self.name = "ослабление"
+        self.name = "ослабление (нет навыка)"
+        self.damage = -0.5
+        self.time = 3
+
+
+class WeakeningBasics(Effect):
+
+    def __init__(self):
+        super().__init__()
+        self.name = "ослабление (основы)"
+        self.damage = -0.5
+        self.time = 3
+
+
+class WeakeningAdvanced(Effect):
+
+    def __init__(self):
+        super().__init__()
+        self.name = "ослабление (сильная)"
+        self.damage = -0.5
+        self.time = 3
+
+
+class WeakeningExpert(Effect):
+
+    def __init__(self):
+        super().__init__()
+        self.name = "ослабление (эксперт)"
         self.damage = -0.5
         self.time = 3
