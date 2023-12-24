@@ -90,3 +90,15 @@ class ApplySorrow(Skill):
     @staticmethod
     def use(target, damage, kills, battle_map):
         target.apply_effect(Sorrow())
+
+
+class ApplyWeakening(Skill):
+
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Ослабляющий удар"
+        self.activation_cases.append(ACTIVATE_AFTER_STRIKE)
+
+    @staticmethod
+    def use(target, damage, kills, battle_map):
+        target.apply_effect(Weakening())
