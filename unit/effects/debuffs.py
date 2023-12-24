@@ -50,3 +50,12 @@ class Sorrow(Effect):
         self.morale = -2
         self.luck = -2
         self.time = 3
+
+
+class Weakening(Effect):
+
+    def __init__(self):
+        super().__init__()
+        self.name = "ослабление"
+        self.damage = -0.5
+        self.time = 3

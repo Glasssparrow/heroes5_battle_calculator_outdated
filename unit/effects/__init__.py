@@ -7,5 +7,6 @@ from .initiative import *
 __all__ = [
     "Block1Counterattack", "DexterityBuff", "LowMoraleEffect",
     "HighMoraleEffect", "BattleFrenzy", "Bash", "Blind",
-    "BlindFromStrike", "AlwaysZeroMorale", "Plague", "Sorrow"
+    "BlindFromStrike", "AlwaysZeroMorale", "Plague", "Sorrow",
+    "Weakening", "DivineStrength"
 ]

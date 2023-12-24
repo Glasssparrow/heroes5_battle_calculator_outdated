@@ -100,9 +100,7 @@ class Unit:
         self.special_attributes = []
         self.attack = attack
         self.defence = defence
-        self._min_damage_limit = min_damage
         self.min_damage = min_damage
-        self._max_damage_limit = max_damage
         self.max_damage = max_damage
         self._health = health
         self.initiative = initiative
