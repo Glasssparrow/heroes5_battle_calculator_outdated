@@ -1,6 +1,6 @@
 from keywords import *
 from random import randint
-from ..common import calculate_damage
+from ..common import calculate_damage, check_random
 from .common import Action
 
 
@@ -21,6 +21,14 @@ class Melee(Action):
     def strike(self, target, battle_map):
         if not self.is_melee_attack_possible(target, battle_map):
             return 0
+        for special_attribute in target.special_attributes:
+            if special_attribute == GHOST:
+                if check_random(0.5):
+                    print(f"{target.name} уклоняется!")
+                    return 0
+                else:
+                    print(f"{target.name} не удалось уклониться!")
+                    break
         damage_modifier = self.calculate_damage_modifier()
         min_damage = int(
             self.owner.min_damage * self.owner.quantity * damage_modifier

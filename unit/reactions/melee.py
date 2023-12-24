@@ -1,5 +1,5 @@
 from random import randint
-from ..common import calculate_damage
+from ..common import calculate_damage, check_random
 from .common import Reaction
 from ..effects.counterattack import *
 from keywords import *
@@ -22,6 +22,14 @@ class MeleeCounter(Reaction):
         target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
 
     def strike(self, target, battle_map):
+        for special_attribute in target.special_attributes:
+            if special_attribute == GHOST:
+                if check_random(0.5):
+                    print(f"{target.name} уклоняется!")
+                    return
+                else:
+                    print(f"{target.name} не удалось уклониться!")
+                    break
         damage_modifier = self.calculate_damage_modifier()
         min_damage = int(
             self.owner.min_damage * self.owner.quantity *
