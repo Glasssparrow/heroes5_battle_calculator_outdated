@@ -12,10 +12,37 @@ class DexterityBuff(Effect):
         self.defence = new_instance.defence
 
 
-class DivineStrength(Effect):
+class DivineStrengthNoSkill(Effect):
 
     def __init__(self):
         super().__init__()
-        self.name = "божественная сила"
+        self.name = "божественная сила (нет навыка)"
         self.damage = 0.5
+        self.time = 3
+
+
+class DivineStrengthBasics(Effect):
+
+    def __init__(self):
+        super().__init__()
+        self.name = "божественная сила (основы)"
+        self.damage = 0.65
+        self.time = 3
+
+
+class DivineStrengthAdvanced(Effect):
+
+    def __init__(self):
+        super().__init__()
+        self.name = "божественная сила (сильная)"
+        self.damage = 0.8
+        self.time = 3
+
+
+class DivineStrengthExpert(Effect):
+
+    def __init__(self):
+        super().__init__()
+        self.name = "божественная сила (эксперт)"
+        self.damage = 1
         self.time = 3

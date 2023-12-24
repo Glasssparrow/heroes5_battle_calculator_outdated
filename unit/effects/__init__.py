@@ -8,5 +8,6 @@ __all__ = [
     "Block1Counterattack", "DexterityBuff", "LowMoraleEffect",
     "HighMoraleEffect", "BattleFrenzy", "Bash", "Blind",
     "BlindFromStrike", "AlwaysZeroMorale", "Plague", "Sorrow",
-    "Weakening", "DivineStrength"
+    "Weakening", "DivineStrengthNoSkill", "DivineStrengthBasics",
+    "DivineStrengthAdvanced", "DivineStrengthExpert"
 ]
