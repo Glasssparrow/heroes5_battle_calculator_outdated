@@ -40,3 +40,13 @@ class Plague(Effect):
     def reapply(self, new_instance):
         self.attack += -2
         self.defence += -2
+
+
+class Sorrow(Effect):
+
+    def __init__(self):
+        super().__init__()
+        self.name = "скорбь"
+        self.morale = -2
+        self.luck = -2
+        self.time = 3

@@ -78,3 +78,15 @@ class PlagueStrike(Skill):
     @staticmethod
     def use(target, damage, kills, battle_map):
         target.apply_effect(Plague())
+
+
+class ApplySorrow(Skill):
+
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Скорбный удар"
+        self.activation_cases.append(ACTIVATE_AFTER_STRIKE)
+
+    @staticmethod
+    def use(target, damage, kills, battle_map):
+        target.apply_effect(Sorrow())
