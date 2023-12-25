@@ -86,3 +86,12 @@ class WeakeningExpert(Effect):
         self.name = "ослабление (эксперт)"
         self.damage = -0.5
         self.time = 3
+
+
+class Poison(Effect):
+
+    def __init__(self, damage):
+        super().__init__()
+        self.name = "яд"
+        self.modifiers[POISON] = damage
+        self.time = 3

@@ -11,5 +11,6 @@ __all__ = [
     "WeakeningNoSkill", "WeakeningBasics",
     "WeakeningAdvanced", "WeakeningExpert",
     "DivineStrengthNoSkill", "DivineStrengthBasics",
-    "DivineStrengthAdvanced", "DivineStrengthExpert"
+    "DivineStrengthAdvanced", "DivineStrengthExpert",
+    "Poison"
 ]
