@@ -41,3 +41,4 @@ BLIND_IMMUNE = "blind_immune"
 
 # Для словаря modifiers в классе Effect
 BATTLE_FRENZY_MODIFIER = "battle_frenzy_modifier"
+POISON = "poison"

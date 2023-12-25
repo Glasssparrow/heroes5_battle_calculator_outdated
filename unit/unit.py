@@ -43,6 +43,10 @@ class Unit:
         for skill in self.turnend_skills:
             if ACTIVATE_AT_TURN_END in skill.activation_cases:
                 skill.use()
+        for effect in self.effects:
+            for k, v in effect.modifiers.items():
+                if k == POISON:
+                    self.take_damage(v)
         self.tiles_moved = 0  # После срабатывания всех эффектов
 
     def react(self, reaction_type, target, battle_map):
