@@ -46,7 +46,10 @@ class Unit:
         for effect in self.effects:
             for k, v in effect.modifiers.items():
                 if k == POISON:
-                    self.take_damage(v)
+                    kills = self.take_damage(v)
+                    print(f"{self.name} получает {v} урона от яда. "
+                          f"Погибло {kills} существ. Осталось "
+                          f"{self.quantity}")
         self.tiles_moved = 0  # После срабатывания всех эффектов
 
     def react(self, reaction_type, target, battle_map):

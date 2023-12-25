@@ -102,3 +102,14 @@ class ApplyWeakening(Skill):
     @staticmethod
     def use(target, damage, kills, battle_map):
         target.apply_effect(WeakeningNoSkill())
+
+
+class ApplyPoison(Skill):
+
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Отравляющий удар"
+        self.activation_cases.append(ACTIVATE_AFTER_STRIKE)
+
+    def use(self, target, damage, kills, battle_map):
+        target.apply_effect(Poison(self.owner.quantity))
