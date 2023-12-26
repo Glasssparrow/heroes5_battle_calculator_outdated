@@ -1,3 +1,6 @@
 from .melee import *
 
-__all__ = ["Melee"]
+__all__ = [
+    "Melee", "ChivalryCharge", "DoubleAttackIfKill", "DoubleAttack",
+    "LizardCharge",
+]
