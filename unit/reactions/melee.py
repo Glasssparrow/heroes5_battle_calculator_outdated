@@ -125,3 +125,8 @@ class WeakMeleeCounter(MeleeCounter):
     def calculate_damage_modifier(self):
         damage_modifier = 0.5 * self.luck_modifier()
         return damage_modifier
+
+
+class AcidBlood(Reaction):
+
+    pass
