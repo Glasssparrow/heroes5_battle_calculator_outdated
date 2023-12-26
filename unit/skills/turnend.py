@@ -2,6 +2,7 @@ from .common import Skill
 from ..common import check_random
 from ..effects import *
 from keywords import *
+from random import randint
 
 
 class HighMorale(Skill):
@@ -41,3 +42,15 @@ class Dexterity(Skill):
         effect = DexterityBuff()
         effect.defence = self.owner.tiles_moved * 2
         self.owner.apply_effect(effect)
+
+
+class Regeneration(Skill):
+
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Регенерация"
+        self.activation_cases.append(ACTIVATE_AT_TURN_START)
+
+    def use(self):
+        amount_of_healing = randint(30, 50)
+        self.owner.take_healing(amount_of_healing)
