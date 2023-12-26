@@ -129,4 +129,43 @@ class WeakMeleeCounter(MeleeCounter):
 
 class AcidBlood(Reaction):
 
-    pass
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Кислотная кровь"
+        self.owner = owner
+        self.keyword = MELEE_COUNTER
+
+    def react(self, target, battle_map):
+        self.strike(target, battle_map)
+
+    def strike(self, target, battle_map):
+        for special_attribute in target.special_attributes:
+            if special_attribute == GHOST:
+                if check_random(0.5):
+                    print(f"{target.name} уклоняется!")
+                    return
+                else:
+                    print(f"{target.name} не удалось уклониться!")
+                    break
+        damage_modifier = 0.25
+        min_damage = int(
+            self.owner.min_damage * self.owner.quantity *
+            damage_modifier
+        )
+        max_damage = int(
+            self.owner.max_damage * self.owner.quantity *
+            damage_modifier
+        )
+        damage = calculate_damage(
+            damage=randint(min_damage, max_damage),
+            attack=self.owner.attack,
+            defence=target.defence,
+            max_damage=target.hp
+        )
+        kills = target.take_damage(damage)
+        print(f"{self.owner.name} брызжет кислотной "
+              f"кровью на  {target.name}. "
+              f"Наносит {damage} урона. "
+              f"Погибло {kills} {target.name}. "
+              f"Осталось {target.quantity}")
+
