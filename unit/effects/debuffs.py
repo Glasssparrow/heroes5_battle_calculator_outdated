@@ -95,3 +95,11 @@ class Poison(Effect):
         self.name = "яд"
         self.modifiers[POISON] = damage
         self.time = 3
+
+
+class Berserk(Effect):
+
+    def __init__(self):
+        super().__init__()
+        self.name = "Берсерк"
+        self.time = 3
