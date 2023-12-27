@@ -66,7 +66,7 @@ class WeakeningBasics(Effect):
     def __init__(self):
         super().__init__()
         self.name = "ослабление (основы)"
-        self.damage = -0.5
+        self.damage = -0.65
         self.time = 3
 
 
@@ -75,7 +75,7 @@ class WeakeningAdvanced(Effect):
     def __init__(self):
         super().__init__()
         self.name = "ослабление (сильная)"
-        self.damage = -0.5
+        self.damage = -0.8
         self.time = 3
 
 
@@ -84,7 +84,7 @@ class WeakeningExpert(Effect):
     def __init__(self):
         super().__init__()
         self.name = "ослабление (эксперт)"
-        self.damage = -0.5
+        self.damage = -1
         self.time = 3
 
 
