@@ -103,3 +103,39 @@ class Berserk(Effect):
         super().__init__()
         self.name = "Берсерк"
         self.time = 3
+
+
+class SlowNoSkill(Effect):
+
+    def __init__(self):
+        super().__init__()
+        self.name = "Замедление (нет навыка)"
+        self.initiative = -0.25
+        self.time = 3
+
+
+class SlowBasics(Effect):
+
+    def __init__(self):
+        super().__init__()
+        self.name = "Замедление (основы)"
+        self.initiative = -0.3
+        self.time = 3
+
+
+class SlowAdvanced(Effect):
+
+    def __init__(self):
+        super().__init__()
+        self.name = "Замедление (сильная)"
+        self.initiative = -0.35
+        self.time = 3
+
+
+class SlowExpert(Effect):
+
+    def __init__(self):
+        super().__init__()
+        self.name = "Замедление (эксперт)"
+        self.initiative = -0.4
+        self.time = 3
