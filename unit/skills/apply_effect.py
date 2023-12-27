@@ -2,6 +2,7 @@ from .common import Skill, calculate_base_chance
 from ..common import check_random
 from unit.effects import *
 from keywords import *
+from random import choice
 
 
 class PeasantBash(Skill):
@@ -113,3 +114,16 @@ class ApplyPoison(Skill):
 
     def use(self, target, damage, kills, battle_map):
         target.apply_effect(Poison(self.owner.quantity))
+
+
+class Whip(Skill):
+
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Удар хлыстом"
+        self.activation_cases.append(ACTIVATE_AFTER_STRIKE)
+
+    @staticmethod
+    def use(target, damage, kills, battle_map):
+        effect = choice((SlowAdvanced, WeakeningAdvanced, Berserk))
+        target.apply_effect(effect())
