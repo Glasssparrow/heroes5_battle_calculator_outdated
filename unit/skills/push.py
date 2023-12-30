@@ -1,4 +1,4 @@
-from .common import Skill
+from .common import calculate_base_chance
 from ..common import check_random
 from ..effects import *
 from keywords import *
@@ -44,5 +44,21 @@ class BearRoar(PeasantBash):
         else:
             print(f"У {target.name} иммунитет к запугиванию")
 
-    def _chance_formula(self, base_chance):
-        return 1 - (1 - base_chance) ** self.owner.tiles_moved
+    @staticmethod
+    def _roar_chance(base_chance, target):
+        if target.big:
+            return 1-(1-base_chance)**0.9
+        else:
+            return 0.5+(1-(1-base_chance)**0.9)/2
+
+    def get_chance(self, target):
+        chance = self._roar_chance(
+            calculate_base_chance(self.owner, target),
+            target,
+        )
+        if chance < 0:
+            return 0
+        elif chance > 1:
+            return 1
+        else:
+            return chance
