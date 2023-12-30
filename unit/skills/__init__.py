@@ -9,5 +9,5 @@ __all__ = [
     "Dexterity", "BlindingStrike", "Kill1Extra", "Deal2DamageToEach",
     "PlagueStrike", "ApplySorrow", "ApplyWeakening",
     "ApplyPoison", "Regeneration", "Whip",
-    "BearPush", "BearRoar",
+    "BearPush", "BearRoar", "ThunderStrike"
 ]
