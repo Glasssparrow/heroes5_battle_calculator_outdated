@@ -117,6 +117,7 @@ class Unit:
         self.hp = 0
         self.luck = 0
         self.morale = 0
+        self.big = False
 
         self.tiles_moved = 0
 
