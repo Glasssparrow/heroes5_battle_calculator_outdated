@@ -1,6 +1,6 @@
 from .common import Skill, calculate_base_chance
 from ..common import check_random
-from unit.effects import *
+from ..effects import *
 from keywords import *
 from random import choice
 

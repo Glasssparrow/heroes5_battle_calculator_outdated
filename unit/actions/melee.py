@@ -175,7 +175,8 @@ class LizardCharge(Melee):
         enemy_defence = (
             self.calculate_enemy_defence_modifier() * target.defence
         )
-        print(enemy_defence)
+        print(f"Часть защиты {target.name} проигнорирована. "
+              f"Расчетная защита {enemy_defence}")
         damage = calculate_damage(
             damage=randint(min_damage, max_damage),
             attack=self.owner.attack,
