@@ -3,6 +3,7 @@ from ..common import calculate_damage, check_random
 from .common import Reaction
 from ..effects.counterattack import *
 from keywords import *
+from ..requirements import run_away
 
 
 class MeleeCounter(Reaction):
@@ -195,3 +196,27 @@ class AcidBlood(Reaction):
               f"Погибло {kills} {target.name}. "
               f"Осталось {target.quantity}")
 
+
+class Coward(Reaction):
+
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Трус"
+        self.owner = owner
+        self.keyword = MELEE_COUNTER
+
+    def react(self, target, battle_map):
+        if not self.can_unit_react(target, battle_map):
+            return
+        run_away(battle_map=battle_map,
+                 scary_unit=target, coward=self.owner)
+
+    def can_unit_react(self, target, battle_map):
+        if not self.owner.hp > 0:
+            print(f"{self.owner.name} не может реагировать т.к. мертв")
+            return False
+        if target.hp == 0:
+            print(f"{self.owner.name} не может действовать т.к. "
+                  f"цель мертва.")
+            return False
+        return True
