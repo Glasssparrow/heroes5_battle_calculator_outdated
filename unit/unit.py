@@ -65,6 +65,10 @@ class Unit:
                 skill.use(target, damage, kills, battle_map)
 
     def apply_effect(self, new_effect):
+        for immunity in new_effect.blocked_by_immunities:
+            if immunity in self.immunities:
+                print(f"{self.name} имеет иммунитет к {new_effect.name}")
+                return
         for effect in self.effects:
             if new_effect.name == effect.name:
                 effect.reapply(new_effect)

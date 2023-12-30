@@ -16,6 +16,7 @@ class Effect:
         self.special_effects = []
         self.modifiers = {}
         self.have_timer = False
+        self.blocked_by_immunities = []
         self.dispell_conditions = []
         self.dispell_exception_once = False
 
