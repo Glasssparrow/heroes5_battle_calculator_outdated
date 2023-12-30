@@ -8,5 +8,6 @@ __all__ = [
     "PeasantBash", "Vampire", "HighMorale", "LowMorale",
     "Dexterity", "BlindingStrike", "Kill1Extra", "Deal2DamageToEach",
     "PlagueStrike", "ApplySorrow", "ApplyWeakening",
-    "ApplyPoison", "Regeneration", "Whip"
+    "ApplyPoison", "Regeneration", "Whip",
+    "BearPush", "BearRoar",
 ]
