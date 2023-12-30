@@ -70,11 +70,19 @@ class MeleeCounter(Reaction):
         return True
 
     def before_reaction(self, target, battle_map):
-        self.owner.use_skills(ACTIVATE_BEFORE_STRIKE, target, battle_map)
+        self.owner.use_skills(
+            ACTIVATE_BEFORE_STRIKE, target, battle_map
+        )
+        target.use_skills(
+            ACTIVATE_BEFORE_GET_HIT, self.owner, battle_map
+        )
 
     def after_reaction(self, target, damage, kills, battle_map):
         self.owner.use_skills(
             ACTIVATE_AFTER_STRIKE, target, damage, kills, battle_map
+        )
+        target.use_skills(
+            ACTIVATE_AFTER_GET_HIT, self.owner, battle_map
         )
         self.owner.apply_effect(BlockCounter())
 
@@ -97,6 +105,9 @@ class InfiniteMeleeCounter(MeleeCounter):
         self.owner.use_skills(
             ACTIVATE_AFTER_STRIKE, target, damage, kills, battle_map
         )
+        target.use_skills(
+            ACTIVATE_AFTER_GET_HIT, self.owner, battle_map
+        )
 
 
 class BattleFrenzyCounter(MeleeCounter):
@@ -104,6 +115,9 @@ class BattleFrenzyCounter(MeleeCounter):
     def after_reaction(self, target, damage, kills, battle_map):
         self.owner.use_skills(
             ACTIVATE_AFTER_STRIKE, target, damage, kills, battle_map
+        )
+        target.use_skills(
+            ACTIVATE_AFTER_GET_HIT, self.owner, battle_map
         )
         self.owner.apply_effect(BattleFrenzy())
 

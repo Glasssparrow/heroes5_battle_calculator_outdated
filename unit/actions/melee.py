@@ -80,11 +80,19 @@ class Melee(Action):
         return True
 
     def before_action(self, target, battle_map):
-        self.owner.use_skills(ACTIVATE_BEFORE_STRIKE, target, battle_map)
+        self.owner.use_skills(
+            ACTIVATE_BEFORE_STRIKE, target, battle_map
+        )
+        target.use_skills(
+            ACTIVATE_BEFORE_GET_HIT, self.owner, battle_map
+        )
 
     def after_action(self, target, damage, kills, battle_map):
         self.owner.use_skills(
             ACTIVATE_AFTER_STRIKE, target, damage, kills, battle_map
+        )
+        target.use_skills(
+            ACTIVATE_AFTER_GET_HIT, self.owner, battle_map
         )
 
 
