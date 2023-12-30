@@ -2,6 +2,7 @@
 
 # Особенности юнитов
 GHOST = "ghost"
+WALL_OF_SHIELDS = "wall_of_shields"
 
 # Типы действий
 MELEE_ATTACK = "melee_attack"
