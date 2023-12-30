@@ -2,6 +2,7 @@ from .common import Skill
 from keywords import *
 from random import randint
 from ..common import calculate_damage
+from math import floor
 
 
 class Kill1Extra(Skill):
@@ -58,3 +59,33 @@ class ThunderStrike(Skill):
               f"{damage} урона при помощи удара бури. "
               f"Погибло {kills} {target.name}. "
               f"Осталось {target.quantity}")
+
+
+class FireShield20(Skill):
+
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Огненный щит 20"
+        self.activation_cases.append(ACTIVATE_AFTER_GET_HIT)
+
+    @staticmethod
+    def use(target, damage, kills, battle_map):
+        killed_by_skill = target.take_damage(floor(damage*0.2))
+        print(f"{target.name} получает {floor(damage*0.2)} урона "
+              f"от огненного щита. Погибло "
+              f"{killed_by_skill} существ.")
+
+
+class FireShield40(Skill):
+
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Огненный щит 40"
+        self.activation_cases.append(ACTIVATE_AFTER_GET_HIT)
+
+    @staticmethod
+    def use(target, damage, kills, battle_map):
+        killed_by_skill = target.take_damage(floor(damage*0.4))
+        print(f"{target.name} получает {floor(damage*0.4)} урона "
+              f"от огненного щита. Погибло "
+              f"{killed_by_skill} существ.")
