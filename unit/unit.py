@@ -104,8 +104,7 @@ class Unit:
         self.auras = []
         self.effects = []
         self.immunities = []
-        # Призрак, Стена_щитов
-        self.special_attributes = []
+        self.special_attributes = []  # Призрак, Стена_щитов
         self.attack = attack
         self.defence = defence
         self.min_damage = min_damage
