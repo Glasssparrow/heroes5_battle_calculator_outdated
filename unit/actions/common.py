@@ -1,4 +1,5 @@
 from ..common import check_random
+from keywords import *
 
 
 class Action:
@@ -23,5 +24,16 @@ class Action:
             else:
                 return 1
 
-    def calculate_damage_modifier(self):
+    def calculate_damage_modifier(self, target):
         return self.luck_modifier()
+
+    @staticmethod
+    def calculate_shield_wall_modifier(owner, target):
+        shield_wall = 1
+        for special_attribute in target.special_attributes:
+            if special_attribute == WALL_OF_SHIELDS:
+                if owner.tiles_moved > 9:
+                    shield_wall = 0.1
+                else:
+                    shield_wall = 1 - 0.1 * owner.tiles_moved
+        return round(shield_wall, 1)

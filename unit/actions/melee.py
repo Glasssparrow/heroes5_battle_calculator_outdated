@@ -28,7 +28,7 @@ class Melee(Action):
                 else:
                     print(f"{target.name} не удалось уклониться!")
                     break
-        damage_modifier = self.calculate_damage_modifier()
+        damage_modifier = self.calculate_damage_modifier(target)
         min_damage = int(
             self.owner.min_damage * self.owner.quantity * damage_modifier
         )
@@ -64,6 +64,11 @@ class Melee(Action):
                 return False
         return True
 
+    def calculate_damage_modifier(self, target):
+        shield_wall = shield_wall = self.calculate_shield_wall_modifier(
+            self.owner, target)
+        return shield_wall * self.luck_modifier()
+
     @staticmethod
     def is_melee_attack_possible(target, battle_map):
         for effect in target.effects:
@@ -85,9 +90,13 @@ class Melee(Action):
 
 class ChivalryCharge(Melee):
 
-    def calculate_damage_modifier(self):
+    def calculate_damage_modifier(self, target):
+        shield_wall = self.calculate_shield_wall_modifier(
+            self.owner, target)
         damage_modifier = 1 + 0.05 * self.owner.tiles_moved
-        damage_modifier = damage_modifier * self.luck_modifier()
+        damage_modifier = (
+            damage_modifier * self.luck_modifier() * shield_wall
+        )
         return damage_modifier
 
 
@@ -132,9 +141,12 @@ class MeleeNoCounter(Melee):
 
 class WeakMelee(Melee):
 
-    def calculate_damage_modifier(self):
-        damage_modifier = 0.5
-        damage_modifier = damage_modifier * self.luck_modifier()
+    def calculate_damage_modifier(self, target):
+        shield_wall = self.calculate_shield_wall_modifier(
+            self.owner, target)
+        damage_modifier = (
+            0.5 * self.luck_modifier() * shield_wall
+        )
         return damage_modifier
 
 
@@ -153,7 +165,7 @@ class LizardCharge(Melee):
                 else:
                     print(f"{target.name} не удалось уклониться!")
                     break
-        damage_modifier = self.calculate_damage_modifier()
+        damage_modifier = self.calculate_damage_modifier(target)
         min_damage = int(
             self.owner.min_damage * self.owner.quantity * damage_modifier
         )
