@@ -14,5 +14,6 @@ __all__ = [
     "DivineStrengthAdvanced", "DivineStrengthExpert",
     "Poison",
     "Berserk",
-    "SlowNoSkill", "SlowBasics", "SlowAdvanced", "SlowExpert"
+    "SlowNoSkill", "SlowBasics", "SlowAdvanced", "SlowExpert",
+    "Invisibility",
 ]

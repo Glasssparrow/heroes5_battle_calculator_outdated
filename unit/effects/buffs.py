@@ -1,4 +1,5 @@
 from .common import Effect
+from keywords import *
 
 
 class DexterityBuff(Effect):
@@ -46,3 +47,12 @@ class DivineStrengthExpert(Effect):
         self.name = "божественная сила (эксперт)"
         self.damage = 1
         self.time = 3
+
+
+class Invisibility(Effect):
+
+    def __init__(self):
+        super().__init__()
+        self.name = "невидимость"
+        self.time = 3
+        self.special_effects = [INVISIBILITY]

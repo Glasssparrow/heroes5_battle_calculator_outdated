@@ -14,13 +14,12 @@ class Melee(Action):
     def act(self, target, battle_map):
         if not self.can_unit_act(target, battle_map):
             return
-        self.strike(target, battle_map)
-        target.react(MELEE_COUNTER, self.owner, battle_map)
-        target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
+        if self.is_melee_attack_possible(target, battle_map):
+            self.strike(target, battle_map)
+            target.react(MELEE_COUNTER, self.owner, battle_map)
+            target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
 
     def strike(self, target, battle_map):
-        if not self.is_melee_attack_possible(target, battle_map):
-            return 0
         for special_attribute in target.special_attributes:
             if special_attribute == GHOST:
                 if check_random(0.5):
@@ -67,6 +66,12 @@ class Melee(Action):
 
     @staticmethod
     def is_melee_attack_possible(target, battle_map):
+        for effect in target.effects:
+            for special_effect in effect.special_effects:
+                if special_effect == INVISIBILITY:
+                    print(f"Атака невозможна т.к. {target.name} "
+                          f"невидим")
+                    return False
         return True
 
     def before_action(self, target, battle_map):
@@ -91,13 +96,14 @@ class DoubleAttackIfKill(Melee):
     def act(self, target, battle_map):
         if not self.can_unit_act(target, battle_map):
             return
-        kills = self.strike(target, battle_map)
-        target.react(MELEE_COUNTER, self.owner, battle_map)
-        target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
-        if kills > 0:
-            self.strike(target, battle_map)
+        if self.is_melee_attack_possible(target, battle_map):
+            kills = self.strike(target, battle_map)
             target.react(MELEE_COUNTER, self.owner, battle_map)
             target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
+            if kills > 0:
+                self.strike(target, battle_map)
+                target.react(MELEE_COUNTER, self.owner, battle_map)
+                target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
 
 
 class DoubleAttack(Melee):
@@ -105,12 +111,13 @@ class DoubleAttack(Melee):
     def act(self, target, battle_map):
         if not self.can_unit_act(target, battle_map):
             return
-        self.strike(target, battle_map)
-        target.react(MELEE_COUNTER, self.owner, battle_map)
-        target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
-        self.strike(target, battle_map)
-        target.react(MELEE_COUNTER, self.owner, battle_map)
-        target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
+        if self.is_melee_attack_possible(target, battle_map):
+            self.strike(target, battle_map)
+            target.react(MELEE_COUNTER, self.owner, battle_map)
+            target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
+            self.strike(target, battle_map)
+            target.react(MELEE_COUNTER, self.owner, battle_map)
+            target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
 
 
 class MeleeNoCounter(Melee):
@@ -118,8 +125,9 @@ class MeleeNoCounter(Melee):
     def act(self, target, battle_map):
         if not self.can_unit_act(target, battle_map):
             return
-        self.strike(target, battle_map)
-        target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
+        if self.is_melee_attack_possible(target, battle_map):
+            self.strike(target, battle_map)
+            target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
 
 
 class WeakMelee(Melee):
@@ -137,8 +145,6 @@ class LizardCharge(Melee):
         self.name = "Удар с разбега (ящеры)"
 
     def strike(self, target, battle_map):
-        if not self.is_melee_attack_possible(target, battle_map):
-            return 0
         for special_attribute in target.special_attributes:
             if special_attribute == GHOST:
                 if check_random(0.5):
