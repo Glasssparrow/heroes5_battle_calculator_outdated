@@ -40,6 +40,8 @@ INVISIBILITY = "invisible"
 BASH_IMMUNE = "bash_immune"
 VAMPIRISM_IMMUNE = "immune_to_vampirism"
 BLIND_IMMUNE = "blind_immune"
+PUSH_IMMUNE = "push_immune"
+FEAR_IMMUNE = "fear_immune"
 
 # Для словаря modifiers в классе Effect
 BATTLE_FRENZY_MODIFIER = "battle_frenzy_modifier"

@@ -15,7 +15,7 @@ class PeasantBash(Skill):
     def use(self, target, damage, kills, battle_map):
         if (
             check_random(self.get_chance(target)) and
-            not target.check_immunity(VAMPIRISM_IMMUNE)
+            not target.check_immunity(BASH_IMMUNE)
         ):
             print(f"наложен {Block1Counterattack().name}")
             target.apply_effect(Block1Counterattack())
@@ -31,10 +31,10 @@ class PeasantBash(Skill):
         chance = self._chance_formula(
             calculate_base_chance(self.owner, target)
         )
-        if chance < 0.05:
-            return 0.05
-        elif chance > 0.75:
-            return 0.75
+        if chance < 0:
+            return 0
+        elif chance > 1:
+            return 1
         else:
             return chance
 
