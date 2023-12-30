@@ -13,6 +13,8 @@ MELEE_COUNTER = "melee_counter"
 # Условия активации навыков
 ACTIVATE_BEFORE_STRIKE = "before strike"
 ACTIVATE_AFTER_STRIKE = "after strike"
+ACTIVATE_BEFORE_GET_HIT = "before get hit"
+ACTIVATE_AFTER_GET_HIT = "after get hit"
 ACTIVATE_BEFORE_SHOOT = "before shot"
 ACTIVATE_AFTER_SHOOT = "after shot"
 ACTIVATE_AT_TURN_START = "turn_start"
