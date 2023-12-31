@@ -20,7 +20,6 @@ class MeleeCounter(Reaction):
         if self.failed_counter():
             return
         self.strike(target, battle_map)
-        target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
 
     def strike(self, target, battle_map):
         for special_attribute in target.special_attributes:
@@ -239,7 +238,6 @@ class RunAndShoot(MeleeCounter):
         if self.failed_counter():
             return
         self.shoot(target, battle_map)
-        target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
 
     def shoot(self, target, battle_map):
         for special_attribute in target.special_attributes:

@@ -17,7 +17,6 @@ class Melee(Action):
         if self.is_melee_attack_possible(target, battle_map):
             self.strike(target, battle_map)
             target.react(MELEE_COUNTER, self.owner, battle_map)
-            target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
 
     def strike(self, target, battle_map):
         for special_attribute in target.special_attributes:
@@ -120,11 +119,9 @@ class DoubleAttackIfKill(Melee):
         if self.is_melee_attack_possible(target, battle_map):
             kills = self.strike(target, battle_map)
             target.react(MELEE_COUNTER, self.owner, battle_map)
-            target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
             if kills > 0:
                 self.strike(target, battle_map)
                 target.react(MELEE_COUNTER, self.owner, battle_map)
-                target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
 
 
 class DoubleAttack(Melee):
@@ -135,10 +132,8 @@ class DoubleAttack(Melee):
         if self.is_melee_attack_possible(target, battle_map):
             self.strike(target, battle_map)
             target.react(MELEE_COUNTER, self.owner, battle_map)
-            target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
             self.strike(target, battle_map)
             target.react(MELEE_COUNTER, self.owner, battle_map)
-            target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
 
 
 class MeleeNoCounter(Melee):
@@ -148,7 +143,6 @@ class MeleeNoCounter(Melee):
             return
         if self.is_melee_attack_possible(target, battle_map):
             self.strike(target, battle_map)
-            target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
 
 
 class WeakMelee(Melee):
@@ -225,7 +219,6 @@ class Assault(Melee):
         if self.is_melee_attack_possible(target, battle_map):
             self.strike(target, battle_map)
             target.react(MELEE_COUNTER, self.owner, battle_map)
-            target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
             if self.is_2_attack_worked(target):
                 self.strike(target, battle_map)
                 target.react(MELEE_COUNTER, self.owner, battle_map)
