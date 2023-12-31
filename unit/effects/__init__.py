@@ -3,6 +3,7 @@ from .counterattack import *
 from .buffs import *
 from .morale import *
 from .initiative import *
+from .darkness import *
 
 __all__ = [
     "Block1Counterattack", "DexterityBuff", "LowMoraleEffect",
@@ -15,5 +16,7 @@ __all__ = [
     "Poison",
     "Berserk",
     "SlowNoSkill", "SlowBasics", "SlowAdvanced", "SlowExpert",
+    "AttackDebuffNoSkill", "AttackDebuffBasics",
+    "AttackDebuffAdvanced", "AttackDebuffExpert",
     "Invisibility",
 ]

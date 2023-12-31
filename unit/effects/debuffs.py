@@ -1,4 +1,5 @@
 from .common import Effect
+from .darkness import Blind
 from keywords import *
 
 
@@ -9,16 +10,6 @@ class Block1Counterattack(Effect):
         self.name = "block_1_counter"
         self.special_effects.append(TEMPORARY_BLOCK_COUNTER)
         self.dispell_conditions.append(DISPELL_TEMPORARY_BLOCK_COUNTER)
-
-
-class Blind(Effect):
-
-    def __init__(self):
-        super().__init__()
-        self.name = "ослепление"
-        self.special_effects.append(BLOCK_ACTION)
-        self.special_effects.append(BLOCK_COUNTER)
-        self.dispell_conditions.append(DISPELL_AFTER_TAKING_DAMAGE)
 
 
 class BlindFromStrike(Blind):
@@ -41,101 +32,10 @@ class Plague(Effect):
         self.attack += -2
         self.defence += -2
 
-
-class Sorrow(Effect):
-
-    def __init__(self):
-        super().__init__()
-        self.name = "скорбь"
-        self.morale = -2
-        self.luck = -2
-        self.time = 3
-
-
-class WeakeningNoSkill(Effect):
-
-    def __init__(self):
-        super().__init__()
-        self.name = "ослабление (нет навыка)"
-        self.damage = -0.5
-        self.time = 3
-
-
-class WeakeningBasics(Effect):
-
-    def __init__(self):
-        super().__init__()
-        self.name = "ослабление (основы)"
-        self.damage = -0.65
-        self.time = 3
-
-
-class WeakeningAdvanced(Effect):
-
-    def __init__(self):
-        super().__init__()
-        self.name = "ослабление (сильная)"
-        self.damage = -0.8
-        self.time = 3
-
-
-class WeakeningExpert(Effect):
-
-    def __init__(self):
-        super().__init__()
-        self.name = "ослабление (эксперт)"
-        self.damage = -1
-        self.time = 3
-
-
 class Poison(Effect):
 
     def __init__(self, damage):
         super().__init__()
         self.name = "яд"
         self.modifiers[POISON] = damage
-        self.time = 3
-
-
-class Berserk(Effect):
-
-    def __init__(self):
-        super().__init__()
-        self.name = "Берсерк"
-        self.time = 3
-
-
-class SlowNoSkill(Effect):
-
-    def __init__(self):
-        super().__init__()
-        self.name = "Замедление (нет навыка)"
-        self.initiative = -0.25
-        self.time = 3
-
-
-class SlowBasics(Effect):
-
-    def __init__(self):
-        super().__init__()
-        self.name = "Замедление (основы)"
-        self.initiative = -0.3
-        self.time = 3
-
-
-class SlowAdvanced(Effect):
-
-    def __init__(self):
-        super().__init__()
-        self.name = "Замедление (сильная)"
-        self.initiative = -0.35
-        self.time = 3
-
-
-class SlowExpert(Effect):
-
-    def __init__(self):
-        super().__init__()
-        self.name = "Замедление (эксперт)"
-        self.initiative = -0.4
         self.time = 3
