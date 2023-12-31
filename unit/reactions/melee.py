@@ -220,3 +220,79 @@ class Coward(Reaction):
                   f"цель мертва.")
             return False
         return True
+
+
+class RunAndShoot(MeleeCounter):
+
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Беги и стреляй"
+        self.owner = owner
+        self.keyword = MELEE_COUNTER
+
+    def react(self, target, battle_map):
+        run_away(
+            battle_map=battle_map, scary_unit=target, coward=self.owner
+        )
+        if not self.can_unit_react(target, battle_map):
+            return
+        if self.failed_counter():
+            return
+        self.shoot(target, battle_map)
+        target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
+
+    def shoot(self, target, battle_map):
+        for special_attribute in target.special_attributes:
+            if special_attribute == GHOST:
+                if check_random(0.5):
+                    print(f"{target.name} уклоняется!")
+                    return
+                else:
+                    print(f"{target.name} не удалось уклониться!")
+                    break
+        # Половинный удар + стандартный расчет удачи
+        damage_modifier = 0.5 * self.calculate_damage_modifier()
+        min_damage = int(
+            self.owner.min_damage * self.owner.quantity *
+            damage_modifier
+        )
+        max_damage = int(
+            self.owner.max_damage * self.owner.quantity *
+            damage_modifier
+        )
+        damage = calculate_damage(
+            damage=randint(min_damage, max_damage),
+            attack=self.owner.attack,
+            defence=target.defence,
+            max_damage=target.hp
+        )
+        self.before_reaction(target, battle_map)
+        kills = target.take_damage(damage)
+        self.after_reaction(target, damage, kills, battle_map)
+        print(f"{self.owner.name} стреляет в {target.name}. "
+              f"Наносит {damage} урона. "
+              f"Погибло {kills} {target.name}. "
+              f"Осталось {target.quantity}")
+
+    def before_reaction(self, target, battle_map):
+        self.owner.use_skills(
+            skill_type=ACTIVATE_BEFORE_SHOOT,
+            target=target, battle_map=battle_map
+        )
+        target.use_skills(
+            skill_type=ACTIVATE_BEFORE_GET_SHOT,
+            target=self.owner, battle_map=battle_map
+        )
+
+    def after_reaction(self, target, damage, kills, battle_map):
+        self.owner.use_skills(
+            skill_type=ACTIVATE_AFTER_SHOOT,
+            target=target, damage=damage,
+            kills=kills, battle_map=battle_map
+        )
+        target.use_skills(
+            skill_type=ACTIVATE_AFTER_GET_SHOT,
+            target=self.owner, damage=damage,
+            kills=kills, battle_map=battle_map
+        )
+        self.owner.apply_effect(BlockCounter())

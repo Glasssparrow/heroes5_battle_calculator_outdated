@@ -17,6 +17,8 @@ ACTIVATE_BEFORE_GET_HIT = "before get hit"
 ACTIVATE_AFTER_GET_HIT = "after get hit"
 ACTIVATE_BEFORE_SHOOT = "before shot"
 ACTIVATE_AFTER_SHOOT = "after shot"
+ACTIVATE_BEFORE_GET_SHOT = "before get shot"
+ACTIVATE_AFTER_GET_SHOT = "after get shot"
 ACTIVATE_AT_TURN_START = "turn_start"
 ACTIVATE_AT_TURN_END = "turn_end"
 
