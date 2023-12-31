@@ -300,5 +300,9 @@ class RunAndShoot(MeleeCounter):
 
 class DoubleDamageMeleeCounter(MeleeCounter):
 
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Свирепое возмездие"
+
     def calculate_damage_modifier(self):
         return 2*super().calculate_damage_modifier()
