@@ -1,6 +1,7 @@
 from math import ceil
 from .stats import *
 from .skills.turnend import *
+from .skills.game_mechanics import *
 
 
 # Класс отвечающий за взаимодействие между юнитами.
@@ -102,7 +103,7 @@ class Unit:
         self.color = color
         self.actions = []
         self.reactions = []
-        self.skills = []
+        self.skills = [DispellAfterTakingDamage(self)]
         self.turnend_skills = [HighMorale(owner=self),
                                LowMorale(owner=self)]
         self.auras = []
