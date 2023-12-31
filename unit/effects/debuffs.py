@@ -32,6 +32,7 @@ class Plague(Effect):
         self.attack += -2
         self.defence += -2
 
+
 class Poison(Effect):
 
     def __init__(self, damage):
@@ -39,3 +40,11 @@ class Poison(Effect):
         self.name = "яд"
         self.modifiers[POISON] = damage
         self.time = 3
+
+
+class BadLuck(Effect):
+
+    def __init__(self):
+        super().__init__()
+        self.name = "невезение"
+        self.luck = -3

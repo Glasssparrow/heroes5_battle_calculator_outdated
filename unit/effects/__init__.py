@@ -13,7 +13,7 @@ __all__ = [
     "WeakeningAdvanced", "WeakeningExpert",
     "DivineStrengthNoSkill", "DivineStrengthBasics",
     "DivineStrengthAdvanced", "DivineStrengthExpert",
-    "Poison",
+    "Poison", "BadLuck",
     "Berserk",
     "SlowNoSkill", "SlowBasics", "SlowAdvanced", "SlowExpert",
     "AttackDebuffNoSkill", "AttackDebuffBasics",

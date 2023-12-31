@@ -172,3 +172,15 @@ class MagicStrike(Skill):
             AttackDebuffExpert, DefenceDebuffExpert,
         ))
         target.apply_effect(effect())
+
+
+class ApplyBadLuck(Skill):
+
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Наложение невезения"
+        self.activation_cases.append(ACTIVATE_AFTER_STRIKE)
+
+    @staticmethod
+    def use(target, damage, kills, battle_map):
+        target.apply_effect(BadLuck())
