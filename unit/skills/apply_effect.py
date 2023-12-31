@@ -9,19 +9,15 @@ class PeasantBash(Skill):
 
     def __init__(self, owner):
         super().__init__(owner)
-        self.name = "Наложение дебафа"
+        self.name = "Оглушение (крестьяне)"
         self.activation_cases.append(ACTIVATE_BEFORE_STRIKE)
 
     def use(self, target, damage, kills, battle_map):
         if (
-            check_random(self.get_chance(target)) and
-            not target.check_immunity(BASH_IMMUNE)
+            check_random(self.get_chance(target))
         ):
-            print(f"наложен {Block1Counterattack().name}")
             target.apply_effect(Block1Counterattack())
             target.apply_effect(Bash())
-        else:
-            print(f"У {target.name} иммунитет оглушению")
 
     @staticmethod
     def _chance_formula(base_chance):
@@ -41,9 +37,30 @@ class PeasantBash(Skill):
 
 class FootmanBash(PeasantBash):
 
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Оглушение (мечники)"
+
     @staticmethod
     def _chance_formula(base_chance):
         return 1-(1-base_chance)**1.5
+
+
+class CyclopeBash(PeasantBash):
+
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Оглушение (циклопы)"
+
+    def use(self, target, damage, kills, battle_map):
+        if (
+            check_random(self.get_chance(target))
+        ):
+            target.apply_effect(Bash())
+
+    @staticmethod
+    def _chance_formula(base_chance):
+        return 1-(1-base_chance)**0.8
 
 
 class BlindingStrike(PeasantBash):

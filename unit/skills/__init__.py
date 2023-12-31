@@ -6,7 +6,8 @@ from .push import *
 from .game_mechanics import *
 
 __all__ = [
-    "PeasantBash", "Vampire", "HighMorale", "LowMorale",
+    "PeasantBash", "CyclopeBash", "FootmanBash",
+    "Vampire", "HighMorale", "LowMorale",
     "Dexterity", "BlindingStrike", "Kill1Extra", "Deal2DamageToEach",
     "PlagueStrike", "ApplySorrow", "ApplyWeakening",
     "ApplyPoison", "WyvernPoison",
