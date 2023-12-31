@@ -1,6 +1,6 @@
 from keywords import *
 from random import randint
-from ..common import calculate_damage, check_random
+from ..common import calculate_damage, check_random, calculate_base_chance
 from .common import Action
 
 
@@ -210,3 +210,26 @@ class LizardCharge(Melee):
             return 0
         else:
             return modifier
+
+
+class Assault(Melee):
+
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Атака в ближнем бою"
+        self.keyword = MELEE_ATTACK
+
+    def act(self, target, battle_map):
+        if not self.can_unit_act(target, battle_map):
+            return
+        if self.is_melee_attack_possible(target, battle_map):
+            self.strike(target, battle_map)
+            target.react(MELEE_COUNTER, self.owner, battle_map)
+            target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
+            if self.is_2_attack_worked(target):
+                self.strike(target, battle_map)
+                target.react(MELEE_COUNTER, self.owner, battle_map)
+
+    def is_2_attack_worked(self, target):
+        base_chance = calculate_base_chance(self.owner, target)
+        return 1-(1-base_chance)
