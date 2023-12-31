@@ -110,7 +110,9 @@ class ApplyPoison(Skill):
     def __init__(self, owner):
         super().__init__(owner)
         self.name = "Отравляющий удар"
-        self.activation_cases.append(ACTIVATE_AFTER_STRIKE)
+        self.activation_cases = [
+            ACTIVATE_AFTER_STRIKE, ACTIVATE_AFTER_SHOOT
+        ]
 
     def use(self, target, damage, kills, battle_map):
         target.apply_effect(Poison(self.owner.quantity))
