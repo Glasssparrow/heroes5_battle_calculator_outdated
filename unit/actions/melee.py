@@ -1,7 +1,8 @@
 from keywords import *
 from random import randint
 from ..common import (
-    calculate_damage, check_random, calculate_base_chance
+    calculate_damage, check_random, calculate_base_chance,
+    check_ghost
 )
 from .common import Action
 
@@ -21,14 +22,8 @@ class Melee(Action):
             target.react(MELEE_COUNTER, self.owner, battle_map)
 
     def strike(self, target, battle_map):
-        for special_attribute in target.special_attributes:
-            if special_attribute == GHOST:
-                if check_random(0.5):
-                    print(f"{target.name} уклоняется!")
-                    return 0
-                else:
-                    print(f"{target.name} не удалось уклониться!")
-                    break
+        if check_ghost(target):
+            return 0
         damage_modifier = self.calculate_damage_modifier(target)
         min_damage = int(
             self.owner.min_damage * self.owner.quantity * damage_modifier
@@ -165,14 +160,8 @@ class LizardCharge(Melee):
         self.name = "Удар с разбега (ящеры)"
 
     def strike(self, target, battle_map):
-        for special_attribute in target.special_attributes:
-            if special_attribute == GHOST:
-                if check_random(0.5):
-                    print(f"{target.name} уклоняется!")
-                    return 0
-                else:
-                    print(f"{target.name} не удалось уклониться!")
-                    break
+        if check_ghost(target):
+            return 0
         damage_modifier = self.calculate_damage_modifier(target)
         min_damage = int(
             self.owner.min_damage * self.owner.quantity * damage_modifier

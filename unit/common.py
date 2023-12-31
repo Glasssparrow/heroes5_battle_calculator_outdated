@@ -1,5 +1,6 @@
 from math import copysign, floor
 from random import random
+from keywords import *
 
 
 def calculate_damage(damage, attack, defence, max_damage):
@@ -41,3 +42,15 @@ def calculate_base_chance(user, target):
         return 0.75
     else:
         return chance
+
+
+def check_ghost(target):
+    if GHOST not in target.special_attributes:
+        return False
+    else:
+        if check_random(0.5):
+            print(f"{target.name} уклоняется!")
+            return True
+        else:
+            print(f"{target.name} не удалось уклониться!")
+            return False

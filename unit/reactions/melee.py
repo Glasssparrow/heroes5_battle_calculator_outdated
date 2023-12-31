@@ -1,5 +1,5 @@
 from random import randint
-from ..common import calculate_damage, check_random
+from ..common import calculate_damage, check_random, check_ghost
 from .common import Reaction
 from ..effects.counterattack import *
 from keywords import *
@@ -22,14 +22,8 @@ class MeleeCounter(Reaction):
         self.strike(target, battle_map)
 
     def strike(self, target, battle_map):
-        for special_attribute in target.special_attributes:
-            if special_attribute == GHOST:
-                if check_random(0.5):
-                    print(f"{target.name} уклоняется!")
-                    return
-                else:
-                    print(f"{target.name} не удалось уклониться!")
-                    break
+        if check_ghost(target):
+            return
         damage_modifier = self.calculate_damage_modifier()
         min_damage = int(
             self.owner.min_damage * self.owner.quantity *
@@ -165,14 +159,8 @@ class AcidBlood(Reaction):
         self.strike(target, battle_map)
 
     def strike(self, target, battle_map):
-        for special_attribute in target.special_attributes:
-            if special_attribute == GHOST:
-                if check_random(0.5):
-                    print(f"{target.name} уклоняется!")
-                    return
-                else:
-                    print(f"{target.name} не удалось уклониться!")
-                    break
+        if check_ghost(target):
+            return
         damage_modifier = 0.25
         min_damage = int(
             self.owner.min_damage * self.owner.quantity *
@@ -240,14 +228,8 @@ class RunAndShoot(MeleeCounter):
         self.shoot(target, battle_map)
 
     def shoot(self, target, battle_map):
-        for special_attribute in target.special_attributes:
-            if special_attribute == GHOST:
-                if check_random(0.5):
-                    print(f"{target.name} уклоняется!")
-                    return
-                else:
-                    print(f"{target.name} не удалось уклониться!")
-                    break
+        if check_ghost(target):
+            return
         # Половинный удар + стандартный расчет удачи
         damage_modifier = 0.5 * self.calculate_damage_modifier()
         min_damage = int(
