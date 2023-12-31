@@ -125,7 +125,7 @@ class WyvernPoison(ApplyPoison):
         self.name = "Яд виверны"
 
     def use(self, target, damage, kills, battle_map):
-        target.apply_effect(Poison(self.owner.quantity*3))
+        target.apply_effect(Poison(self.owner.quantity*4))
 
 
 class Whip(Skill):
