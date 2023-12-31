@@ -3,6 +3,7 @@ from .healing import *
 from .turnend import *
 from .deal_damage import *
 from .push import *
+from .game_mechanics import *
 
 __all__ = [
     "PeasantBash", "Vampire", "HighMorale", "LowMorale",
@@ -11,4 +12,5 @@ __all__ = [
     "ApplyPoison", "WyvernPoison", "Regeneration", "Whip",
     "BearPush", "BearRoar", "ThunderStrike",
     "FireShield20", "FireShield40",
+    "DispellAfterTakingDamage",
 ]
