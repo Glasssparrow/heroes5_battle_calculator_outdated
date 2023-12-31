@@ -1,7 +1,8 @@
 from .melee import *
 
 __all__ = [
-    "Melee", "ChivalryCharge",
+    "Melee", "WeakMelee",
     "DoubleAttackIfKill", "DoubleAttack", "Assault",
-    "LizardCharge",
+    "LizardCharge", "ChivalryCharge",
+    "MeleeNoCounter", "MeleeNoCounterIfSlowed"
 ]

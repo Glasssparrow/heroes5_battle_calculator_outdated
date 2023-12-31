@@ -1,5 +1,6 @@
 from ..common import check_random
 from keywords import *
+from ..effects import SlowNoSkill, SlowBasics, SlowAdvanced, SlowExpert
 
 
 class Action:
@@ -37,3 +38,12 @@ class Action:
                 else:
                     shield_wall = 1 - 0.1 * owner.tiles_moved
         return round(shield_wall, 1)
+
+
+def is_slowed(unit):
+    for effect in unit.effects:
+        if isinstance(effect, (
+                SlowNoSkill, SlowBasics, SlowAdvanced, SlowExpert
+        )):
+            return True
+    return False

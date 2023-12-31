@@ -1,10 +1,10 @@
 from keywords import *
 from random import randint
 from ..common import (
-    calculate_damage, check_random, calculate_base_chance,
+    calculate_damage, calculate_base_chance,
     check_ghost
 )
-from .common import Action
+from .common import Action, is_slowed
 
 
 class Melee(Action):
@@ -98,6 +98,10 @@ class Melee(Action):
 
 class ChivalryCharge(Melee):
 
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Рыцарский удар"
+
     def calculate_damage_modifier(self, target):
         shield_wall = self.calculate_shield_wall_modifier(
             self.owner, target)
@@ -109,6 +113,10 @@ class ChivalryCharge(Melee):
 
 
 class DoubleAttackIfKill(Melee):
+
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Колун"
 
     def act(self, target, battle_map):
         if not self.can_unit_act(target, battle_map):
@@ -123,6 +131,10 @@ class DoubleAttackIfKill(Melee):
 
 class DoubleAttack(Melee):
 
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Двойной удар"
+
     def act(self, target, battle_map):
         if not self.can_unit_act(target, battle_map):
             return
@@ -135,6 +147,10 @@ class DoubleAttack(Melee):
 
 class MeleeNoCounter(Melee):
 
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Безответный удар"
+
     def act(self, target, battle_map):
         if not self.can_unit_act(target, battle_map):
             return
@@ -143,6 +159,10 @@ class MeleeNoCounter(Melee):
 
 
 class WeakMelee(Melee):
+
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Слабый удар"
 
     def calculate_damage_modifier(self, target):
         shield_wall = self.calculate_shield_wall_modifier(
@@ -201,7 +221,7 @@ class Assault(Melee):
 
     def __init__(self, owner):
         super().__init__(owner)
-        self.name = "Атака в ближнем бою"
+        self.name = "Штурм"
         self.keyword = MELEE_ATTACK
 
     def act(self, target, battle_map):
@@ -217,3 +237,18 @@ class Assault(Melee):
     def is_2_attack_worked(self, target):
         base_chance = calculate_base_chance(self.owner, target)
         return 1-(1-base_chance)
+
+
+class MeleeNoCounterIfSlowed(Melee):
+
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Безответный удар если враг замедлен"
+
+    def act(self, target, battle_map):
+        if not self.can_unit_act(target, battle_map):
+            return
+        if self.is_melee_attack_possible(target, battle_map):
+            self.strike(target, battle_map)
+            if not is_slowed(target):
+                target.react(MELEE_COUNTER, self.owner, battle_map)
