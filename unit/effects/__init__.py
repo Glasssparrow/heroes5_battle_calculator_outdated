@@ -18,5 +18,7 @@ __all__ = [
     "SlowNoSkill", "SlowBasics", "SlowAdvanced", "SlowExpert",
     "AttackDebuffNoSkill", "AttackDebuffBasics",
     "AttackDebuffAdvanced", "AttackDebuffExpert",
+    "DefenceDebuffNoSkill", "DefenceDebuffBasics",
+    "DefenceDebuffAdvanced", "DefenceDebuffExpert",
     "Invisibility",
 ]

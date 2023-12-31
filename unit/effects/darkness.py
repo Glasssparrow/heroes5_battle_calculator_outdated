@@ -136,3 +136,38 @@ class AttackDebuffExpert(Effect):
         self.name = "немощность (эксперт)"
         self.attack = -12
         self.time = 3
+
+
+class DefenceDebuffNoSkill(Effect):
+
+    def __init__(self):
+        super().__init__()
+        self.name = "разрушающий луч (нет навыка)"
+        self.defence = -3
+
+    def reapply(self, new_instance):
+        self.defence += new_instance.defence
+
+
+class DefenceDebuffBasics(DefenceDebuffNoSkill):
+
+    def __init__(self):
+        super().__init__()
+        self.name = "разрушающий луч (основы)"
+        self.defence = -4
+
+
+class DefenceDebuffAdvanced(DefenceDebuffNoSkill):
+
+    def __init__(self):
+        super().__init__()
+        self.name = "разрушающий луч (сильная)"
+        self.defence = -5
+
+
+class DefenceDebuffExpert(DefenceDebuffNoSkill):
+
+    def __init__(self):
+        super().__init__()
+        self.name = "разрушающий луч (эксперт)"
+        self.defence = -6
