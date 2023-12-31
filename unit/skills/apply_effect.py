@@ -139,3 +139,19 @@ class Whip(Skill):
     def use(target, damage, kills, battle_map):
         effect = choice((SlowAdvanced, WeakeningAdvanced, Berserk))
         target.apply_effect(effect())
+
+
+class MagicStrike(Skill):
+
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Колдовской удар"
+        self.activation_cases.append(ACTIVATE_AFTER_STRIKE)
+
+    @staticmethod
+    def use(target, damage, kills, battle_map):
+        effect = choice((
+            WeakeningExpert, SlowExpert,
+            AttackDebuffExpert, DefenceDebuffExpert,
+        ))
+        target.apply_effect(effect())
