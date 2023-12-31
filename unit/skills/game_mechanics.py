@@ -11,6 +11,5 @@ class DispellAfterTakingDamage(Skill):
             ACTIVATE_AFTER_GET_HIT, ACTIVATE_AFTER_GET_SHOT,
         ]
 
-    @staticmethod
-    def use(target, damage, kills, battle_map):
-        target.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
+    def use(self, target, damage, kills, battle_map):
+        self.owner.dispell_by_case(DISPELL_AFTER_TAKING_DAMAGE)
