@@ -1,6 +1,8 @@
 from keywords import *
 from random import randint
-from ..common import calculate_damage, check_random, calculate_base_chance
+from ..common import (
+    calculate_damage, check_random, calculate_base_chance
+)
 from .common import Action
 
 
