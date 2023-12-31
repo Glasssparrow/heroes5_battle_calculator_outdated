@@ -2,6 +2,7 @@ from .melee import *
 
 __all__ = [
     "MeleeCounter", "InfiniteMeleeCounter",
-    "BattleFrenzyCounter", "WeakMeleeCounter",
+    "BattleFrenzyCounter",
+    "WeakMeleeCounter", "DoubleDamageMeleeCounter",
     "AcidBlood", "Coward", "RunAndShoot",
 ]

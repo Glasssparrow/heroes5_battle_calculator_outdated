@@ -296,3 +296,9 @@ class RunAndShoot(MeleeCounter):
             kills=kills, battle_map=battle_map
         )
         self.owner.apply_effect(BlockCounter())
+
+
+class DoubleDamageMeleeCounter(MeleeCounter):
+
+    def calculate_damage_modifier(self):
+        return 2*super().calculate_damage_modifier()
