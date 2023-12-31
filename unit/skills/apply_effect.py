@@ -118,6 +118,16 @@ class ApplyPoison(Skill):
         target.apply_effect(Poison(self.owner.quantity))
 
 
+class WyvernPoison(ApplyPoison):
+
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Яд виверны"
+
+    def use(self, target, damage, kills, battle_map):
+        target.apply_effect(Poison(self.owner.quantity*3))
+
+
 class Whip(Skill):
 
     def __init__(self, owner):
