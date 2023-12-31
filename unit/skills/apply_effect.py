@@ -86,6 +86,17 @@ class BlindingStrike(PeasantBash):
         return 1-(1-base_chance)**1
 
 
+class BlindingStrikeVampires(BlindingStrike):
+
+    def __init__(self, owner):
+        super().__init__(owner)
+        self.name = "Ослепляющий удар (вампиры)"
+
+    @staticmethod
+    def _chance_formula(base_chance):
+        return 1 - (1 - base_chance) ** 3
+
+
 class PlagueStrike(Skill):
 
     def __init__(self, owner):

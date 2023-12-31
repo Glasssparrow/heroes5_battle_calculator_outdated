@@ -8,7 +8,9 @@ from .game_mechanics import *
 __all__ = [
     "PeasantBash", "CyclopeBash", "FootmanBash",
     "Vampire", "HighMorale", "LowMorale",
-    "Dexterity", "BlindingStrike", "Kill1Extra", "Deal2DamageToEach",
+    "Dexterity",
+    "BlindingStrike", "BlindingStrikeVampires",
+    "Kill1Extra", "Deal2DamageToEach",
     "PlagueStrike",
     "ApplySorrow", "ApplyWeakening", "ApplyBadLuck",
     "ApplyPoison", "WyvernPoison",
