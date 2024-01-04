@@ -104,6 +104,8 @@ class Unit:
                  ):
         self.name = name
         self.color = color
+        self.side = 0
+
         self.actions = []
         self.reactions = []
         self.skills = [DispellAfterTakingDamage(self)]
