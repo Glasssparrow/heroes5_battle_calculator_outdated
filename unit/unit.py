@@ -97,8 +97,11 @@ class Unit:
         revived = self.quantity - quantity_before
         return revived
 
-    def __init__(self, name, color, attack, defence,
-                 min_damage, max_damage, health, initiative, speed):
+    def __init__(self, name,
+                 attack, defence, min_damage, max_damage, health,
+                 initiative, speed,
+                 color="Бесцветный",
+                 ):
         self.name = name
         self.color = color
         self.actions = []
