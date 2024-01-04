@@ -12,4 +12,5 @@ class BattleMap:
         if unit.color not in self.sides.keys():
             self.sides[unit.color] = len(self.sides)
         unit.side = self.sides[unit.color]
+        unit.id = len(self.units)
         self.units.append(unit)

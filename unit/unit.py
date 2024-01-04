@@ -105,6 +105,7 @@ class Unit:
         self.name = name
         self.color = color
         self.side = 0
+        self.id = None
 
         self.actions = []
         self.reactions = []
