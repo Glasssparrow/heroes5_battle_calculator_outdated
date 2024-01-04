@@ -1,5 +1,8 @@
 
 
+# Цвет по умолчанию
+DEFAULT_COLOR = "Бесцветный"
+
 # Особенности юнитов
 GHOST = "ghost"
 WALL_OF_SHIELDS = "wall_of_shields"

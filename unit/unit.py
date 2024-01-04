@@ -100,7 +100,7 @@ class Unit:
     def __init__(self, name,
                  attack, defence, min_damage, max_damage, health,
                  initiative, speed,
-                 color="Бесцветный",
+                 color=DEFAULT_COLOR,
                  ):
         self.name = name
         self.color = color
