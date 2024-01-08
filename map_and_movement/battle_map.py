@@ -18,5 +18,8 @@ class BattleMap:
     def get_distance(self, unit1, unit2):
         pass
 
+    def move_to(self, unit, coord):
+        pass
+
     def run_away(self, coward, scary_unit):
         pass
