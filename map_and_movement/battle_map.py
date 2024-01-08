@@ -1,3 +1,6 @@
+from get_distance import get_distance
+from move_to import move_to
+from run_away import run_away
 
 
 class BattleMap:
@@ -16,10 +19,10 @@ class BattleMap:
         self.units.append(unit)
 
     def get_distance(self, unit1, unit2):
-        pass
+        get_distance(self, unit1, unit2)
 
     def move_to(self, unit, coord):
-        pass
+        move_to(self, unit, coord)
 
     def run_away(self, coward, scary_unit):
-        pass
+        run_away(self, coward, scary_unit)
