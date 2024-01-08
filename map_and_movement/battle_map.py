@@ -14,3 +14,6 @@ class BattleMap:
         unit.side = self.sides[unit.color]
         unit.id = len(self.units)
         self.units.append(unit)
+
+    def get_distance(self, unit1, unit2):
+        pass
