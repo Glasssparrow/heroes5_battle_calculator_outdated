@@ -26,3 +26,6 @@ class BattleMap:
 
     def run_away(self, coward, scary_unit):
         run_away(self, coward, scary_unit)
+
+    def get_visualisation(self):
+        pass
