@@ -1,6 +1,7 @@
 from .get_distance import get_distance
 from .move_to import move_to
 from .run_away import run_away
+from .get_available_cells import get_available_cells
 from random import randint
 
 
@@ -24,6 +25,9 @@ class BattleMap:
     @staticmethod
     def get_distance(unit1, unit2):
         return get_distance(unit1, unit2)
+    
+    def get_available_cells(self, unit):
+        return get_available_cells(self, unit)
 
     def move_to(self, unit, coord):
         move_to(self, unit, coord)
