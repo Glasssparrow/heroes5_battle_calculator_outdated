@@ -1,4 +1,4 @@
 
 
-def get_distance(self, unit1, unit2):
+def get_distance(battle_map, unit1, unit2):
     pass

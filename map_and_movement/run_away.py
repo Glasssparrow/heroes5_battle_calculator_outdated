@@ -1,4 +1,4 @@
 
 
-def run_away(self, coward, scary_unit):
+def run_away(battle_map, coward, scary_unit):
     pass

@@ -1,4 +1,4 @@
 
 
-def move_to(self, unit, coord):
+def move_to(battle_map, unit, coord):
     pass
