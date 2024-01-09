@@ -21,8 +21,9 @@ class BattleMap:
         unit.id = len(self.units)
         self.units.append(unit)
 
-    def get_distance(self, unit1, unit2):
-        get_distance(self, unit1, unit2)
+    @staticmethod
+    def get_distance(unit1, unit2):
+        get_distance(unit1, unit2)
 
     def move_to(self, unit, coord):
         move_to(self, unit, coord)
