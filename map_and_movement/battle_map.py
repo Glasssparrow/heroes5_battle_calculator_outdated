@@ -1,6 +1,7 @@
 from get_distance import get_distance
 from move_to import move_to
 from run_away import run_away
+from random import randint
 
 
 class BattleMap:
@@ -14,6 +15,8 @@ class BattleMap:
             unit.color = color
         if unit.color not in self.sides.keys():
             self.sides[unit.color] = len(self.sides)
+        if not unit.coor:
+            unit.coord = (randint(1, 10), randint(1, 12))
         unit.side = self.sides[unit.color]
         unit.id = len(self.units)
         self.units.append(unit)

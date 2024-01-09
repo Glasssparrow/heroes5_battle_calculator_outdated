@@ -106,6 +106,7 @@ class Unit:
         self.color = color
         self.side = 0
         self.id = None
+        self.coord = None
 
         self.actions = []
         self.reactions = []
