@@ -18,6 +18,7 @@ class BattleMap:
             self.sides[unit.color] = len(self.sides)
         if not unit.coord:
             unit.coord = (randint(1, 10), randint(1, 12))
+        unit.pos = unit.coord[0] + unit.coord[1] * 12
         unit.side = self.sides[unit.color]
         unit.id = len(self.units)
         self.units.append(unit)

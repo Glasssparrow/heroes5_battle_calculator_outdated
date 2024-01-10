@@ -107,6 +107,7 @@ class Unit:
         self.side = 0
         self.id = None
         self.coord = None
+        self.pos = None
 
         self.actions = []
         self.reactions = []
