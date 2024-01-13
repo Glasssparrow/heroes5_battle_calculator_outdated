@@ -144,6 +144,20 @@ class Path:
         else:
             raise StopIteration
 
+    def __contains__(self, item):
+        """Проверяет, входит ли ячейка с данными координатами в диапазон"""
+        if not isinstance(item, tuple) or len(item) != 2:
+            raise Exception(
+                "Проверяется только входят ли координаты в диапазон. "
+                "Координат должно быть две и они должны быть "
+                "предоставлены в виде кортежа (х, у,)."
+            )
+        node_number = self._coord_into_node_number(item[0], item[1])
+        if node_number in self.range.keys():
+            return True
+        else:
+            return False
+
 
 class Pathfinder:
     def __init__(self, height, length):
