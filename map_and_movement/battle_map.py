@@ -38,11 +38,14 @@ class BattleMap:
 
     def get_visualisation(self):
         visualisation = []
-        for y in range(10):
+        for line in range(10):
             visualisation.append(["  .  "]*12)
         for unit in self.units:
             coord = unit.coord
             visualisation[coord[1]][coord[0]] = unit.color
+            if unit.big:
+                for x, y in [(0, 1), (1, 0), (1, 1)]:
+                    visualisation[coord[1]+y][coord[0]+x] = unit.color
         picture = ""
         for line in reversed(visualisation):
             for x in line:
