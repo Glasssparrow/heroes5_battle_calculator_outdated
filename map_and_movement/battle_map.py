@@ -37,4 +37,16 @@ class BattleMap:
         run_away(self, coward, scary_unit)
 
     def get_visualisation(self):
-        pass
+        visualisation = []
+        for y in range(10):
+            visualisation.append(["  .  "]*12)
+        for unit in self.units:
+            coord = unit.coord
+            visualisation[coord[1]][coord[0]] = unit.color
+        picture = ""
+        for line in reversed(visualisation):
+            for x in line:
+                picture += x[0:5]
+            picture += "\n"
+        return picture
+
