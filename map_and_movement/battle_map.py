@@ -2,7 +2,6 @@ from .get_distance import get_distance
 from .move_to import move_to
 from .run_away import run_away
 from .get_available_cells import get_available_cells
-from random import randint
 from .dijkstra_on_grid import Pathfinder
 
 
@@ -11,16 +10,26 @@ class BattleMap:
     def __init__(self):
         self.units = []
         self.sides = {}
-        self.pathfinder_small = Pathfinder(10, 12)
-        self.pathfinder_big = Pathfinder(10, 12)
+        self.pathfinders_small = {}
+        self.pathfinders_big = {}
 
-    def add_unit(self, unit, color=None):
+    def create_pathfinders(self, map_height, map_length):
+        for side_name in self.sides.keys():
+            self.pathfinders_big[side_name] = Pathfinder(map_height,
+                                                         map_length,)
+            self.pathfinders_small[side_name] = Pathfinder(map_height,
+                                                           map_length, )
+        for side_name, units in self.sides.items():
+            pass
+
+    def add_unit(self, unit, x, y, color=None):
         if color:
             unit.color = color
         if unit.color not in self.sides.keys():
-            self.sides[unit.color] = len(self.sides)
-        if not unit.coord:
-            unit.coord = (randint(1, 10), randint(1, 12))
+            self.sides[unit.color] = [len(self.units),]
+        else:
+            self.sides[unit.color].append(len(self.units))
+        unit.coord = (x, y)
         unit.pos = unit.coord[0] + unit.coord[1] * 12
         unit.side = self.sides[unit.color]
         unit.id = len(self.units)
@@ -32,8 +41,8 @@ class BattleMap:
     
     def get_available_cells(self, unit):
         return get_available_cells(
-            pathfinder_big=self.pathfinder_big,
-            pathfinder_small=self.pathfinder_small,
+            pathfinder_big=self.pathfinders_big[unit.side],
+            pathfinder_small=self.pathfinders_small[unit.side],
             unit=unit,
         )
 
