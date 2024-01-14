@@ -3,6 +3,7 @@ from .move_to import move_to
 from .run_away import run_away
 from .get_available_cells import get_available_cells
 from random import randint
+from .dijkstra_on_grid import Pathfinder
 
 
 class BattleMap:
@@ -10,6 +11,8 @@ class BattleMap:
     def __init__(self):
         self.units = []
         self.sides = {}
+        self.map_for_small = Pathfinder(10, 12)
+        self.map_for_big = Pathfinder(10, 12)
 
     def add_unit(self, unit, color=None):
         if color:
