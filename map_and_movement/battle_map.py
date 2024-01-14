@@ -59,4 +59,3 @@ class BattleMap:
                 picture += x[0:5]
             picture += "\n"
         return picture
-
