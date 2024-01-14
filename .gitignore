@@ -2,6 +2,7 @@
 old/
 current_test.py
 old_test.py
+initiative_test.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
