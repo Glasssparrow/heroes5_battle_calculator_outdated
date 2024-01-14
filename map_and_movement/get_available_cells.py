@@ -1,6 +1,8 @@
-from .dijkstra_on_grid import Pathfinder
 
 
-def get_available_cells(battle_map, unit):
-    pathfinder = Pathfinder(10, 12)
-    return pathfinder(unit.coord[0], unit.coord[1], unit.speed)
+def get_available_cells(pathfinder_big, pathfinder_small, unit):
+    x, y = unit.coord[0], unit.coord[1]
+    if unit.big:
+        return pathfinder_big(x, y, unit.speed)
+    else:
+        return pathfinder_small(x, y, unit.speed)

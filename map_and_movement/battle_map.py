@@ -11,8 +11,8 @@ class BattleMap:
     def __init__(self):
         self.units = []
         self.sides = {}
-        self.map_for_small = Pathfinder(10, 12)
-        self.map_for_big = Pathfinder(10, 12)
+        self.pathfinder_small = Pathfinder(10, 12)
+        self.pathfinder_big = Pathfinder(10, 12)
 
     def add_unit(self, unit, color=None):
         if color:
@@ -31,7 +31,11 @@ class BattleMap:
         return get_distance(unit1, unit2)
     
     def get_available_cells(self, unit):
-        return get_available_cells(self, unit)
+        return get_available_cells(
+            pathfinder_big=self.pathfinder_big,
+            pathfinder_small=self.pathfinder_small,
+            unit=unit,
+        )
 
     def move_to(self, unit, coord):
         move_to(self, unit, coord)
