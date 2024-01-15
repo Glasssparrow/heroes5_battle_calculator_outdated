@@ -35,7 +35,7 @@ class BattleMap:
         unit.id = len(self.units)
         self.units.append(unit)
 
-    def _add_unit_on_grid(self):
+    def _add_unit_on_grid(self, unit):
         pass
 
     @staticmethod
