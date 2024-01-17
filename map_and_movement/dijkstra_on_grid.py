@@ -178,10 +178,22 @@ class Pathfinder:
         self.occupied_cells = []
 
     def occupy_cell(self, x, y):
-        pass
+        if (x, y) not in self.occupied_cells:
+            self.occupied_cells.append((x, y,))
 
     def empty_cell(self, x, y):
-        pass
+        element_number = -1
+        for i, cell in enumerate(self.occupied_cells):
+            if cell[0] == x and cell[1] == y:
+                element_number = i
+                break
+        if element_number != -1:
+            self.occupied_cells.pop(element_number)
+        else:
+            raise Exception(
+                f"{x, y} не найдено в списке занятых союзниками "
+                f"ячеек."
+            )
 
     def _node_number_into_coord(self, number):
         return number % self.map_length, number // self.map_length
@@ -285,5 +297,6 @@ class Pathfinder:
 
         for node in nodes:
             x, y = self._node_number_into_coord(node)
-            paths[x, y] = last_row[node], best_path[node]
+            if not (x, y) in self.occupied_cells:
+                paths[x, y] = last_row[node], best_path[node]
         return paths
