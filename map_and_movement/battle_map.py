@@ -20,11 +20,21 @@ class BattleMap:
             self.pathfinders_small[side_name] = Pathfinder(map_height,
                                                            map_length, )
         for side_name, units in self.sides.items():
+            # Помечаем ячейку занятой для своей фракции
             for number in units:
                 unit = self.units[number]
                 x, y = unit.coord[0], unit.coord[1]
                 self.pathfinders_small[side_name].occupy_cell(x, y)
                 self.pathfinders_big[side_name].occupy_cell(x, y)
+            # Блокируем ячейку для чужих фракций
+            for side in self.sides.keys():
+                if side == side_name:
+                    continue
+                for number in units:
+                    unit = self.units[number]
+                    x, y = unit.coord[0], unit.coord[1]
+                    self.pathfinders_small[side].block_cell(x, y)
+                    self.pathfinders_big[side].block_cell(x, y)
 
     def add_unit(self, unit, x, y, color=None):
         if color:
