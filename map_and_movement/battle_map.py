@@ -44,8 +44,8 @@ class BattleMap:
     
     def get_available_cells(self, unit):
         return get_available_cells(
-            pathfinder_big=self.pathfinders_big[unit.side],
-            pathfinder_small=self.pathfinders_small[unit.side],
+            pathfinder_big=self.pathfinders_big[unit.color],
+            pathfinder_small=self.pathfinders_small[unit.color],
             unit=unit,
         )
 
