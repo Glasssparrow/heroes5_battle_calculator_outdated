@@ -212,6 +212,8 @@ class Pathfinder:
                 f"y ({y}) больше размерности поля ({self.map_height}). "
                 f"Помните что нумерация с 0."
             )
+        elif x < 0 or y < 0:
+            raise Exception("Координата не должна быть меньше нуля")
 
     def _block_cell_on_map(self, matrix, x, y, reverse):
         if reverse:
@@ -219,7 +221,7 @@ class Pathfinder:
         else:
             value = float("inf")
         self._verify_cell(x, y)
-        for dx in [-1, 1]:
+        for dx in [-1, 1, -self.map_length, +self.map_length]:
             if (
                 0
                 <= (self._coord_into_node_number(x, y)+dx) <
@@ -229,11 +231,11 @@ class Pathfinder:
                     self._coord_into_node_number(x, y)+dx,
                     self._coord_into_node_number(x, y)
                 ] = value
-        for dy in [-self.map_length, +self.map_length]:
+        for dy in [-1, 1, -self.map_length, +self.map_length]:
             if (
-                    0
-                    <= (self._coord_into_node_number(x, y) + dy) <
-                    len(self.all_nodes)
+                0
+                <= (self._coord_into_node_number(x, y) + dy) <
+                len(self.all_nodes)
             ):
                 matrix[
                     self._coord_into_node_number(x, y),
@@ -296,6 +298,11 @@ class Pathfinder:
                 done_nodes.add(start_node)
 
         for node in nodes:
+            if last_row[node] == float("inf"):
+                # Узла невозможно достичь, так что проходим мимо.
+                # Т.к. узел недостижим, его нет в списке лучших путей.
+                # Если его не пропустить будет исключение.
+                continue
             x, y = self._node_number_into_coord(node)
             if not (x, y) in self.occupied_cells:
                 paths[x, y] = last_row[node], best_path[node]
