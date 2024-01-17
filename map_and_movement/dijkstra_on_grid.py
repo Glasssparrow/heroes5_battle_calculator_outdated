@@ -175,6 +175,13 @@ class Pathfinder:
             for x in self.all_nodes:
                 if abs(x-y) == 1 or abs(x-y) == self.map_length:
                     self.matrix[x, y] = 1
+        self.occupied_cells = []
+
+    def occupy_cell(self, x, y):
+        pass
+
+    def empty_cell(self, x, y):
+        pass
 
     def _node_number_into_coord(self, number):
         return number % self.map_length, number // self.map_length
