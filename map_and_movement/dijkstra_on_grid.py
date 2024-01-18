@@ -256,8 +256,14 @@ class Pathfinder:
     def block_cell(self, x, y, reverse=False):
         self._block_cell_on_map(self.matrix, x, y, reverse)
 
+    def block_4_cells(self, x, y, reverse=False):
+        pass
+
     def unblock_cell(self, x, y):
         self.block_cell(x, y, reverse=True)
+
+    def unblock_4_cells(self, x, y):
+        pass
 
     def __call__(self, x, y, distance):
         paths = Path(x, y, self.map_length)
