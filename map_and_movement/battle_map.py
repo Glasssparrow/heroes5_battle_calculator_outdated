@@ -49,9 +49,6 @@ class BattleMap:
         unit.id = len(self.units)
         self.units.append(unit)
 
-    def _add_unit_on_grid(self, unit):
-        pass
-
     @staticmethod
     def get_distance(unit1, unit2):
         return get_distance(unit1, unit2)
