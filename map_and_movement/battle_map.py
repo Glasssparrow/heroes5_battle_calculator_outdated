@@ -34,7 +34,7 @@ class BattleMap:
                     unit = self.units[number]
                     x, y = unit.coord[0], unit.coord[1]
                     self.pathfinders_small[side].block_cell(x, y)
-                    self.pathfinders_big[side].block_cell(x, y)
+                    self.pathfinders_big[side].block_4_cells(x, y)
 
     def add_unit(self, unit, x, y, color=None):
         if color:

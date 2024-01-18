@@ -201,19 +201,32 @@ class Pathfinder:
     def _coord_into_node_number(self, x, y):
         return x + y * self.map_length
 
-    def _verify_cell(self, x, y):
+    def _verify_cell(self, x, y, raise_exception=True):
         if x >= self.map_length:
-            raise Exception(
-                f"х ({x}) больше размерности поля ({self.map_length}). "
-                f"Помните что нумерация с 0."
-            )
+            if raise_exception:
+                raise Exception(
+                    f"х ({x}) больше размерности поля "
+                    f"({self.map_length}). "
+                    f"Помните что нумерация с 0."
+                )
+            else:
+                return False
         elif y >= self.map_height:
-            raise Exception(
-                f"y ({y}) больше размерности поля ({self.map_height}). "
-                f"Помните что нумерация с 0."
-            )
+            if raise_exception:
+                raise Exception(
+                    f"y ({y}) больше размерности поля "
+                    f"({self.map_height}). "
+                    f"Помните что нумерация с 0."
+                )
+            else:
+                return False
         elif x < 0 or y < 0:
-            raise Exception("Координата не должна быть меньше нуля")
+            if raise_exception:
+                raise Exception("Координата не должна "
+                                "быть меньше нуля")
+            else:
+                return False
+        return True
 
     def _block_cell_on_map(self, matrix, x, y, reverse):
         if reverse:
@@ -257,7 +270,11 @@ class Pathfinder:
         self._block_cell_on_map(self.matrix, x, y, reverse)
 
     def block_4_cells(self, x, y, reverse=False):
-        pass
+        for dx, dy in [(0, 0), (0, 1), (-1, 0), (-1, 1)]:
+            if self._verify_cell(x+dx, y+dy):
+                self._block_cell_on_map(
+                    self.matrix, x+dx, y+dy, reverse
+                )
 
     def unblock_cell(self, x, y):
         self.block_cell(x, y, reverse=True)
