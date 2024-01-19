@@ -7,18 +7,24 @@ from .dijkstra_on_grid import Pathfinder
 
 class BattleMap:
 
-    def __init__(self):
+    def __init__(self, map_height, map_length):
         self.units = []
         self.sides = {}
         self.pathfinders_small = {}
         self.pathfinders_big = {}
+        self._map_height = map_height
+        self._map_length = map_length
 
-    def create_pathfinders(self, map_height, map_length):
+    def create_pathfinders(self):
         for side_name in self.sides.keys():
-            self.pathfinders_big[side_name] = Pathfinder(map_height,
-                                                         map_length,)
-            self.pathfinders_small[side_name] = Pathfinder(map_height,
-                                                           map_length, )
+            self.pathfinders_big[side_name] = Pathfinder(
+                self._map_height,
+                self._map_length,
+            )
+            self.pathfinders_small[side_name] = Pathfinder(
+                self._map_height,
+                self._map_length,
+            )
         for side_name, units in self.sides.items():
             # Помечаем ячейку занятой для своей фракции
             for number in units:
