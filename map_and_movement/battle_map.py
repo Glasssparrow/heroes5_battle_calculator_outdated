@@ -21,6 +21,17 @@ class BattleMap:
                 self._map_height,
                 self._map_length,
             )
+            # Блокируем нижний и правый ряды т.к. большие существа
+            # не могут на них встать (координата по левому верхней
+            # левой ячейке)
+            for x in range(self._map_length):
+                self.pathfinders_big[side_name].block_cell(
+                    x, self._map_height-1
+                )
+            for y in range(self._map_height):
+                self.pathfinders_big[side_name].block_cell(
+                    self._map_length - 1, y
+                )
             self.pathfinders_small[side_name] = Pathfinder(
                 self._map_height,
                 self._map_length,
