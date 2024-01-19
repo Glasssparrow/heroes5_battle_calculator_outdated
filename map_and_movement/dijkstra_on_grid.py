@@ -280,7 +280,7 @@ class Pathfinder:
         self.block_cell(x, y, reverse=True)
 
     def unblock_4_cells(self, x, y):
-        pass
+        self.block_4_cells(x, y, reverse=True)
 
     def __call__(self, x, y, distance):
         paths = Path(x, y, self.map_length)
