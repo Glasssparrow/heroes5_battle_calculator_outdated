@@ -16,6 +16,10 @@ class BattleMap:
         self._map_length = map_length
 
     def create_pathfinders(self):
+        """
+        Создание в экземпляре карт проходимости для всех сторон. 
+        :return:
+        """
         for side_name in self.sides.keys():
             self.pathfinders_big[side_name] = Pathfinder(
                 self._map_height,
