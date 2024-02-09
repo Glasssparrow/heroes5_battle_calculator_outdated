@@ -75,8 +75,9 @@ class Path:
         return number % self.len_x, number // self.len_x
 
     def __getitem__(self, item):
+        x, y = item[0], item[1]
         return self.range[
-            self._coord_into_node_number(item[0], item[1])
+            self._coord_into_node_number(x, y)
         ]
 
     def _get_path(self, node_number):
