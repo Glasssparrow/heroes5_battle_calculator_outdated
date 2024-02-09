@@ -1,3 +1,9 @@
+from dijkstra_on_grid import Path
+
+
+class DangerZone(Path):
+
+    pass
 
 
 def get_available_cells(pathfinder_big, pathfinder_small, unit):
