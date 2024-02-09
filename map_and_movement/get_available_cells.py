@@ -1,4 +1,4 @@
-from dijkstra_on_grid import Path
+from .dijkstra_on_grid import Path
 
 
 class DangerZone(Path):
