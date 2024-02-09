@@ -61,35 +61,35 @@ class SquareMatrix:
 class Path:
     def __init__(self, x, y, length):
         """Под длиной понимается ширина карты. x, y координаты старта"""
-        self.range = {}
-        self.path = {}
-        self.len_x = length
+        self.path_lengths = {}
+        self.paths = {}
+        self.map_width = length
         self.start_node = self._coord_into_node_number(x, y)
         self.for_iterator = []
         self.iteration = 0
 
     def _coord_into_node_number(self, x, y):
-        return x + y * self.len_x
+        return x + y * self.map_width
 
     def _node_number_into_coord(self, number):
-        return number % self.len_x, number // self.len_x
+        return number % self.map_width, number // self.map_width
 
     def __getitem__(self, item):
         x, y = item[0], item[1]
-        return self.range[
+        return self.path_lengths[
             self._coord_into_node_number(x, y)
         ]
 
     def _get_path(self, node_number):
-        if node_number not in self.path:
+        if node_number not in self.paths:
             raise Exception(
                 "Невозможно достичь узла."
             )
         current_node = node_number
         path = []
         while current_node != self.start_node:
-            path.append(self.path[current_node])
-            current_node = self.path[current_node]
+            path.append(self.paths[current_node])
+            current_node = self.paths[current_node]
         result = []
         for x in path:
             result.append(self._node_number_into_coord(x))
@@ -110,23 +110,23 @@ class Path:
                 f"Передаваемые данные (сейчас - {value}) "
                 f"должны быть в формате (number, number,)"
             )
-        self.range[
+        self.path_lengths[
             self._coord_into_node_number(key[0], key[1])
         ] = value[0]
-        self.path[
+        self.paths[
             self._coord_into_node_number(key[0], key[1])
         ] = value[1]
 
     def __delitem__(self, key):
-        del self.range[
+        del self.path_lengths[
             self._coord_into_node_number(key[0], key[1])
         ]
-        del self.path[
+        del self.paths[
             self._coord_into_node_number(key[0], key[1])
         ]
 
     def __iter__(self):
-        for k in self.range.keys():
+        for k in self.path_lengths.keys():
             self.for_iterator.append(k)
         self.for_iterator.sort()
         self.iteration = -1
@@ -139,7 +139,7 @@ class Path:
             node_number = self.for_iterator[self.iteration]
             return (
                 self._node_number_into_coord(node_number),
-                self.range[node_number],
+                self.path_lengths[node_number],
                 self._get_path(node_number),
             )
         else:
@@ -154,7 +154,7 @@ class Path:
                 "предоставлены в виде кортежа (х, у,)."
             )
         node_number = self._coord_into_node_number(item[0], item[1])
-        if node_number in self.range.keys():
+        if node_number in self.path_lengths.keys():
             return True
         else:
             return False
