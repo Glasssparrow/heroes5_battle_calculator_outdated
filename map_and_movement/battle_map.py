@@ -81,6 +81,9 @@ class BattleMap:
             unit=unit,
         )
 
+    def get_danger_zone(self, unit):
+        pass
+
     def move_to(self, unit, coord):
         move_to(self, unit, coord)
 
