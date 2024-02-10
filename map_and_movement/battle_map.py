@@ -1,7 +1,7 @@
 from .get_distance import get_distance
 from .move_to import move_to
 from .run_away import run_away
-from .get_available_cells import get_available_cells
+from .get_available_cells import get_available_cells, get_danger_zone
 from .dijkstra_on_grid import Pathfinder
 
 
@@ -82,7 +82,7 @@ class BattleMap:
         )
 
     def get_danger_zone(self, unit):
-        pass
+        get_danger_zone(self, unit)
 
     def move_to(self, unit, coord):
         move_to(self, unit, coord)
