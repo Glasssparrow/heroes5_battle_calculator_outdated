@@ -72,6 +72,12 @@ class BattleMap:
     @staticmethod
     def get_distance(coord1, coord2, is_big1, is_big2):
         return get_distance(coord1, coord2, is_big1, is_big2)
+
+    @staticmethod
+    def get_distance_between_units(unit1, unit2):
+        return get_distance(
+            unit1.coord, unit2.coord, unit1.big, unit2.big
+        )
     
     def get_available_cells(self, unit):
         return get_available_cells(
