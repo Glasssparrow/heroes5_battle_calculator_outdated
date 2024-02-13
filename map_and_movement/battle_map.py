@@ -70,8 +70,8 @@ class BattleMap:
         self.units.append(unit)
 
     @staticmethod
-    def get_distance(unit1, unit2):
-        return get_distance(unit1, unit2)
+    def get_distance(coord1, coord2, is_big1, is_big2):
+        return get_distance(coord1, coord2, is_big1, is_big2)
     
     def get_available_cells(self, unit):
         return get_available_cells(

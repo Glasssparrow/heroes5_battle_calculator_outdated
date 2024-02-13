@@ -1,9 +1,9 @@
 
 
-def get_distance(unit1, unit2):
-    if not unit1.big and not unit2.big:
-        x_distance = abs(unit1.coord[0] - unit2.coord[0])
-        y_distance = abs(unit1.coord[1] - unit2.coord[1])
+def get_distance(coord1, coord2, is_big1, is_big2):
+    if not is_big1 and not is_big2:
+        x_distance = abs(coord1[0] - coord2[0])
+        y_distance = abs(coord1[1] - coord2[1])
         if x_distance == y_distance == 1:
             return 1
         else:
@@ -11,21 +11,21 @@ def get_distance(unit1, unit2):
     unit1_coord = {0: None, 1: None}
     unit2_coord = {0: None, 1: None}
     for axis in (0, 1):
-        if unit1.coord[axis] > unit2.coord[axis]:
-            unit1_coord[axis] = unit1.coord[axis]
-            if unit2.big:
-                unit2_coord[axis] = unit2.coord[axis] + 1
+        if coord1[axis] > coord2[axis]:
+            unit1_coord[axis] = coord1[axis]
+            if is_big2:
+                unit2_coord[axis] = coord2[axis] + 1
             else:
-                unit2_coord[axis] = unit2.coord[axis]
-        elif unit1.coord[axis] < unit2.coord[axis]:
-            unit2_coord[axis] = unit2.coord[axis]
-            if unit1.big:
-                unit1_coord[axis] = unit1.coord[axis] + 1
+                unit2_coord[axis] = coord2[axis]
+        elif coord1[axis] < coord2[axis]:
+            unit2_coord[axis] = coord2[axis]
+            if is_big1:
+                unit1_coord[axis] = coord1[axis] + 1
             else:
-                unit1_coord[axis] = unit1.coord[axis]
+                unit1_coord[axis] = coord1[axis]
         else:
-            unit1_coord[axis] = unit1.coord[axis]
-            unit2_coord[axis] = unit2.coord[axis]
+            unit1_coord[axis] = coord1[axis]
+            unit2_coord[axis] = coord2[axis]
     x_distance = abs(unit1_coord[0] - unit2_coord[0])
     y_distance = abs(unit1_coord[1] - unit2_coord[1])
     if x_distance == y_distance == 1:
