@@ -1,6 +1,16 @@
 
 
 def get_distance(coord1, coord2, is_big1, is_big2):
+    """Вернуть расстояние между двумя юнитами.
+
+    coord1: Координаты первого юнита (x, y)
+    coord2: Координаты второго юнита (x, y)
+    is_big1: Является ли юнит1 большим (True/False)
+    is_big2: Является ли юнит2 большим (True/False)
+    :return Расстояние int
+    Расстояние возвращается равным единице если возможна
+    рукопашная атака.
+    """
     if not is_big1 and not is_big2:
         x_distance = abs(coord1[0] - coord2[0])
         y_distance = abs(coord1[1] - coord2[1])
