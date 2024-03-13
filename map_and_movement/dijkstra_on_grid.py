@@ -13,7 +13,7 @@ class SquareMatrix:
     def _is_coord(self, value):
         if not isinstance(value, (list, tuple)):
             raise Exception(
-                "Индекс не кортеж и не словарь"
+                "Индекс не кортеж и не лист"
             )
         elif len(value) != 2:
             raise Exception(
