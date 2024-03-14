@@ -10,6 +10,7 @@ from .decisionmaker import DecisionMaker
 # 7) Список доступных ячеек с возможностью ударить на следующий ход.
 # 8) Расстояния от доступных ячеек до ближайшего врага.
 def act(active_unit, battle_map):
+    decision_maker = DecisionMaker()
     available_cells = battle_map.get_available_cells(active_unit)
     for coord, length, path in available_cells:
         pass

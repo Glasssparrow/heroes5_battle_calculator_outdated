@@ -2,6 +2,10 @@
 
 class DecisionMaker:
 
+    def add(self, coord1, coord2):
+        self.height[len(self.coords)] = 0
+        self.coords.append((coord1, coord2,))
+
     def __init__(self):
         self.coords = []
         self.height = {}
