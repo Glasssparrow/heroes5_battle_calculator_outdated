@@ -17,9 +17,7 @@ class DecisionMaker:
         for n, coord in enumerate(self.coords):
             if coord == key:
                 number = n
-        if number is None:
-            raise Exception(f"{key} вне диапазона")
-        else:
+        if number is not None:
             self.height[number] += value
 
     def __delitem__(self, key):
@@ -27,7 +25,5 @@ class DecisionMaker:
         for n, coord in enumerate(self.coords):
             if coord == key:
                 number = n
-        if number is None:
-            raise Exception(f"{key} вне диапазона")
-        else:
+        if number is not None:
             self.height[number] = 0
