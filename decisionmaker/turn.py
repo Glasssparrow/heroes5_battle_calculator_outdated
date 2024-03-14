@@ -1,3 +1,4 @@
+from .decisionmaker import DecisionMaker
 
 
 # Для принятия решения нужно:
