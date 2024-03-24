@@ -7,7 +7,9 @@ class DecisionMaker:
         self.coords.append((coord1, coord2,))
 
     def __init__(self):
+        # Список координат
         self.coords = []
+        # Вес для каждой координаты (ключ = номер координаты в листе)
         self.height = {}
 
     def __getitem__(self, item):
