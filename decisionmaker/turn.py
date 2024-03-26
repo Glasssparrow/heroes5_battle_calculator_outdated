@@ -13,7 +13,7 @@ def act(active_unit, battle_map):
     decision_maker = DecisionMaker()
     available_cells = battle_map.get_available_cells(active_unit)
     for coord, length, path in available_cells:
-        pass
+        decision_maker.add(coord[0], coord[1])
     actions_available = active_unit.actions
     enemy_units = {}
     enemy_danger_zones = {}
