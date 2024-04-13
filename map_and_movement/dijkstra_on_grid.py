@@ -5,12 +5,13 @@ class SquareMatrix:
                  diagonal_value: int = "same_as_value_#987165451"):
         if diagonal_value == "same_as_value_#987165451":
             diagonal_value = value
-        self.matrix = [value] * size**2
-        self.size = size
+        self.matrix = [value] * size**2  # Матрицу в одномерный массив
+        self.size = size  # Размерность
         for x in range(size):
             self.matrix[x+x*size] = diagonal_value
 
     def _is_coord(self, value):
+        # Проверка корректности координат
         if not isinstance(value, (list, tuple)):
             raise Exception(
                 "Индекс не кортеж и не лист"
@@ -33,13 +34,14 @@ class SquareMatrix:
             )
 
     @staticmethod
-    def _is_number(value):
+    def _is_int_or_float(value):
         if not isinstance(value, (int, float)):
             raise Exception(
                 f"{value} не число (не экземпляр класса float или int)"
             )
 
     def get_row(self, row_number):
+        # Возвращает ряд с заданным индексом
         start_point = row_number*self.size
         end_point = (row_number+1)*self.size
         return self.matrix[start_point:end_point]
@@ -50,7 +52,7 @@ class SquareMatrix:
 
     def __setitem__(self, key, value):
         self._is_coord(key)
-        self._is_number(value)
+        self._is_int_or_float(value)
         self.matrix[key[0] + key[1]*self.size] = value
 
     def __delitem__(self, key):
