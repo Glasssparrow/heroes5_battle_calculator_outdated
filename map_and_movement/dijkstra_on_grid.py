@@ -83,6 +83,8 @@ class Path:
         ]
 
     def _get_path(self, node_number):
+        # Возвращает лист с координатами клеток пути
+        # Координаты в виде кортежей (х, у)
         if node_number not in self.paths:
             raise Exception(
                 "Невозможно достичь узла."
