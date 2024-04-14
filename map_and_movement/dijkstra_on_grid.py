@@ -77,6 +77,7 @@ class Path:
         return number % self.map_width, number // self.map_width
 
     def __getitem__(self, item):
+        # Возвращает длину пути до клетки
         x, y = item[0], item[1]
         return self.path_lengths[
             self._coord_into_node_number(x, y)
@@ -100,6 +101,8 @@ class Path:
         return result
 
     def get_path(self, x, y):
+        # Эта функция по сути просто вызывает self._get_path
+        # не особо понятно зачем такое усложнение, но допустим...
         result = self._get_path(
             self._coord_into_node_number(x, y)
         )
