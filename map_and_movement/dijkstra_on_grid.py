@@ -63,6 +63,7 @@ class SquareMatrix:
 class Path:
     def __init__(self, x, y, length):
         """Под длиной понимается ширина карты. x, y координаты старта"""
+        # path_length[порядковый_номер_клетки] = длина_пути_в_клетках
         self.path_lengths = {}
         self.paths = {}
         self.map_width = length
