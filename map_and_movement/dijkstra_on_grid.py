@@ -65,11 +65,18 @@ class Path:
         """Под длиной понимается ширина карты. x, y координаты старта"""
         # path_length[порядковый_номер_клетки] = длина_пути_в_клетках
         self.path_lengths = {}
+        # paths[порядковый_номер_клетки] = предыдущая_клетка_пути
         self.paths = {}
         self.map_width = length
+        # стартовая_клетка = порядковый_номер_стартовой_клетки
         self.start_node = self._coord_into_node_number(x, y)
+        # При создании итератора for_iterator наполняется
+        # списком порядковых номеров клеток
         self.for_iterator = []
+        # iteration - счетчик итератора
         self.iteration = 0
+        # На каждой итерации возвращается кортеж из
+        # (координаты, длина_пути, лист_пути_до_цели)
 
     def _coord_into_node_number(self, x, y):
         return x + y * self.map_width
@@ -134,6 +141,7 @@ class Path:
         ]
 
     def __iter__(self):
+        self.for_iterator = []  # Опустошаем итератор, на всякий
         for k in self.path_lengths.keys():
             self.for_iterator.append(k)
         self.for_iterator.sort()
