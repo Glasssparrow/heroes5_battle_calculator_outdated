@@ -207,10 +207,12 @@ class Pathfinder:
 
     def empty_cell(self, x, y):
         element_number = -1
+        # Находим номер клетки в листе занятых клеток
         for i, cell in enumerate(self.occupied_cells):
             if cell[0] == x and cell[1] == y:
                 element_number = i
                 break
+        # Удаляем клетку из списка занятых
         if element_number != -1:
             self.occupied_cells.pop(element_number)
         else:
