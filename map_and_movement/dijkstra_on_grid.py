@@ -228,6 +228,7 @@ class Pathfinder:
         return x + y * self.map_length
 
     def _verify_cell(self, x, y, raise_exception=True):
+        # Проверяем что х>длины, y>высоты, x>=0, y>=0.
         if x >= self.map_length:
             if raise_exception:
                 raise Exception(
