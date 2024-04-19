@@ -285,6 +285,8 @@ class Pathfinder:
                 ] = value
 
     def _get_nodes_around(self, x, y, distance):
+        # Возвращает список клеток расстояние до которых меньше distance.
+        # Список в виде номеров клеток.
         nodes = []
         for node in self.all_nodes:
             node_x, node_y = self._node_number_into_coord(node)
