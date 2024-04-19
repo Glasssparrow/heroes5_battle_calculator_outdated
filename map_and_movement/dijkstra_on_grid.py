@@ -197,7 +197,8 @@ class Pathfinder:
                 # abs(x-y)==map_length - соседние по вертикали
                 if abs(x-y) == 1 or abs(x-y) == self.map_length:
                     self.matrix[x, y] = 1
-        # Список клеток занятых союзниками
+        # Список клеток занятых союзниками.
+        # Содержит координаты, а не номера клеток.
         self.occupied_cells = []
 
     def occupy_cell(self, x, y):
