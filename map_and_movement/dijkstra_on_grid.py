@@ -178,20 +178,26 @@ class Path:
 
 class Pathfinder:
     def __init__(self, height, length):
-        self.all_nodes = []
-        self.map_length = length
-        self.map_height = height
+        self.all_nodes = []  # Список номеров всех клеток
+        self.map_length = length  # Ширина карты
+        self.map_height = height  # Высота карты
+        # Заполняем список номеров клеток
         for y in range(height):
             for x in range(length):
                 self.all_nodes.append(x + y * length)
+        # Матрица весов
         self.matrix = SquareMatrix(
             size=len(self.all_nodes), value=float("inf"),
             diagonal_value=0,
         )
+        # Соединяем все соседние клетки между собой
         for y in self.all_nodes:
             for x in self.all_nodes:
+                # abs(x-y)==1 это соседние по горизонтали клетки
+                # abs(x-y)==map_length - соседние по вертикали
                 if abs(x-y) == 1 or abs(x-y) == self.map_length:
                     self.matrix[x, y] = 1
+        # Список клеток занятых союзниками
         self.occupied_cells = []
 
     def occupy_cell(self, x, y):
