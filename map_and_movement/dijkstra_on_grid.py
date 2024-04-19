@@ -256,6 +256,8 @@ class Pathfinder:
         return True
 
     def _block_cell_on_map(self, matrix, x, y, reverse):
+        # Отделяем выбранную ячейку (в обе стороны) от соседних.
+        # Если reverse==True то, напротив, соединяет.
         if reverse:
             value = 1
         else:
