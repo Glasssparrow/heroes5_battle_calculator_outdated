@@ -314,6 +314,9 @@ class Pathfinder:
         self.block_4_cells(x, y, reverse=True)
 
     def __call__(self, x, y, distance):
+        # Собственно алгоритм Дейкстры.
+        # Возвращает экземпляр класса Path с длиной пути до
+        # всех клеток расстояние до которых меньше distance.
         paths = Path(x, y, self.map_length)
         paths[x, y] = (
             0,
