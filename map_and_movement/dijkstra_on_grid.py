@@ -322,6 +322,8 @@ class Pathfinder:
             0,
             self._coord_into_node_number(x, y)
         )
+        # Работаем только с узлами расстояние до которых
+        # меньше скорости юнита.
         nodes = self._get_nodes_around(x, y, distance)
         start_node = self._coord_into_node_number(x, y)
         done_nodes = {start_node}
