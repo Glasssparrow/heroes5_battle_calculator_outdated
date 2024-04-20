@@ -15,6 +15,11 @@ class BattleMap:
         # pathfinders[side_color] = Pathfinder()
         self.pathfinders_small = {}
         self.pathfinders_big = {}
+        # Упрощенные карты угрозы для юнитов.
+        # id юнита это его позиция в листе.
+        self.danger_maps = []  # Ничего не делает
+
+        # Размеры карты
         self._map_height = map_height
         self._map_length = map_length
 
