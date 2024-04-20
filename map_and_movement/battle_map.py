@@ -8,8 +8,11 @@ from .dijkstra_on_grid import Pathfinder
 class BattleMap:
 
     def __init__(self, map_height, map_length):
+        # Лист юнитов, позиция в листе == id юнита.
         self.units = []
+        # sides[side_color] = [same_color_unit_id_1, same_color_unit_id_2]
         self.sides = {}
+        # pathfinders[side_color] = Pathfinder()
         self.pathfinders_small = {}
         self.pathfinders_big = {}
         self._map_height = map_height
