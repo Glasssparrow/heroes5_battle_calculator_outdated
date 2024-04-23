@@ -9,6 +9,9 @@ class Action:
         self.name = "default"
         self.owner = owner
         self.keyword = "no keyword"
+        self.after_move = True
+        self.threat = 1
+        self.range = 1
 
     def luck_modifier(self):
         luck = self.owner.luck
