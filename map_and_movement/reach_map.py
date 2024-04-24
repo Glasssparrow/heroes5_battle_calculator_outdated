@@ -8,6 +8,9 @@ class ReachMap:
         self.map_length = length
         self.map_height = height
         self.enemy_big = False
+        for x in range(height):
+            for y in range(length):
+                pass
 
     def __getitem__(self, coord):
         # Возвращает величину угрозы для выбранной клетки
