@@ -10,6 +10,7 @@ class Action:
         self.owner = owner
         self.keyword = "no keyword"
         self.after_move = True
+        self.blocked_in_melee = False
         self.threat = 1
         self.range = 1
 
