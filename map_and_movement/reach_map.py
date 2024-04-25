@@ -10,7 +10,14 @@ class ReachMap:
         self.enemy_big = False
         for x in range(height):
             for y in range(length):
-                pass
+                self.threat_for_big.append(0)
+                self.threat_for_small.append(0)
+
+    def _set_threat(self):
+        pass
+
+    def _increase_threat(self):
+        pass
 
     def __getitem__(self, coord):
         # Возвращает величину угрозы для выбранной клетки
