@@ -13,10 +13,10 @@ class ReachMap:
                 self.threat_for_big.append(0)
                 self.threat_for_small.append(0)
 
-    def _set_threat(self):
+    def _set_threat(self, coord, threat):
         pass
 
-    def _increase_threat(self):
+    def _increase_threat(self, coord, threat):
         pass
 
     def __getitem__(self, coord):
