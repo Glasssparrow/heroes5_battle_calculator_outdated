@@ -17,6 +17,7 @@ class Action:
         self.require_ammo = 0
 
     def can_be_used(self):
+        # Проверяет достаточно ли маны или боеприпасов.
         pass
 
     def luck_modifier(self):
