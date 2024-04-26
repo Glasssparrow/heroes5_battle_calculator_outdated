@@ -99,7 +99,7 @@ class Unit:
 
     def __init__(self, name,
                  attack, defence, min_damage, max_damage, health,
-                 initiative, speed,
+                 initiative, speed, mana, ammo,
                  color=DEFAULT_COLOR,
                  ):
         self.name = name
@@ -131,6 +131,11 @@ class Unit:
         self.luck = 0
         self.morale = 0
         self.big = False
+
+        self.max_mana = mana
+        self.mana = mana
+        self.max_ammo = ammo
+        self.ammo = ammo
 
         self.tiles_moved = 0
 
