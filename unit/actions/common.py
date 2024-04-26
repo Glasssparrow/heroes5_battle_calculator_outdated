@@ -18,7 +18,11 @@ class Action:
 
     def can_be_used(self):
         # Проверяет достаточно ли маны или боеприпасов.
-        pass
+        if self.require_ammo > self.owner.ammo:
+            return False
+        if self.require_mana > self.owner.mana:
+            return False
+        return True
 
     def luck_modifier(self):
         luck = self.owner.luck
