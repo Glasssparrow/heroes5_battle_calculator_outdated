@@ -13,6 +13,11 @@ class Action:
         self.blocked_in_melee = False
         self.threat = 1
         self.range = 1
+        self.require_mana = 0
+        self.require_ammo = 0
+
+    def can_be_used(self):
+        pass
 
     def luck_modifier(self):
         luck = self.owner.luck
