@@ -39,6 +39,9 @@ class Unit:
                 action.act(target, battle_map)
                 return
 
+    def use_aura(self, target, distance):
+        pass
+
     def end_turn(self):
         self.dispell_by_case(DISPELL_AT_TURN_END)
         for skill in self.turnend_skills:
