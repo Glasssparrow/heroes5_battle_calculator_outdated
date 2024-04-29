@@ -19,6 +19,7 @@ class Effect:
         self.blocked_by_immunities = []
         self.dispell_conditions = []
         self.dispell_exception_once = False
+        self.is_aura = False
 
     def reapply(self, new_instance):
         self.time = new_instance.time
