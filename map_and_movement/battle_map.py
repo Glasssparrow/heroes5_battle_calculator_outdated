@@ -100,6 +100,9 @@ class BattleMap:
     def move_to(self, unit, coord):
         move_to(self, unit, coord)
 
+    def apply_auras(self, unit):
+        pass
+
     def run_away(self, coward, scary_unit):
         run_away(self, coward, scary_unit)
 
