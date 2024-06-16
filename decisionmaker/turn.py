@@ -21,6 +21,8 @@ def act(active_unit, battle_map):
         if unit.side == active_unit.side:
             continue
         enemy_units[unit.id] = unit
+        # Возвращает зону до которой юнит может добраться,
+        # а не зону опасности.
         enemy_danger_zones[unit.id] = (
             battle_map.get_available_cells(active_unit)
         )
