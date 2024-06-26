@@ -122,3 +122,6 @@ class BattleMap:
                 picture += x[0:5]
             picture += "\n"
         return picture
+    
+    def get_hostile_units(self, unit):
+        pass
