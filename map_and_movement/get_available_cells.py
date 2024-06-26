@@ -15,4 +15,4 @@ def get_available_cells(pathfinder_big, pathfinder_small, unit):
 
 
 def get_danger_zone(battle_map, unit):
-    pass
+    hostile_units = battle_map.get_hostile_units(unit)
