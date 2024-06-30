@@ -18,3 +18,5 @@ def get_available_cells(pathfinder_big, pathfinder_small, unit):
 def get_danger_zone(battle_map, unit):
     danger_zone = Path(unit.coord[0], unit.coord[1],
                        battle_map._map_length)
+    for side_name, units_list in battle_map.sides.items():
+        pass
