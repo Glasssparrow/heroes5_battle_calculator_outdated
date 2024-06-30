@@ -16,4 +16,5 @@ def get_available_cells(pathfinder_big, pathfinder_small, unit):
 
 
 def get_danger_zone(battle_map, unit):
-    pass
+    danger_zone = Path(unit.coord[0], unit.coord[1],
+                       battle_map._map_length)
