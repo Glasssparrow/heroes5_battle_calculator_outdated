@@ -8,6 +8,7 @@ class DangerZone(Path):
 
 def get_available_cells(pathfinder_big, pathfinder_small, unit):
     x, y = unit.coord[0], unit.coord[1]
+    # Возвращает экземпляр класса Path
     if unit.big:
         return pathfinder_big(x, y, unit.speed)
     else:
