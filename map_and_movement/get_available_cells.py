@@ -1,11 +1,6 @@
 from .dijkstra_on_grid import Path
 
 
-class DangerZone(Path):
-
-    pass
-
-
 def get_available_cells(pathfinder_big, pathfinder_small, unit):
     x, y = unit.coord[0], unit.coord[1]
     # Возвращает экземпляр класса Path
