@@ -6,6 +6,10 @@ class DangerZone:
     def __init__(self, height, length):
         self.height = height
         self.length = length
+        self.data = []
+        for y in range(height):
+            for x in range(length):
+                self.data.append([False]*8)
 
 
 def get_available_cells(pathfinder_big, pathfinder_small, unit):
