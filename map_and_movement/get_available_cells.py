@@ -7,9 +7,8 @@ class DangerZone:
         self.height = height
         self.length = length
         self.data = []
-        for y in range(height):
-            for x in range(length):
-                self.data.append([False]*8)
+        for x in range(length):
+            self.data.append([False]*height)
 
 
 def get_available_cells(pathfinder_big, pathfinder_small, unit):
