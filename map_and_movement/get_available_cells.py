@@ -10,6 +10,15 @@ class DangerZone:
         for x in range(length):
             self.data.append([False]*height)
 
+    def __getitem__(self, item):
+        return self.data[item[0]][item[1]]
+
+    def __setitem__(self, key, value):
+        self.data[key[0]][key[1]] = value
+
+    def __delitem__(self, key):
+        self.data[key[0]][key[1]] = False
+
 
 def get_available_cells(pathfinder_big, pathfinder_small, unit):
     x, y = unit.coord[0], unit.coord[1]
