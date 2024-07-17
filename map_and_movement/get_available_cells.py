@@ -14,7 +14,10 @@ class DangerZone:
         return self.data[item[0]][item[1]]
 
     def __setitem__(self, key, value):
-        self.data[key[0]][key[1]] = value
+        if value:
+            self.data[key[0]][key[1]] = True
+        else:
+            self.data[key[0]][key[1]] = False
 
     def __delitem__(self, key):
         self.data[key[0]][key[1]] = False
