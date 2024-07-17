@@ -9,6 +9,10 @@ class DangerZone:
         self.data = []
         for x in range(length):
             self.data.append([False]*height)
+        self.danger = 0
+
+    def set_danger_level(self, danger_level):
+        self.danger = danger_level
 
     def __getitem__(self, item):
         return self.data[item[0]][item[1]]
