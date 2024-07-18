@@ -7,8 +7,10 @@ class DangerZone:
         self.height = height
         self.length = length
         self.data = []
+        self.danger_map = []
         for x in range(length):
             self.data.append([False]*height)
+            self.danger_map.append([0]*height)
         self.danger = 0
 
     def set_danger_level(self, danger_level):
