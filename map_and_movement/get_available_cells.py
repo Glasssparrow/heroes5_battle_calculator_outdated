@@ -17,7 +17,13 @@ class DangerZone:
         self.danger = danger_level
 
     def add_danger(self):
-        pass
+        for x in range(self.length):
+            for y in range(self.height):
+                if (
+                    self.data[x][y] and
+                    self.danger_map[x][y] < self.danger
+                ):
+                    self.danger_map[x][y] = self.danger
 
     def __getitem__(self, item):
         return self.data[item[0]][item[1]]
