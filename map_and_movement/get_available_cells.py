@@ -29,10 +29,11 @@ class DangerZone:
         return self.data[item[0]][item[1]]
 
     def __setitem__(self, key, value):
-        if value:
-            self.data[key[0]][key[1]] = True
-        else:
-            self.data[key[0]][key[1]] = False
+        if not isinstance(value, bool):
+            raise Exception(
+                f"Допустимо лишь правда/ложь, получено - {value}"
+            )
+        self.data[key[0]][key[1]] = value
 
     def __delitem__(self, key):
         self.data[key[0]][key[1]] = False
