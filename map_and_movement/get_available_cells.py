@@ -31,7 +31,7 @@ class DangerZone:
     def __setitem__(self, key, value):
         if not isinstance(value, bool):
             raise Exception(
-                f"Допустимо лишь правда/ложь, получено - {value}"
+                f"Допустимо лишь True/False, получено - {value}"
             )
         self.data[key[0]][key[1]] = value
 
