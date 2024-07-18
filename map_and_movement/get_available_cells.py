@@ -16,6 +16,9 @@ class DangerZone:
     def set_danger_level(self, danger_level):
         self.danger = danger_level
 
+    def add_danger(self):
+        pass
+
     def __getitem__(self, item):
         return self.data[item[0]][item[1]]
 
