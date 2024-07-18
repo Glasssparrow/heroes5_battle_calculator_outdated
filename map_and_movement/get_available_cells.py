@@ -25,6 +25,9 @@ class DangerZone:
                 ):
                     self.danger_map[x][y] = self.danger
 
+    def get_danger(self, item):
+        return self.danger_map[item[0]][item[1]]
+
     def __getitem__(self, item):
         return self.data[item[0]][item[1]]
 
