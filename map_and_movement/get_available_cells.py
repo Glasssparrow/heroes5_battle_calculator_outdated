@@ -13,7 +13,7 @@ class DangerZone:
             self.danger_map.append([0]*height)
         self.danger = 0
 
-    def set_danger_level(self, danger_level):
+    def set_skill_danger_level(self, danger_level):
         self.danger = danger_level
 
     def add_danger(self):
