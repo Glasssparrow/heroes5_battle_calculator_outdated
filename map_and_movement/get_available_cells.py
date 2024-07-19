@@ -3,6 +3,11 @@ from .dijkstra_on_grid import Path
 
 class DangerZone:
 
+    pass
+
+
+class DangerZoneInProgress:
+
     def __init__(self, height, length):
         self.height = height
         self.length = length
@@ -56,3 +61,5 @@ def get_danger_zone(battle_map, unit):
                        battle_map._map_length)
     for side_name, unit_ids_list in battle_map.sides.items():
         pass
+
+    # Возвращаем экземпляр класса DangerZone
