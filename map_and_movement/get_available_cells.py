@@ -1,14 +1,44 @@
 from .dijkstra_on_grid import Path
 
 
+class BlockableDangerZone:
+
+    def __init__(self, length, height, data):
+        self._blockable_danger = data
+        for x in range(length):
+            self._blockable_danger.append([0] * height)
+
+    def __getitem__(self, item):
+        return self._blockable_danger[item[0]][item[1]]
+
+    def __setitem__(self, key, value):
+        if not isinstance(value, (float, int)):
+            raise Exception(
+                f"Допустимо лишь float/int, получено - {value}"
+            )
+        self._blockable_danger[key[0]][key[1]] = value
+
+    def __delitem__(self, key):
+        self._blockable_danger[key[0]][key[1]] = 0
+
+
 class DangerZone:
 
     def __init__(self, length, height):
         self._danger = []
         self._blockable_danger = []
+        self._blockable_danger_instance = BlockableDangerZone(
+            length=length,
+            height=height,
+            data=self._blockable_danger,
+        )
         for x in range(length):
             self._danger.append([0] * height)
             self._blockable_danger.append([0] * height)
+
+    @property
+    def blockable(self):
+        return self._blockable_danger_instance
 
     def __getitem__(self, item):
         return self._danger[item[0]][item[1]]
