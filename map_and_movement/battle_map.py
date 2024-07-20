@@ -95,7 +95,7 @@ class BattleMap:
         )
 
     def get_danger_zone(self, unit):
-        get_danger_zone(self, unit)
+        return get_danger_zone(self, unit)
 
     def move_to(self, unit, coord):
         move_to(self, unit, coord)
