@@ -3,7 +3,23 @@ from .dijkstra_on_grid import Path
 
 class DangerZone:
 
-    pass
+    def __init__(self, length, height):
+        self.danger = []
+        for x in range(length):
+            self.danger.append([0] * height)
+
+    def __getitem__(self, item):
+        return self.danger[item[0]][item[1]]
+
+    def __setitem__(self, key, value):
+        if not isinstance(value, (float, int)):
+            raise Exception(
+                f"Допустимо лишь float/int, получено - {value}"
+            )
+        self.danger[key[0]][key[1]] = value
+
+    def __delitem__(self, key):
+        self.danger[key[0]][key[1]] = 0
 
 
 class DangerZoneInProgress:
