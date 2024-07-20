@@ -109,8 +109,6 @@ def get_danger_zone(battle_map, unit):
         height=battle_map.map_height,
         length=battle_map.map_length,
     )
-    path = Path(unit.coord[0], unit.coord[1],
-                battle_map.map_length)
     for side_name, unit_ids_list in battle_map.sides.items():
         pass
     return result
