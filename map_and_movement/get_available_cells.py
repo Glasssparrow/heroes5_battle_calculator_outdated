@@ -5,8 +5,10 @@ class DangerZone:
 
     def __init__(self, length, height):
         self._danger = []
+        self._blockable_danger = []
         for x in range(length):
             self._danger.append([0] * height)
+            self._blockable_danger.append([0] * height)
 
     def __getitem__(self, item):
         return self._danger[item[0]][item[1]]
