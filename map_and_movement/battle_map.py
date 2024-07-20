@@ -20,8 +20,8 @@ class BattleMap:
         self.reach_maps = []  # Ничего не делает
 
         # Размеры карты
-        self._map_height = map_height
-        self._map_length = map_length
+        self.map_height = map_height
+        self.map_length = map_length
 
     def create_pathfinders(self):
         """
@@ -29,23 +29,23 @@ class BattleMap:
         """
         for side_name in self.sides.keys():
             self.pathfinders_big[side_name] = Pathfinder(
-                self._map_height,
-                self._map_length,
+                self.map_height,
+                self.map_length,
             )
             # Блокируем нижний и правый ряды т.к. большие существа
             # не могут на них встать (координата по левому верхней
             # левой ячейке)
-            for x in range(self._map_length):
+            for x in range(self.map_length):
                 self.pathfinders_big[side_name].block_cell(
-                    x, self._map_height-1
+                    x, self.map_height - 1
                 )
-            for y in range(self._map_height):
+            for y in range(self.map_height):
                 self.pathfinders_big[side_name].block_cell(
-                    self._map_length - 1, y
+                    self.map_length - 1, y
                 )
             self.pathfinders_small[side_name] = Pathfinder(
-                self._map_height,
-                self._map_length,
+                self.map_height,
+                self.map_length,
             )
         for side_name, units in self.sides.items():
             # Помечаем ячейку занятой для своей фракции
