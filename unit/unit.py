@@ -21,6 +21,48 @@ class Unit:
     luck = Luck()
     morale = Morale()
 
+    def __init__(self, name,
+                 attack, defence, min_damage, max_damage, health,
+                 initiative, speed, mana, ammo,
+                 color=DEFAULT_COLOR,
+                 ):
+        self.name = name
+        self.color = color
+        self.side = 0
+        self.id = None
+        self.coord = None
+        self.pos = None
+
+        self.actions = []
+        self.reactions = []
+        self.skills = [DispellAfterTakingDamage(self)]
+        self.turnend_skills = [HighMorale(owner=self),
+                               LowMorale(owner=self)]
+        self.auras = []
+        self.effects = []
+        self.immunities = []
+        self.special_attributes = []  # Призрак, Стена_щитов
+        self.attack = attack
+        self.defence = defence
+        self.min_damage = min_damage
+        self.max_damage = max_damage
+        self._health = health
+        self.initiative = initiative
+        self.speed = speed
+        self._max_quantity = 0
+        self.quantity = 0
+        self.hp = 0
+        self.luck = 0
+        self.morale = 0
+        self.big = False
+
+        self.max_mana = mana
+        self.mana = mana
+        self.max_ammo = ammo
+        self.ammo = ammo
+
+        self.tiles_moved = 0
+
     def take_action(self, action_type, target, battle_map):
         self.start_turn()
         self._action(action_type, target, battle_map)
@@ -99,48 +141,6 @@ class Unit:
         self.quantity = self.hp / self.health
         revived = self.quantity - quantity_before
         return revived
-
-    def __init__(self, name,
-                 attack, defence, min_damage, max_damage, health,
-                 initiative, speed, mana, ammo,
-                 color=DEFAULT_COLOR,
-                 ):
-        self.name = name
-        self.color = color
-        self.side = 0
-        self.id = None
-        self.coord = None
-        self.pos = None
-
-        self.actions = []
-        self.reactions = []
-        self.skills = [DispellAfterTakingDamage(self)]
-        self.turnend_skills = [HighMorale(owner=self),
-                               LowMorale(owner=self)]
-        self.auras = []
-        self.effects = []
-        self.immunities = []
-        self.special_attributes = []  # Призрак, Стена_щитов
-        self.attack = attack
-        self.defence = defence
-        self.min_damage = min_damage
-        self.max_damage = max_damage
-        self._health = health
-        self.initiative = initiative
-        self.speed = speed
-        self._max_quantity = 0
-        self.quantity = 0
-        self.hp = 0
-        self.luck = 0
-        self.morale = 0
-        self.big = False
-
-        self.max_mana = mana
-        self.mana = mana
-        self.max_ammo = ammo
-        self.ammo = ammo
-
-        self.tiles_moved = 0
 
     def get_quantity(self, quantity):
         self._max_quantity = quantity
