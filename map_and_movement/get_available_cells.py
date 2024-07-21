@@ -104,13 +104,16 @@ def get_available_cells(pathfinder_big, pathfinder_small, unit):
         return pathfinder_small(x, y, unit.speed)
 
 
-def get_danger_zone(battle_map, unit):
+def get_danger_zone(battle_map, the_unit):
     result = DangerZone(
         height=battle_map.map_height,
         length=battle_map.map_length,
     )
-    for side_name, unit_ids_list in battle_map.sides.items():
-        pass
+    for side_color, unit_ids_list in battle_map.sides.items():
+        if side_color == the_unit.color:
+            continue
+        for unit_id in unit_ids_list:
+            unit = battle_map.units[unit_id]
     return result
 
     # Возвращаем экземпляр класса DangerZone
