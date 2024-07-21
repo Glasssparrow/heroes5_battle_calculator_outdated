@@ -114,6 +114,9 @@ def get_danger_zone(battle_map, the_unit):
             continue
         for unit_id in unit_ids_list:
             unit = battle_map.units[unit_id]
+            available_cells = battle_map.get_available_cells(unit)
+            for coord, length, path in available_cells:
+                pass
     return result
 
     # Возвращаем экземпляр класса DangerZone
