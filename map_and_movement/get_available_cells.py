@@ -18,7 +18,7 @@ class BlockableDangerZone:
             raise Exception(
                 f"Допустимо лишь float/int, получено - {value}"
             )
-        if key[0] < self._length and key[1] < self._height:
+        if 0 <= key[0] < self._length and 0 <= key[1] < self._height:
             self._blockable_danger[key[0]][key[1]] = value
 
     def __delitem__(self, key):
@@ -53,7 +53,7 @@ class DangerZone:
             raise Exception(
                 f"Допустимо лишь float/int, получено - {value}"
             )
-        if key[0] < self.length and key[1] < self.height:
+        if 0 <= key[0] < self.length and 0 <= key[1] < self.height:
             self._danger[key[0]][key[1]] = value
 
     def __delitem__(self, key):
