@@ -302,7 +302,7 @@ class Pathfinder:
 
     def block_4_cells(self, x, y, reverse=False):
         for dx, dy in [(0, 0), (0, 1), (-1, 0), (-1, 1)]:
-            if self._verify_cell(x+dx, y+dy):
+            if self._verify_cell(x+dx, y+dy, raise_exception=False):
                 self._block_cell_on_map(
                     self.matrix, x+dx, y+dy, reverse
                 )
