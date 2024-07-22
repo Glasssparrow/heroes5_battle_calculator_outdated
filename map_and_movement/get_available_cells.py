@@ -104,6 +104,10 @@ def get_available_cells(pathfinder_big, pathfinder_small, unit):
         return pathfinder_small(x, y, unit.speed)
 
 
+def get_attack_area(x, y, big):
+    pass
+
+
 def get_danger_zone(battle_map, the_unit):
     result = DangerZone(
         height=battle_map.map_height,
