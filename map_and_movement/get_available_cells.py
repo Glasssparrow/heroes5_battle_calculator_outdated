@@ -105,7 +105,22 @@ def get_available_cells(pathfinder_big, pathfinder_small, unit):
 
 
 def get_attack_area(x, y, big):
-    pass
+    attack_area = []
+    if big:
+        for dx, dy in [
+            (0, 1), (1, 1), (1, 0), (1, -1),
+            (0, -1), (-1, -1), (-1, 0), (-1, 1),
+        ]:
+            attack_area.append((x+dx, y+dy))
+    else:
+        for dx, dy in [
+            (0, -1), (+1, -1,), (+2, -1),
+            (+2, 0), (+2, +1), (+2, +2),
+            (+1, +2), (0, +2), (-1, +2),
+            (-1, +1), (-1, 0), (-1, -1)
+        ]:
+            attack_area.append((x + dx, y + dy))
+    return attack_area
 
 
 def get_danger_zone(battle_map, the_unit):
