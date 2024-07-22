@@ -4,6 +4,8 @@ from .dijkstra_on_grid import Path
 class BlockableDangerZone:
 
     def __init__(self, length, height, data):
+        self._length = length
+        self._height = height
         self._blockable_danger = data
         for x in range(length):
             self._blockable_danger.append([0] * height)
