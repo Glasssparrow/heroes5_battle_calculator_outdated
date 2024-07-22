@@ -25,6 +25,8 @@ class BlockableDangerZone:
 class DangerZone:
 
     def __init__(self, length, height):
+        self.length = length
+        self.height = height
         self._danger = []
         self._blockable_danger = []
         self._blockable_danger_instance = BlockableDangerZone(
