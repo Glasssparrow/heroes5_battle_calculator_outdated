@@ -145,7 +145,10 @@ def get_danger_zone(battle_map, the_unit):
             )
             available_cells = battle_map.get_available_cells(unit)
             for coord, length, path in available_cells:
-                pass
+                attack_area = get_attack_area(
+                    x=coord[0], y=coord[1],
+                    big=unit.big,
+                )
     return result
 
     # Возвращаем экземпляр класса DangerZone
