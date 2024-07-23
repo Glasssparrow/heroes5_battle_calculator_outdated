@@ -149,6 +149,8 @@ def get_danger_zone(battle_map, the_unit):
                     x=coord[0], y=coord[1],
                     big=unit.big,
                 )
+                for cell in attack_area:
+                    pass
     return result
 
     # Возвращаем экземпляр класса DangerZone
