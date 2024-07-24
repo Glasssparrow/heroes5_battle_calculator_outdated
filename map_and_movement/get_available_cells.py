@@ -152,5 +152,3 @@ def get_danger_zone(battle_map, the_unit):
                 for cell in attack_area:
                     pass
     return result
-
-    # Возвращаем экземпляр класса DangerZone
