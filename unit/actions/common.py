@@ -12,7 +12,7 @@ class Action:
         self.after_move = True
         self.blocked_in_melee = False
         self.threat = 1
-        self.range = 1
+        self.range = None
         self.require_mana = 0
         self.require_ammo = 0
 
