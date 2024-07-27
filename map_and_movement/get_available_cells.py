@@ -129,6 +129,22 @@ def get_attack_area(x, y, big):
     return attack_area
 
 
+def get_melee_danger_zone(battle_map, unit):
+    danger_tmp = DangerZoneInProgress(
+        height=battle_map.map_height,
+        length=battle_map.map_length,
+    )
+    available_cells = battle_map.get_available_cells(unit)
+    for coord, length, path in available_cells:
+        attack_area = get_attack_area(
+            x=coord[0], y=coord[1],
+            big=unit.big,
+        )
+        for cell in attack_area:
+            pass
+    return danger_tmp
+
+
 def get_danger_zone(battle_map, the_unit):
     result = DangerZone(
         height=battle_map.map_height,
@@ -139,16 +155,5 @@ def get_danger_zone(battle_map, the_unit):
             continue
         for unit_id in unit_ids_list:
             unit = battle_map.units[unit_id]
-            danger_tmp = DangerZoneInProgress(
-                height=battle_map.map_height,
-                length=battle_map.map_length,
-            )
-            available_cells = battle_map.get_available_cells(unit)
-            for coord, length, path in available_cells:
-                attack_area = get_attack_area(
-                    x=coord[0], y=coord[1],
-                    big=unit.big,
-                )
-                for cell in attack_area:
-                    pass
+            danger_tmp = get_melee_danger_zone(battle_map, unit)
     return result
