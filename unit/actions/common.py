@@ -13,6 +13,7 @@ class Action:
         self.blocked_in_melee = False
         self.threat = 1
         self.range = None
+        self.type_of_action = MELEE_ACTION
         self.require_mana = 0
         self.require_ammo = 0
 
