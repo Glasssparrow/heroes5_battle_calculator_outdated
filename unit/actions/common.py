@@ -11,11 +11,12 @@ class Action:
         self.keyword = "no keyword"
         self.after_move = True
         self.blocked_in_melee = False
+        self.require_mana = 0
+        self.require_ammo = 0
+        # Данные для decisionmaker.
         self.threat = 1
         self.range = None
         self.type_of_action = MELEE_ACTION
-        self.require_mana = 0
-        self.require_ammo = 0
 
     def can_be_used(self):
         # Проверяет достаточно ли маны или боеприпасов.
