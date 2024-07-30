@@ -143,6 +143,10 @@ def get_melee_danger_zone(battle_map, unit):
             action.threat > danger
         ):
             danger = action.threat
+    if danger == 0:
+        raise Exception(
+            f"{unit.name} не найдено действие рукопашной атаки."
+        )
     for coord, length, path in available_cells:
         attack_area = get_attack_area(
             x=coord[0], y=coord[1],
