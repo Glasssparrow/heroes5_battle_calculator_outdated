@@ -1,4 +1,5 @@
 from .dijkstra_on_grid import Path
+from keywords import MELEE_ACTION
 
 
 class BlockableDangerZone:
@@ -135,6 +136,13 @@ def get_melee_danger_zone(battle_map, unit):
         length=battle_map.map_length,
     )
     available_cells = battle_map.get_available_cells(unit)
+    danger = 0
+    for action in unit.actions:
+        if (
+            action.type_of_action == MELEE_ACTION and
+            action.threat > danger
+        ):
+            danger = action.threat
     for coord, length, path in available_cells:
         attack_area = get_attack_area(
             x=coord[0], y=coord[1],
