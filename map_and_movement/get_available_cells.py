@@ -150,6 +150,7 @@ def get_melee_danger_zone(battle_map, unit):
         raise Exception(
             f"{unit.name} не найдено действие рукопашной атаки."
         )
+    danger_tmp.set_skill_danger_level(danger)  # Устанавливаем уровень угрозы.
     # Цикл через все ячейки до которых юнит может дойти.
     # Заполняем в нем danger_tmp
     for coord, length, path in available_cells:
