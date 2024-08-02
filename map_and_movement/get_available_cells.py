@@ -92,17 +92,25 @@ class DangerZoneInProgress:
         return self.danger_map[item[0]][item[1]]
 
     def __getitem__(self, item):
-        return self.data[item[0]][item[1]]
+        # Если в рамках карты, возвращаем в зоне угрозы ли ячейка.
+        if item[0] < self.length and item[1] < self.height:
+            return self.data[item[0]][item[1]]
+        else:  # Если ячейка вне зоны карты, то и вне зоны угрозы.
+            return False
 
     def __setitem__(self, key, value):
         if not isinstance(value, bool):
             raise Exception(
                 f"Допустимо лишь True/False, получено - {value}"
             )
-        self.data[key[0]][key[1]] = value
+        # Если ячейка в пределах карты, записываем значение,
+        # иначе ничего не делаем.
+        if key[0] < self.length and key[1] < self.height:
+            self.data[key[0]][key[1]] = value
 
     def __delitem__(self, key):
-        self.data[key[0]][key[1]] = False
+        if key[0] < self.length and key[1] < self.height:
+            self.data[key[0]][key[1]] = False
 
 
 def get_available_cells(pathfinder_big, pathfinder_small, unit):
