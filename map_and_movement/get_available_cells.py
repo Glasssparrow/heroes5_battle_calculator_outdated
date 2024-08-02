@@ -77,9 +77,9 @@ class DangerZoneInProgress:
         # Устанавливает новый уровень угрозы и обновляет
         # карту угрозы.
         self.danger = danger_level
-        self.add_danger()
+        self.create_danger_map()
 
-    def add_danger(self):
+    def create_danger_map(self):
         # Заполняет карту угрозы
         for x in range(self.length):
             for y in range(self.height):
