@@ -170,7 +170,7 @@ def get_melee_danger_zone(battle_map, unit):
             big=unit.big,
         )
         for cell in attack_area:
-            pass
+            danger_tmp[cell[0], cell[1]] = True
     return danger_tmp
 
 
