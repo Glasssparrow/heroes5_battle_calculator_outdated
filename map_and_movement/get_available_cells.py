@@ -74,16 +74,19 @@ class DangerZoneInProgress:
         self.danger = 0
 
     def set_skill_danger_level(self, danger_level):
+        # Устанавливает новый уровень угрозы и обновляет
+        # карту угрозы.
         self.danger = danger_level
+        self.add_danger()
 
     def add_danger(self):
+        # Заполняет карту угрозы
         for x in range(self.length):
             for y in range(self.height):
-                if (
-                    self.data[x][y] and
-                    self.danger_map[x][y] < self.danger
-                ):
+                if self.data[x][y]:
                     self.danger_map[x][y] = self.danger
+                else:
+                    self.danger_map[x][y] = 0
 
     def get_danger(self, item):
         return self.danger_map[item[0]][item[1]]
