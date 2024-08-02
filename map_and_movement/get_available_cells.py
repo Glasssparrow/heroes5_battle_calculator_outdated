@@ -131,11 +131,14 @@ def get_attack_area(x, y, big):
 
 
 def get_melee_danger_zone(battle_map, unit):
+    # Временная карта опасности.
+    # Её мы и будем возвращать.
     danger_tmp = DangerZoneInProgress(
         height=battle_map.map_height,
         length=battle_map.map_length,
     )
     available_cells = battle_map.get_available_cells(unit)
+    # Выбираем сильнейшую атаку ближнего боя
     danger = 0
     for action in unit.actions:
         if (
@@ -143,10 +146,12 @@ def get_melee_danger_zone(battle_map, unit):
             action.threat > danger
         ):
             danger = action.threat
-    if danger == 0:
+    if danger == 0:  # Если не нашли рукопашных атак, значит что-то не так.
         raise Exception(
             f"{unit.name} не найдено действие рукопашной атаки."
         )
+    # Цикл через все ячейки до которых юнит может дойти.
+    # Заполняем в нем danger_tmp
     for coord, length, path in available_cells:
         attack_area = get_attack_area(
             x=coord[0], y=coord[1],
