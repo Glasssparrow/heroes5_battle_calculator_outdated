@@ -173,6 +173,12 @@ def get_melee_danger_zone(battle_map, unit):
     return danger_tmp
 
 
+def add_tmp_melee_danger_zone_into_danger_zone(
+        danger_zone, danger_zone_tmp
+):
+    pass
+
+
 def get_danger_zone(battle_map, the_unit):
     result = DangerZone(
         height=battle_map.map_height,
@@ -184,4 +190,9 @@ def get_danger_zone(battle_map, the_unit):
         for unit_id in unit_ids_list:
             unit = battle_map.units[unit_id]
             danger_tmp = get_melee_danger_zone(battle_map, unit)
+            add_tmp_melee_danger_zone_into_danger_zone(
+                danger_zone=result,
+                danger_zone_tmp=danger_tmp,
+
+            )
     return result
