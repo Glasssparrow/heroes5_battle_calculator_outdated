@@ -176,7 +176,7 @@ def get_melee_danger_zone(battle_map, unit):
 def add_tmp_melee_danger_zone_into_danger_zone(
         danger_zone, danger_zone_tmp
 ):
-    pass
+    danger_zone_tmp.create_danger_map()
 
 
 def get_danger_zone(battle_map, the_unit):
