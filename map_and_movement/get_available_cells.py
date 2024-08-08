@@ -1,4 +1,3 @@
-from .dijkstra_on_grid import Path
 from keywords import MELEE_ACTION
 
 
@@ -28,7 +27,7 @@ class BlockableDangerZones:
 
 class DangerZones:
 
-    def __init__(self, length, height):
+    def __init__(self, length, height, unit_in_danger):
         # TO DO
         # Добавить слои. Каждый противник в отдельный слой.
         # Формирование итоговой карты опасности методом.
@@ -206,6 +205,7 @@ def get_danger_zone(battle_map, the_unit):
     result = DangerZones(
         height=battle_map.map_height,
         length=battle_map.map_length,
+        unit_in_danger=the_unit,
     )
     for side_color, unit_ids_list in battle_map.sides.items():
         if side_color == the_unit.color:
