@@ -29,6 +29,8 @@ class BlockableDangerZone:
 class DangerZone:
 
     def __init__(self, length, height):
+        # TO DO
+        # Добавить слои. Каждый противник в отдельный слой.
         self.length = length
         self.height = height
         self._danger = []
