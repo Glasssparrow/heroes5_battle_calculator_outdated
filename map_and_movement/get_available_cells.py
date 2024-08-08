@@ -31,6 +31,7 @@ class DangerZone:
     def __init__(self, length, height):
         # TO DO
         # Добавить слои. Каждый противник в отдельный слой.
+        # Формирование итоговой карты опасности методом.
         self.length = length
         self.height = height
         self._danger = []
