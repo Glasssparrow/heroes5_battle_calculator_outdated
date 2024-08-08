@@ -88,8 +88,8 @@ class DangerZoneInProgress:
                 else:
                     self.danger_map[x][y] = 0
 
-    def get_danger(self, item):
-        return self.danger_map[item[0]][item[1]]
+    def get_danger(self, x_coord, y_coord):
+        return self.danger_map[x_coord][y_coord]
 
     def __getitem__(self, item):
         # Если в рамках карты, возвращаем в зоне угрозы ли ячейка.
@@ -111,6 +111,24 @@ class DangerZoneInProgress:
     def __delitem__(self, key):
         if key[0] < self.length and key[1] < self.height:
             self.data[key[0]][key[1]] = False
+
+    def __iter__(self):
+        self.for_iterator = []
+        for y in range(self.height):
+            for x in range(self.length):
+                self.for_iterator.append((x, y,))
+        self.iteration = -1
+        return self
+
+    def __next__(self):
+        self.iteration += 1
+        if self.iteration < len(self.for_iterator):
+            return (
+                self.for_iterator[self.iteration][0],  # x_coord
+                self.for_iterator[self.iteration][1],  # y_coord
+            )
+        else:
+            raise StopIteration
 
 
 def get_available_cells(pathfinder_big, pathfinder_small, unit):
@@ -177,6 +195,8 @@ def add_tmp_melee_danger_zone_into_danger_zone(
         danger_zone, danger_zone_tmp
 ):
     danger_zone_tmp.create_danger_map()
+    for x, y in danger_zone_tmp:
+        pass
 
 
 def get_danger_zone(battle_map, the_unit):
