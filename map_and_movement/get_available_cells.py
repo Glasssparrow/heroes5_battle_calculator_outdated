@@ -2,7 +2,7 @@ from .dijkstra_on_grid import Path
 from keywords import MELEE_ACTION
 
 
-class BlockableDangerZone:
+class BlockableDangerZones:
 
     def __init__(self, length, height, data):
         self._length = length
@@ -26,7 +26,7 @@ class BlockableDangerZone:
         self._blockable_danger[key[0]][key[1]] = 0
 
 
-class DangerZone:
+class DangerZones:
 
     def __init__(self, length, height):
         # TO DO
@@ -36,7 +36,7 @@ class DangerZone:
         self.height = height
         self._danger = []
         self._blockable_danger = []
-        self._blockable_danger_instance = BlockableDangerZone(
+        self._blockable_danger_instance = BlockableDangerZones(
             length=length,
             height=height,
             data=self._blockable_danger,
@@ -203,7 +203,7 @@ def add_tmp_melee_danger_zone_into_danger_zone(
 
 
 def get_danger_zone(battle_map, the_unit):
-    result = DangerZone(
+    result = DangerZones(
         height=battle_map.map_height,
         length=battle_map.map_length,
     )
