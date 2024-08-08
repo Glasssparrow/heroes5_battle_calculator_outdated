@@ -213,6 +213,5 @@ def get_danger_zone(battle_map, the_unit):
             add_tmp_melee_danger_zone_into_danger_zone(
                 danger_zone=result,
                 danger_zone_tmp=danger_tmp,
-
             )
     return result
